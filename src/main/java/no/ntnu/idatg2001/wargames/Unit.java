@@ -1,12 +1,9 @@
 package no.ntnu.idatg2001.wargames;
 
 /**
+ * The unit superclass representing a single unit in an army
  * @author Aliaan
  * @version 0.0.1
- */
-
-/**
- * The Unit superclass
  */
 public abstract class Unit {
 
@@ -29,11 +26,17 @@ public abstract class Unit {
      */
     public Unit(String name, int health, int attack, int armor)
     {
+        this.name = name;
         if (health < 0)
         {
             health = 000;
         }
-
+        else
+        {
+            this.health = health;
+        }
+        this.attack = attack;
+        this.armor = armor;
 
     }
 
@@ -43,8 +46,8 @@ public abstract class Unit {
      */
     public void attack(Unit opponent)
     {
-        health -= (this.attack + this.getAttackBonus()) + (opponent.getArmor() + opponent.getResistBonus());
-        opponent.setHealth(health);
+        opponent.setHealth(opponent.getHealth() - (this.attack + this.getAttackBonus())
+                + opponent.getArmor() + opponent.getResistBonus());
     }
 
     /**
@@ -59,6 +62,31 @@ public abstract class Unit {
      * @return an int representing the bonus armor points the unit gets.
      */
     public abstract int getResistBonus();
+
+    /**
+     * Abstract method that gives information about the units range,
+     * whether it is melee or ranged.
+     * @return returns a boolean, true if melee and false if ranged
+     */
+    abstract protected boolean getRangeOfUnit();
+
+    /**
+     * Method that checks if the opponent is melee or ranged.
+     * @param opponent Takes in unit opponent as parameter
+     * @return returns a boolean, true if the opponent is melee or false if not.
+     */
+    public boolean checkIfOpponentIsMeleeOrRange(Unit opponent)
+    {
+        if(opponent.getRangeOfUnit() == true)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 
     /**
      * Method for getting the name of the unit.
@@ -100,6 +128,10 @@ public abstract class Unit {
         return armor;
     }
 
+
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
 
     /**
      * Method that overrides the toString method of the Unit class.
