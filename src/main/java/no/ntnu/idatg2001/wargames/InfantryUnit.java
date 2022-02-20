@@ -10,6 +10,8 @@ public class InfantryUnit extends Unit {
     // Field for if the unit is melee or not.
     private static final boolean IS_MELEE = true;
 
+    private Unit opponent;
+
     /**
      * Constructor of the InfantryUnit class
      * @param name takes in name of the infantryUnit as parameter
@@ -33,6 +35,7 @@ public class InfantryUnit extends Unit {
     {
         super(name, health, 15, 10);
         //infantryUnit = new InfantryUnit("Infantry Unit", 100);
+        opponent = new CavalryUnit("Cav", 100);
 
     }
 
@@ -49,12 +52,34 @@ public class InfantryUnit extends Unit {
      * Method that overrides the getAttackBonus method of the superclass.
      * @return returns an int value representing the bonus added to the infantryUnits attack power
      */
+
     @Override
     public int getAttackBonus()
     {
-        return 2;
+        int attackBonus = 0;
+        if(this.checkIfOpponentIsMeleeOrRange(opponent))
+        {
+            attackBonus = 2;
+            return attackBonus;
+        }
+        return attackBonus;
     }
 
+
+    /*
+    @Override
+    public int getAttackBonus()
+    {
+        int attackBonus = 0;
+        if(opponent.getRangeOfUnit())
+        {
+            attackBonus = 2;
+            return attackBonus;
+        }
+        return attackBonus;
+    }
+
+     */
 
     /**
      * Method that overrides the getResistBonus method of the superclass.

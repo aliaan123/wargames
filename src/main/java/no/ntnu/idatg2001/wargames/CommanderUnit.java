@@ -33,8 +33,4 @@ public class CommanderUnit extends CavalryUnit{
         //Unit commanderUnit = new CommanderUnit(name, health, 25, 15);
     }
 
-    @Override
-    public boolean getRangeOfUnit() {
-        return super.getRangeOfUnit();
-    }
 }
