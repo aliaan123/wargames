@@ -10,6 +10,8 @@ public class RangedUnit extends Unit {
 
     // Field for if the unit is melee or not.
     private static final boolean IS_MELEE = false;
+    // Field for the ranged units resist-bonus.
+    private int resistBonus = 8;
 
 
     /**
@@ -31,7 +33,6 @@ public class RangedUnit extends Unit {
      */
     public RangedUnit(String name, int health) {
         super(name, health, 15, 8);
-        //rangedUnit = new RangedUnit("Ranged Unit", 100);
     }
 
 
@@ -49,17 +50,19 @@ public class RangedUnit extends Unit {
      */
     @Override
     public int getAttackBonus() {
-        int attackBonus = 0;
+        int attackBonus = 1;
         /*
-        if () {
-            attackBonus = 3;
+        for (Unit unit : getAllUnits()) {
+            if (unit.getRangeOfUnit() == true) {
+                attackBonus = 3;
+                return attackBonus;
+            }
         }
-
          */
+
         return attackBonus;
 
     }
-
 
     /**
      * Method that overrides the getResistBonus method of the superclass.
@@ -67,8 +70,14 @@ public class RangedUnit extends Unit {
      */
     @Override
     public int getResistBonus() {
-        int resistBonus = 6;
-        return resistBonus;
+        if(resistBonus == 2)
+        {
+            return 2;
+        }
+        else {
+            resistBonus -= 2;
+            return resistBonus;
+            }
+        }
 
-    }
 }

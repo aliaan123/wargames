@@ -30,7 +30,6 @@ public class CommanderUnit extends CavalryUnit{
     public CommanderUnit(String name, int health)
     {
         super(name, health);
-        //Unit commanderUnit = new CommanderUnit(name, health, 25, 15);
     }
 
 }
