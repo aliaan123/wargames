@@ -41,9 +41,9 @@ public abstract class Unit {
     }
 
     /**
-     * Method that allows units to attack eachother and reduce their health.
+     * Method that allows units to attack each other and reduce their health.
      *
-     * @param opponent a opponents unit that is getting attacked
+     * @param opponent an opponents unit that is getting attacked
      */
     public void attack(Unit opponent) {
         opponent.setHealth(opponent.getHealth() - (this.attack + this.getAttackBonus())

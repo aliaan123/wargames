@@ -1,9 +1,6 @@
 package no.ntnu.idatg2001.wargames;
 
-import java.util.List;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 /**
  * @author Aliaan
@@ -27,6 +24,8 @@ public class Army {
     public Army(String name)
     {
         this.name = name;
+        units = new ArrayList<>();
+        randomNumber = new Random();
     }
 
     /**
@@ -66,7 +65,7 @@ public class Army {
     {
         for(Unit unit : units)
         {
-            this.units.add(unit);
+            units.add(unit);
         }
     }
 
@@ -118,14 +117,30 @@ public class Army {
         return this.units.size();
     }
 
+
     /**
      * Method that returns a random unit from the list of units.
      * @return a random Unit object from the list.
      */
-    public Unit getRandom()
-    {
+    public Unit getRandom() {
+
+        //System.out.println(units);
+        System.out.println(units.size());
+        //System.out.println(index);
         int index = randomNumber.nextInt(units.size());
         return units.get(index);
+
+        /*
+        try {
+            int index = randomNumber.nextInt(units.size());
+            return units.get(index);
+        } catch (IllegalArgumentException iae)
+        {
+            return null;
+        }
+
+         */
+
     }
 
     /**
