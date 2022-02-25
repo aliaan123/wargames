@@ -3,9 +3,6 @@ package no.ntnu.idatg2001.wargames;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class UnitTest {
@@ -36,7 +33,6 @@ class UnitTest {
     @Test
     void checkIfMethodCanIdentifyOpponentsAttackRange()
     {
-        //infantryUnit.attack(cavalryUnit);
         assertEquals(true, infantryUnit.checkIfOpponentIsMeleeOrRange(cavalryUnit));
 
     }
@@ -44,15 +40,15 @@ class UnitTest {
     @Test
     void checkIfMethodCanIdentifyOpponentsAttackRangeVsRanged()
     {
-        //infantryUnit.attack(cavalryUnit);
         assertEquals(false, infantryUnit.checkIfOpponentIsMeleeOrRange(rangedUnit));
     }
 
 
     @Test
-    void checkInfantrysAttackBonusVsRanged() {
-        infantryUnit.attack(cavalryUnit);
-        assertEquals(0, infantryUnit.getAttackBonus());
+    void checkCavalrysAttackBonus() {
+        assertEquals(4, cavalryUnit.getAttackBonus());
+        assertEquals(2, cavalryUnit.getAttackBonus());
+        assertEquals(2, cavalryUnit.getAttackBonus());
     }
 
     @Test
@@ -94,16 +90,6 @@ class UnitTest {
         Army armyOne = new Army("Army one");
         assertNotEquals(2, armyOne.hasUnits());
         assertNotEquals(true, armyOne.hasUnits());
-    }
-
-    @Test
-    void getRandomUnitTest()
-    {
-        Army armyOne = new Army("Army one");
-        armyOne.add(infantryUnit);
-        armyOne.add(cavalryUnit);
-        armyOne.add(rangedUnit);
-        System.out.println(armyOne.getRandom());
     }
 
     @Test
@@ -149,24 +135,25 @@ class UnitTest {
     @Test
     void testBattle()
     {
-            Army armyOne = new Army("Army one");
-            Unit unit1 = new CavalryUnit("Knights", 120);
-            Unit unit2 = new InfantryUnit("Soldiers", 100);
-            Unit unit3 = new RangedUnit("Archers", 80);
-            armyOne.add(unit1);
-            armyOne.add(unit2);
-            armyOne.add(unit3);
+        Army armyOne = new Army("Army one");
+        Unit unit1 = new CavalryUnit("Knights", 120);
+        Unit unit2 = new InfantryUnit("Soldiers", 100);
+        Unit unit3 = new RangedUnit("Archers", 80);
+        armyOne.add(unit1);
+        armyOne.add(unit2);
+        armyOne.add(unit3);
 
-            Army armyTwo = new Army("Army two");
-            Unit unit4 = new CavalryUnit("Raiders", 10);
-            Unit unit5 = new InfantryUnit("Goblins", 10);
-            Unit unit6 = new RangedUnit("Spearman", 8);
-            armyTwo.add(unit4);
-            armyTwo.add(unit5);
-            armyTwo.add(unit6);
+        Army armyTwo = new Army("Army two");
+        Unit unit4 = new CavalryUnit("Raiders", 10);
+        Unit unit5 = new InfantryUnit("Goblins", 10);
+        Unit unit6 = new RangedUnit("Spearman", 8);
+        armyTwo.add(unit4);
+        armyTwo.add(unit5);
+        armyTwo.add(unit6);
 
         //Battle battle = new Battle(armyOne, armyTwo);
-        //    assertEquals(armyOne, battle.simulate());
-        }
+        // assertEquals(armyOne, battle.simulate());
+
+    }
 
 }

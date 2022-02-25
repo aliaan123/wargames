@@ -123,13 +123,11 @@ public class Army {
      * @return a random Unit object from the list.
      */
     public Unit getRandom() {
-
         //System.out.println(units);
-        System.out.println(units.size());
+        //System.out.println(units.size());
         //System.out.println(index);
         int index = randomNumber.nextInt(units.size());
         return units.get(index);
-
         /*
         try {
             int index = randomNumber.nextInt(units.size());
@@ -138,7 +136,6 @@ public class Army {
         {
             return null;
         }
-
          */
 
     }

@@ -50,18 +50,7 @@ public class RangedUnit extends Unit {
      */
     @Override
     public int getAttackBonus() {
-        int attackBonus = 1;
-        /*
-        for (Unit unit : getAllUnits()) {
-            if (unit.getRangeOfUnit() == true) {
-                attackBonus = 3;
-                return attackBonus;
-            }
-        }
-         */
-
-        return attackBonus;
-
+        return 3;
     }
 
     /**

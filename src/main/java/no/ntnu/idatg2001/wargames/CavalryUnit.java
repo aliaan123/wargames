@@ -10,8 +10,8 @@ public class CavalryUnit extends Unit {
 
     // Field for if the unit is melee or not.
     private static final boolean IS_MELEE = true;
-    // Field for the number of times the cavalry unit attacks.
-    private int attackCount;
+    // Field for attack bonus of the cavalry unit.
+    private int attackBonus = 6;
 
     /**
      * Constructor of the CavalryUnit class
@@ -53,18 +53,10 @@ public class CavalryUnit extends Unit {
      */
     @Override
     public int getAttackBonus() {
-        int attackBonus = 4;
-
-        /*
-        for(Unit unit : getAllUnits) {
-            if (unit.getRangeOfUnit() && this.attackCount == 0)
-            {
-                attackBonus = 6;
-            }
+        if(attackBonus > 2)
+        {
+            attackBonus -= 2;
         }
-        attackCount++;
-
-         */
         return attackBonus;
     }
 
@@ -76,18 +68,6 @@ public class CavalryUnit extends Unit {
     @Override
     public int getResistBonus()
     {
-        int resistBonus = 0;
-
-        /*
-        for(Unit unit : getAllUnits) {
-            if (unit.getRangeOfUnit())
-            {
-                resistBonus = 1;
-                return resistBonus;
-            }
-        }
-         */
-
-        return resistBonus;
+        return 1;
     }
 }

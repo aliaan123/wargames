@@ -32,7 +32,6 @@ public class InfantryUnit extends Unit {
     public InfantryUnit(String name, int health)
     {
         super(name, health, 15, 10);
-        //infantryUnit = new InfantryUnit("Infantry Unit", 100);
     }
 
     /**
@@ -52,19 +51,7 @@ public class InfantryUnit extends Unit {
     @Override
     public int getAttackBonus()
     {
-        int attackBonus = 0;
-
-        /*
-        for(Unit unit : getAllUnits()) {
-            if (unit.getRangeOfUnit()) {
-                attackBonus = 2;
-                return attackBonus;
-            }
-        }
-
-         */
-
-        return attackBonus;
+        return 2;
     }
 
 

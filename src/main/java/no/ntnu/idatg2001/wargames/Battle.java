@@ -1,8 +1,6 @@
 package no.ntnu.idatg2001.wargames;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 /**
  * @author Aliaan
