@@ -37,7 +37,7 @@ class RangedUnitTest {
     @Test
     void testGetRangeOfUnit()
     {
-        assertEquals(true, rangedUnit.getRangeOfUnit());
+        assertEquals(false, rangedUnit.getRangeOfUnit());
     }
 
 
