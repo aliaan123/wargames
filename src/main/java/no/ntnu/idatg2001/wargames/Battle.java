@@ -31,44 +31,57 @@ public class Battle {
      * One random army from army one attacks a random army from army two,
      * and a random army from army two attacks a random army from army one.
      * The fight continues until one of the armies has no units left.
+     * Also handels the exception thrown from the getRandom method.
      * @return returns the army who won the battle.
      */
     public Army simulate() {
 
         do {
-            armyOne.getRandom().attack(armyTwo.getRandom());
+            try {
+                armyOne.getRandom().attack(armyTwo.getRandom());
+            }catch (NullPointerException e)
+            {
+                if(armyOne.hasUnits()) {
+                    return armyOne;
+                } else {
+                    return armyTwo;
+                }
+            }
             Iterator<Unit> armyTwoIterator = armyTwo.getAllUnits().iterator();
             while (armyTwoIterator.hasNext())
             {
                 Unit currentUnit = armyTwoIterator.next();
-                if(currentUnit.getHealth() <= 0)
-                {
+                if(currentUnit.getHealth() <= 0) {
                     armyTwoIterator.remove();
-                    //armyTwo.remove(currentUnit);
                 }
             }
 
-            armyTwo.getRandom().attack(armyOne.getRandom());
+            try {
+                armyTwo.getRandom().attack(armyOne.getRandom());
+            } catch (NullPointerException e)
+            {
+                if(armyOne.hasUnits()) {
+                    return armyOne;
+                } else {
+                    return armyTwo;
+                }
+            }
             Iterator<Unit> armyOneIterator = armyOne.getAllUnits().iterator();
             while (armyOneIterator.hasNext())
             {
                 Unit currentUnit = armyOneIterator.next();
-                if(currentUnit.getHealth() <= 0)
-                {
+                if(currentUnit.getHealth() <= 0) {
                     armyOneIterator.remove();
-                    //armyOneIterator.remove();
                 }
             }
 
-            System.out.println(armyTwo.hasUnits());
-            System.out.println(armyOne.hasUnits());
         }while(armyOne.hasUnits() && armyTwo.hasUnits());
 
-            if (armyOne.hasUnits()) {
-                return armyOne;
-            } else {
-                return armyTwo;
-            }
+        if (armyOne.unitsSize() > armyTwo.unitsSize()) {
+            return armyOne;
+        } else {
+            return armyTwo;
+        }
     }
 
 

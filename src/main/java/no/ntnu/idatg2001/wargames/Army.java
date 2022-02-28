@@ -28,6 +28,7 @@ public class Army {
         randomNumber = new Random();
     }
 
+
     /**
      * Constructor of the Army class.
      * @param name Takes in name of the army as a parameter.
@@ -39,6 +40,7 @@ public class Army {
         this.units = units;
         randomNumber = new Random();
     }
+
 
     /**
      * Method for getting the name of the army.
@@ -119,26 +121,23 @@ public class Army {
 
 
     /**
-     * Method that returns a random unit from the list of units.
+     * Method that returns a random unit from the list of units,
+     * packed within a try-catch which will try to return a random index
+     * from the units size. If the size of the list of units is empty, and exception is thrown,
+     * and it will return null.
      * @return a random Unit object from the list.
      */
     public Unit getRandom() {
-        //System.out.println(units);
-        //System.out.println(units.size());
-        //System.out.println(index);
-        int index = randomNumber.nextInt(units.size());
-        return units.get(index);
-        /*
         try {
             int index = randomNumber.nextInt(units.size());
             return units.get(index);
-        } catch (IllegalArgumentException iae)
-        {
+        } catch (IllegalArgumentException iae) {
             return null;
         }
-         */
-
     }
+
+
+
 
     /**
      * Method that overrides the toString method of the Army class.

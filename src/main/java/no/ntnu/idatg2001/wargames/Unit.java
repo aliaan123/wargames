@@ -31,7 +31,7 @@ public abstract class Unit {
     public Unit(String name, int health, int attack, int armor) {
         this.name = name;
         if (health < 0) {
-            health = 000;
+            setHealth(000);
         } else {
             this.health = health;
         }
