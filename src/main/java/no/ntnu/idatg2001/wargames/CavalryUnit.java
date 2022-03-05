@@ -10,6 +10,8 @@ public class CavalryUnit extends Unit {
 
     // Field for if the unit is melee or not.
     private static final boolean IS_MELEE = true;
+    // Field for the resist bonus of the cavalry unit.
+    private static final int RESIST_BONUS = 1;
     // Field for attack bonus of the cavalry unit.
     private int attackBonus = 6;
 
@@ -68,6 +70,6 @@ public class CavalryUnit extends Unit {
     @Override
     public int getResistBonus()
     {
-        return 1;
+        return RESIST_BONUS;
     }
 }

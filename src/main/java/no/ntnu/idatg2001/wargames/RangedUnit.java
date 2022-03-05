@@ -10,6 +10,8 @@ public class RangedUnit extends Unit {
 
     // Field for if the unit is melee or not.
     private static final boolean IS_MELEE = false;
+    // Field for the attack bonus of the ranged unit
+    private static final int ATTACK_BONUS = 3;
     // Field for the ranged units resist-bonus.
     private int resistBonus = 8;
 
@@ -50,7 +52,7 @@ public class RangedUnit extends Unit {
      */
     @Override
     public int getAttackBonus() {
-        return 3;
+        return ATTACK_BONUS;
     }
 
     /**

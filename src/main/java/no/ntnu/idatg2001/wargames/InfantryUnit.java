@@ -9,6 +9,10 @@ public class InfantryUnit extends Unit {
 
     // Field for if the unit is melee or not.
     private static final boolean IS_MELEE = true;
+    // Field for the attack bonus of the infantry unit
+    private static final int ATTACK_BONUS = 2;
+    // Field for the resist bonus of the infantry unit
+    private static final int RESIST_BONUS = 1;
 
     /**
      * Constructor of the InfantryUnit class
@@ -51,7 +55,7 @@ public class InfantryUnit extends Unit {
     @Override
     public int getAttackBonus()
     {
-        return 2;
+        return ATTACK_BONUS;
     }
 
 
@@ -61,6 +65,6 @@ public class InfantryUnit extends Unit {
      */
     @Override
     public int getResistBonus() {
-        return 1;
+        return RESIST_BONUS;
     }
 }
