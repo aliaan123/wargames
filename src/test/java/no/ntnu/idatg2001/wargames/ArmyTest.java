@@ -3,6 +3,9 @@ package no.ntnu.idatg2001.wargames;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ArmyTest {
@@ -85,6 +88,64 @@ class ArmyTest {
         assertEquals(3, armyOne.getAllUnits().size());
 
     }
+
+    @Test
+    void testGetInfantryUnit()
+    {
+
+        Army army = new Army("Army");
+        army.add(infantryUnit);
+        army.add(cavalryUnit);
+        army.add(rangedUnit);
+
+
+        List<Unit> infantryUnits = new ArrayList<>();
+        infantryUnits.add(infantryUnit);
+
+
+        assertEquals(infantryUnits, army.getInfantryUnits());
+
+    }
+
+    @Test
+    void testGetCavalryUnit()
+    {
+
+        Army army = new Army("Army");
+        army.add(cavalryUnit);
+        army.add(infantryUnit);
+        army.add(rangedUnit);
+
+        List<Unit> cavalryUnits = new ArrayList<>();
+        cavalryUnits.add(cavalryUnit);
+
+
+        assertEquals(cavalryUnits, army.getCavalryUnits());
+
+    }
+
+    @Test
+    void testGetRangedUnit()
+    {
+
+        Army army = new Army("Army");
+        army.add(cavalryUnit);
+        army.add(infantryUnit);
+        army.add(rangedUnit);
+
+        List<Unit> rangedUnits = new ArrayList<>();
+        rangedUnits.add(rangedUnit);
+
+
+        assertEquals(rangedUnits, army.getRangedUnits());
+
+    }
+
+
+
+
+
+
 
 
 }

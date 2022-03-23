@@ -161,6 +161,21 @@ public class Army {
     }
 
 
+    /**
+     * Method for getting all ranged units in an army
+     * @return returns a list with ranged units.
+     */
+    public List<Unit> getRangedUnits()
+    {
+        return units.stream().filter(unit -> "Ranged Unit".equals(unit.getName())).
+                collect(Collectors.toCollection(ArrayList::new));
+
+    }
+
+
+
+
+
 
 
 
