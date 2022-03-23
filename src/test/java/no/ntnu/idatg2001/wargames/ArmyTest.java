@@ -142,6 +142,26 @@ class ArmyTest {
     }
 
 
+    @Test
+    void testGetCommanderUnit()
+    {
+
+        Army army = new Army("Army");
+        CommanderUnit commanderUnit = new CommanderUnit("Commander Unit", 100);
+        army.add(commanderUnit);
+        army.add(cavalryUnit);
+        army.add(infantryUnit);
+        army.add(rangedUnit);
+
+        List<Unit> commanderUnits = new ArrayList<>();
+        commanderUnits.add(commanderUnit);
+
+
+        assertEquals(commanderUnits, army.getCommanderUnits());
+
+    }
+
+
 
 
 

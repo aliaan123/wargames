@@ -172,14 +172,16 @@ public class Army {
 
     }
 
+    /**
+     * Method for getting all commander units in an army
+     * @return returns a list with commander units.
+     */
+    public List<Unit> getCommanderUnits()
+    {
+        return units.stream().filter(unit -> "Commander Unit".equals(unit.getName())).
+                collect(Collectors.toCollection(ArrayList::new));
 
-
-
-
-
-
-
-
+    }
 
     /**
      * Method that overrides the toString method of the Army class.
