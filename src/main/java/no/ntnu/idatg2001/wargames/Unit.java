@@ -1,5 +1,7 @@
 package no.ntnu.idatg2001.wargames;
 
+import java.io.Serializable;
+
 /**
  * The unit superclass representing a single unit in an army
  *
@@ -7,7 +9,7 @@ package no.ntnu.idatg2001.wargames;
  * @version 0.0.1
  */
 
-public abstract class Unit {
+public abstract class Unit implements Serializable {
 
 
     // name of the unit
