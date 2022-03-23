@@ -1,6 +1,7 @@
 package no.ntnu.idatg2001.wargames;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author Aliaan
@@ -135,6 +136,19 @@ public class Army {
             return null;
         }
     }
+
+
+    /**
+     * Method for getting all infantry units in an army
+     * @return returns a list with infantry units.
+     */
+    public List<Unit> getInfantryUnits()
+    {
+        return units.stream().filter(unit -> "Infantry Unit".equals(unit.getName())).
+                collect(Collectors.toCollection(ArrayList::new));
+
+    }
+
 
 
 

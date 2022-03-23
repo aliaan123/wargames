@@ -45,6 +45,20 @@ class UnitTest {
         assertEquals(false, infantryUnit.checkIfOpponentIsMeleeOrRange(rangedUnit));
     }
 
+    @Test
+    void testGetInfantryUnit()
+    {
+
+        Army army = new Army("Army");
+        army.add(infantryUnit);
+
+        List<Unit> infantryUnits = new ArrayList<>();
+        infantryUnits.add(infantryUnit);
+
+
+        assertEquals(infantryUnits, army.getInfantryUnits());
+
+    }
 
 
 
