@@ -149,6 +149,19 @@ public class Army {
 
     }
 
+    /**
+     * Method for getting all cavalry units in an army
+     * @return returns a list with cavalry units.
+     */
+    public List<Unit> getCavalryUnits()
+    {
+        return units.stream().filter(unit -> "Cavalry Unit".equals(unit.getName())).
+                collect(Collectors.toCollection(ArrayList::new));
+
+    }
+
+
+
 
 
 
