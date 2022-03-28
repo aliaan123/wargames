@@ -1,4 +1,5 @@
-Army, 20
-Ranged, 80
-CavalryUnit, 10
-CommanderUnit, 10
+mandem
+RangedUnit, ranged, 50
+InfantryUnit, inf, 100
+CavalryUnit, cav, 100
+CommanderUnit, com, 100

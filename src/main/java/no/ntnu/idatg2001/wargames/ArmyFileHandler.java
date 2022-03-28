@@ -7,32 +7,62 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 
 public class ArmyFileHandler {
 
-    private String armyName;
+    enum UnitType{
+        INFANTRYUNIT,
+        CAVALRYUNIT,
+        RANGEDUNIT,
+        COMMANDERUNIT
+    }
 
-
-    public static Army readCsv(Path path) throws IOException {
-
-        //Scanner in = new Scanner(path);
-        //String armyName = in.nextLine();
-        Army army = new Army("HEllo");
+    public static Army readCsv(Path path) {
+        Army army = new Army("temp");
         try (BufferedReader reader = Files.newBufferedReader(path)) {
+            String name = reader.readLine();
             String lineOfText;
             while ((lineOfText = reader.readLine()) != null) {
-                String[] words = lineOfText.split(" ");
-                //army.setName();
-                army.add(new InfantryUnit(words[0].strip(), Integer.parseInt(words[1].strip())));
-
+                String[] words = lineOfText.split(",");
+                UnitType whichUnit = UnitType.valueOf(words[0].toUpperCase());
+                switch (whichUnit){
+                    case INFANTRYUNIT:
+                        army.add(new InfantryUnit(words[1].strip(), Integer.parseInt(words[2].strip())));
+                        break;
+                    case CAVALRYUNIT:
+                        army.add(new CavalryUnit(words[1].strip(), Integer.parseInt(words[2].strip())));
+                        break;
+                    case RANGEDUNIT:
+                        army.add(new RangedUnit(words[1].strip(), Integer.parseInt(words[2].strip())));
+                        break;
+                    case COMMANDERUNIT:
+                        army.add(new CommanderUnit(words[1].strip(), Integer.parseInt(words[2].strip())));
+                        break;
+                    default:
+                        break;
+                }
             }
+            army.setName(name);
+            return  army;
         } catch (IOException e) {
             System.out.println(e.getMessage());
+            return  null;
         }
-        return army;
+    }
+
+    public static void writeCSV(Army army, Path path)
+    {
+        try(BufferedWriter writer = Files.newBufferedWriter(path)) {
+            writer.write(army.getName() + "\n");
+            for (Unit unit : army.getAllUnits()) {
+                Class unitClass = unit.getClass();
+                String typeOfUnit = unitClass.getSimpleName();
+                writer.write(typeOfUnit + ", " +  unit.getName() + ", " + unit.getHealth() + "\n");
+            }
+        }catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static void writeSerialized(Army army, Path path)
@@ -55,15 +85,14 @@ public class ArmyFileHandler {
         return army;
     }
 
-    public static void main(String[] args) throws IOException {
+    /*
 
+    public static void main(String[] args) throws IOException {
         Army army123 = readCsv(Path.of("units.csv"));
         String navn = army123.getName();
         System.out.println(navn);
-        writeSerialized(army123, Path.of("units.bin"));
-        army123 = readSerialized(Path.of("units.bin"));
         army123.getAllUnits().forEach(unit -> System.out.println(unit.getName() + " " + unit.getHealth()));
     }
-
+     */
 
 }
