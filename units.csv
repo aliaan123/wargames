@@ -1,5 +1,5 @@
 mandem
-RangedUnit, ranged, 50
+RangedUnit, ranged, 100
 InfantryUnit, inf, 100
 CavalryUnit, cav, 100
 CommanderUnit, com, 100

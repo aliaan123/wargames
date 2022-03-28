@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @version 0.0.1
  */
 
-public abstract class Unit implements Serializable {
+public abstract class Unit {
 
 
     // name of the unit
