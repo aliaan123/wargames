@@ -1,0 +1,20 @@
+package no.ntnu.idatg2001.userinterface;
+
+import javafx.fxml.Initializable;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import java.util.ResourceBundle;
+
+public class MainMenuController implements Initializable {
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+}
