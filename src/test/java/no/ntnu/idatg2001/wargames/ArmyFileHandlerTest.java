@@ -14,7 +14,7 @@ class ArmyFileHandlerTest {
     @BeforeEach
     void setUp() {
 
-        army = new Army("mandem");
+        army = new Army("GANGWAY");
         army.add(new RangedUnit("ranged",100));
         army.add(new InfantryUnit("inf",100));
         army.add(new CavalryUnit("cav",100));
@@ -28,9 +28,9 @@ class ArmyFileHandlerTest {
         army.getAllUnits().get(0).setHealth(50);
         ArmyFileHandler.writeCSV(army, Path.of("units.csv"));
         army.getAllUnits().get(0).setHealth(100);
-        Army readArmy = ArmyFileHandler.readCsv(Path.of("units.csv"));
+        Army readArmy = ArmyFileHandler.readCSV(Path.of("units.csv"));
         assertEquals(army,readArmy);
-        assertEquals("mandem", readArmy.getName());
+        assertEquals("GANGWAY", readArmy.getName());
         for(int i = 0; i<readArmy.getAllUnits().size(); i++)
         {
             Unit newUnit = readArmy.getAllUnits().get(i);
@@ -49,7 +49,7 @@ class ArmyFileHandlerTest {
     void testWriteAndReadCSV()
     {
         ArmyFileHandler.writeCSV(army, Path.of("units.csv"));
-        Army readArmy = ArmyFileHandler.readCsv(Path.of("units.csv"));
+        Army readArmy = ArmyFileHandler.readCSV(Path.of("units.csv"));
         assertEquals(army,readArmy);
     }
 

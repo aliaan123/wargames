@@ -1,6 +1,5 @@
 package no.ntnu.idatg2001.wargames;
 
-import java.io.Serializable;
 import java.util.*;
 import java.util.stream.Collectors;
 
