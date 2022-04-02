@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.userinterface.ArmyRegistrationController">
+   <center>
+      <VBox alignment="CENTER" fillWidth="false" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="328.0" prefWidth="582.0">
+               <children>
+                  <Label layoutX="124.0" layoutY="46.0" text="Army 1" />
+                  <Label layoutX="415.0" layoutY="46.0" text="Army 2" />
+                  <Label layoutX="286.0" layoutY="46.0" text="Vs." />
+                  <Label layoutX="16.0" layoutY="104.0" text="Write name of the army:">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="308.0" layoutY="104.0" text="Write name of the army:">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="16.0" layoutY="144.0" text="Add unit to army:">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="308.0" layoutY="153.0" text="Add unit to army:">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="143.0" layoutY="148.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0" text="+" />
+                  <Button layoutX="447.0" layoutY="146.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="112.0" text="+" />
+                  <Button layoutX="83.0" layoutY="203.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" text="View army details" />
+                  <Button layoutX="375.0" layoutY="203.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="118.0" text="View army details" />
+                  <Button layoutX="86.0" layoutY="258.0" mnemonicParsing="false" text="Load an army from file">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="377.0" layoutY="258.0" mnemonicParsing="false" text="Load an army from file">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Button>
+                  <TextField layoutX="143.0" layoutY="98.0" prefHeight="26.0" prefWidth="119.0" />
+                  <TextField layoutX="443.0" layoutY="98.0" prefHeight="26.0" prefWidth="119.0" />
+                  <Separator layoutX="291.0" layoutY="73.0" orientation="VERTICAL" prefHeight="244.0" prefWidth="4.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <HBox alignment="CENTER" prefHeight="42.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" text="Register Armies">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="46.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" prefHeight="51.0" prefWidth="196.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="196.0" text="Continue">
+                     <VBox.margin>
+                        <Insets bottom="15.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#onGoBackButtonClick" prefHeight="8.0" prefWidth="66.0" text="&lt; Go back">
+                     <font>
+                        <Font size="9.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="15.0" />
+               </padding>
+            </VBox>
+         </children></HBox>
+   </bottom>
+</BorderPane>

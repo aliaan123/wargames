@@ -14,7 +14,7 @@
       </HBox>
    </bottom>
    <center>
-      <ImageView fitHeight="226.0" fitWidth="380.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+      <ImageView fitHeight="271.0" fitWidth="394.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
             <Image url="@images/wargamespic.jpg" />
          </image></ImageView>

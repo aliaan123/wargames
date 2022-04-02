@@ -2,6 +2,7 @@ package no.ntnu.idatg2001.userinterface;
 
 import javafx.fxml.Initializable;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -18,9 +19,8 @@ public class MainMenuController implements Initializable {
 
     }
 
-
-    public void onContinueButtonClick(ActionEvent event) {
-
-
+    @FXML
+    public void onContinueButtonClick(ActionEvent event) throws IOException {
+        WarGamesApplication.goToArmyRegistration();
     }
 }

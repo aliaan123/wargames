@@ -2,6 +2,7 @@ package no.ntnu.idatg2001.userinterface;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import java.io.IOException;
@@ -13,21 +14,44 @@ import java.io.IOException;
  */
 public class WarGamesApplication extends Application {
 
+    private static Stage primaryStage;
+
     @Override
     public void start(Stage primaryStage) throws IOException {
         try {
             //FXMLLoader fxmlLoader = new FXMLLoader(WarGamesApplication.class.getResource("MainMenu.fxml"));
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("MainMenu.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
-            primaryStage.setTitle("WarGames");
+            Scene scene = new Scene(fxmlLoader.load(), 700, 500);
+            primaryStage.setTitle("Main Menu");
             primaryStage.setScene(scene);
             primaryStage.show();
+            this.primaryStage = primaryStage;
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
     }
+
+
+    public static void goToMainMenu() throws IOException{
+        FXMLLoader loader = new FXMLLoader(WarGamesApplication.class.getClassLoader().getResource("MainMenu.fxml"));
+        Parent root = loader.load();
+        primaryStage.getScene().setRoot(root);
+        primaryStage.setTitle("Main menu");
+    }
+
+
+
+    public static void goToArmyRegistration() throws IOException{
+        FXMLLoader loader = new FXMLLoader(WarGamesApplication.class.getClassLoader().getResource("ArmyRegistration.fxml"));
+        Parent root = loader.load();
+        primaryStage.getScene().setRoot(root);
+        primaryStage.setTitle("Main menu");
+    }
+
+
+
 
 
 
