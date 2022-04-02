@@ -14,14 +14,23 @@ import java.io.IOException;
 public class WarGamesApplication extends Application {
 
     @Override
-    public void start(Stage stage) throws IOException {
-        //FXMLLoader fxmlLoader = new FXMLLoader(WarGamesApplication.class.getResource("MainMenu.fxml"));
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("MainMenu.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
-        stage.setTitle("WarGames");
-        stage.setScene(scene);
-        stage.show();
+    public void start(Stage primaryStage) throws IOException {
+        try {
+            //FXMLLoader fxmlLoader = new FXMLLoader(WarGamesApplication.class.getResource("MainMenu.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("MainMenu.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            primaryStage.setTitle("WarGames");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
+
+
+
 
     /**
      * The stop() method is being called by the JavaFX-platform when the

@@ -17,4 +17,10 @@ public class MainMenuController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
+
+    public void onContinueButtonClick(ActionEvent event) {
+
+
+    }
 }
