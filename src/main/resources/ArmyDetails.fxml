@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="569.0" prefWidth="706.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.userinterface.ArmyDetailsController">
+   <center>
+      <VBox alignment="CENTER" fillWidth="false" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="449.0" prefWidth="706.0">
+               <children>
+                  <TableView layoutX="80.0" layoutY="23.0" prefHeight="241.0" prefWidth="546.0">
+                    <columns>
+                        <TableColumn prefWidth="149.39998626708984" text="Unit Type " />
+                      <TableColumn prefWidth="137.79998779296875" text="Name" />
+                      <TableColumn prefWidth="84.5999755859375" text="Health" />
+                        <TableColumn prefWidth="87.39999389648438" text="Attack" />
+                        <TableColumn prefWidth="87.0" text="Health" />
+                    </columns>
+                  </TableView>
+                  <TableView layoutX="80.0" layoutY="282.0" prefHeight="146.0" prefWidth="207.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="Unit Type" />
+                      <TableColumn prefWidth="131.2" text="Number of units" />
+                    </columns>
+                  </TableView>
+                  <TextField editable="false" layoutX="479.0" layoutY="351.0" prefHeight="26.0" prefWidth="61.0" />
+                  <Label layoutX="331.0" layoutY="355.0" prefHeight="18.0" prefWidth="127.0" text="Total number of units:" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <Button mnemonicParsing="false" onAction="#onBackToArmyRegistrationButton" prefHeight="46.0" prefWidth="336.0" text="&lt; Back to Army Registration" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="15.0" />
+         </BorderPane.margin></Button>
+   </bottom>
+   <top>
+      <HBox alignment="CENTER" prefHeight="51.0" prefWidth="706.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="335.0" text="Army Details">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>

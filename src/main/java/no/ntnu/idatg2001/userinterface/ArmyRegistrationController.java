@@ -12,8 +12,13 @@ public class ArmyRegistrationController {
         WarGamesApplication.goToMainMenu();
     }
 
-
+    @FXML
     public void onAddUnitButtonClick(ActionEvent event) throws IOException {
         WarGamesApplication.goToAddUnits();
+    }
+
+
+    public void onViewArmyDetailsButton(ActionEvent event) throws IOException {
+        WarGamesApplication.goToArmyDetails();
     }
 }

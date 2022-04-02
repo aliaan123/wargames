@@ -58,10 +58,12 @@ public class WarGamesApplication extends Application {
     }
 
 
-
-
-
-
+    public static void goToArmyDetails() throws IOException{
+        FXMLLoader loader = new FXMLLoader(WarGamesApplication.class.getClassLoader().getResource("ArmyDetails.fxml"));
+        Parent root = loader.load();
+        primaryStage.getScene().setRoot(root);
+        primaryStage.setTitle("Details about army");
+    }
 
 
 
