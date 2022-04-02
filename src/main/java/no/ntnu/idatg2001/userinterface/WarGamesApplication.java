@@ -50,6 +50,16 @@ public class WarGamesApplication extends Application {
         primaryStage.setTitle("Main menu");
     }
 
+    public static void goToAddUnits() throws IOException{
+        FXMLLoader loader = new FXMLLoader(WarGamesApplication.class.getClassLoader().getResource("AddUnit.fxml"));
+        Parent root = loader.load();
+        primaryStage.getScene().setRoot(root);
+        primaryStage.setTitle("Add units to army");
+    }
+
+
+
+
 
 
 

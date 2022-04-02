@@ -13,4 +13,7 @@ public class ArmyRegistrationController {
     }
 
 
+    public void onAddUnitButtonClick(ActionEvent event) throws IOException {
+        WarGamesApplication.goToAddUnits();
+    }
 }
