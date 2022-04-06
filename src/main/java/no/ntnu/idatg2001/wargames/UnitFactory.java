@@ -3,12 +3,20 @@ package no.ntnu.idatg2001.wargames;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Aliaan
+ *
+ * Class representing a unit factory.
+ * Uses the factory design pattern.
+ */
 public class UnitFactory {
 
+    // Field for the list of units when creating multiple in the factory
     private static List<Unit> units;
 
+
     /**
-     *
+     * Private constructor of the UnitFactory class
      */
     private UnitFactory()
     {
@@ -16,9 +24,14 @@ public class UnitFactory {
     }
 
 
+
     /**
-     *
-     * @return
+     * Method in the factory for creating a unit.
+     * Uses switch cases, and the switch case matching the String unitType will run.
+     * @param unitType takes in String unitType as parameter, which is used for running one of the switch cases.
+     * @param unitName takes in String unitName as parameter, which is the name of the unit created.
+     * @param health takes in an int health as parameter, which is for setting health of the unit created.
+     * @return returns a unit with the given unit type, unit name and health.
      */
     public static Unit factoryCreatingUnit(String unitType, String unitName, int health)
     {
@@ -38,8 +51,14 @@ public class UnitFactory {
     }
 
     /**
-     *
-     * @return
+     * Method in the factory for creating multiple units at once.
+     * Uses switch cases, and the switch case matching the String unitType will run.
+     * @param unitType takes in String unitType as parameter, which is used for running one of the switch cases.
+     * @param unitName takes in String unitName as parameter, which is the name of the unit created.
+     * @param health takes in an int health as parameter, which is for setting health of the units created.
+     * @param amount takes in an int amount as parameter, which decides the number of the units created.
+     * @return returns a list of units with size equal to the int amount sent in the parameter,
+     * all with the same unit type, unit name, health.
      */
     public static List<Unit> factoryCreatingMultipleUnits(String unitType, String unitName, int health, int amount)
     {
@@ -71,6 +90,10 @@ public class UnitFactory {
         }
     }
 
+    /**
+     * Method for returning the list of units created in the factory
+     * @return returns a list of units
+     */
     public static List<Unit> getUnits() {
         return units;
     }
