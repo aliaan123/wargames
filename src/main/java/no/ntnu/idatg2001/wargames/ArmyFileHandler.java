@@ -37,10 +37,20 @@ public class ArmyFileHandler {
                 String[] words = lineOfText.split(",");
                 UnitType whichUnit = UnitType.valueOf(words[0].toUpperCase());
                 switch (whichUnit) {
-                    case INFANTRYUNIT -> army.add(new InfantryUnit(words[1].strip(), Integer.parseInt(words[2].strip())));
-                    case CAVALRYUNIT -> army.add(new CavalryUnit(words[1].strip(), Integer.parseInt(words[2].strip())));
-                    case RANGEDUNIT -> army.add(new RangedUnit(words[1].strip(), Integer.parseInt(words[2].strip())));
-                    case COMMANDERUNIT -> army.add(new CommanderUnit(words[1].strip(), Integer.parseInt(words[2].strip())));
+                    case INFANTRYUNIT:
+                        army.add(new InfantryUnit(words[1].strip(), Integer.parseInt(words[2].strip())));
+                        break;
+                    case CAVALRYUNIT:
+                        army.add(new CavalryUnit(words[1].strip(), Integer.parseInt(words[2].strip())));
+                        break;
+                    case RANGEDUNIT:
+                        army.add(new RangedUnit(words[1].strip(), Integer.parseInt(words[2].strip())));
+                        break;
+                    case COMMANDERUNIT:
+                        army.add(new CommanderUnit(words[1].strip(), Integer.parseInt(words[2].strip())));
+                        break;
+                    default:
+                        break;
                 }
             }
             army.setName(name);
