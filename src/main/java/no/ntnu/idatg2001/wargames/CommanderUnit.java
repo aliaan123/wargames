@@ -32,4 +32,14 @@ public class CommanderUnit extends CavalryUnit{
         super(name, health);
     }
 
+    @Override
+    public String toString() {
+        return  "Unit{" +
+                "name='" + getName() + '\'' +
+                ", health=" + getHealth() +
+                ", attack=" + getAttack() +
+                ", armor=" + getArmor()
+                + ", unit type=Commander Unit}";
+
+    }
 }

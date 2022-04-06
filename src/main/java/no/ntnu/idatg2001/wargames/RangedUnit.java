@@ -71,4 +71,9 @@ public class RangedUnit extends Unit {
             }
         }
 
+    @Override
+    public String toString() {
+        return super.toString() + ", unit type=Ranged Unit}";
+    }
+
 }

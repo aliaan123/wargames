@@ -154,7 +154,6 @@ public abstract class Unit {
                 "name='" + name + '\'' +
                 ", health=" + health +
                 ", attack=" + attack +
-                ", armor=" + armor +
-                '}';
+                ", armor=" + armor;
     }
 }

@@ -67,4 +67,9 @@ public class InfantryUnit extends Unit {
     public int getResistBonus() {
         return RESIST_BONUS;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", unit type=Infantry Unit}";
+    }
 }

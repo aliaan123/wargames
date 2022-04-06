@@ -2,62 +2,26 @@ package no.ntnu.idatg2001.wargames;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-
-
 
 public class UnitFactory {
 
-    private Scanner readInput;
-    private String unitType;
-    private String unitName;
-    private int health;
-    private List<Unit> units;
+    private static List<Unit> units;
 
     /**
      *
      */
-    public UnitFactory()
+    private UnitFactory()
     {
-        readInput = new Scanner(System.in);
-        units = new ArrayList<>();
+        //units = new ArrayList<>();
     }
+
 
     /**
      *
      * @return
      */
-    public Unit factoryCreatingUnit()
+    public static Unit factoryCreatingUnit(String unitType, String unitName, int health)
     {
-        System.out.println("Enter the unit type: ");
-        String unitType = readInput.nextLine();
-        while (!validateString(unitType)) {
-            System.out.println("Please enter a valid input");
-            unitType = readInput.nextLine();
-        }
-
-        System.out.println("Enter the name of the unit: ");
-        String unitName = readInput.nextLine();
-        while (!validateString(unitName)) {
-            System.out.println("Please enter a valid input");
-            unitName = readInput.nextLine();
-        }
-
-        System.out.println("Enter the health of the unit: ");
-        int health = 0;
-        boolean isHealth;
-        do {
-            if (readInput.hasNextInt()) {
-                health = readInput.nextInt();
-                readInput.nextLine();
-                isHealth = true;
-            } else {
-                System.out.println("Please enter a valid number.");
-                isHealth = false;
-                readInput.next();
-            }
-        } while (!isHealth);
-
         switch(unitType)
         {
             case "Infantry Unit":
@@ -77,53 +41,9 @@ public class UnitFactory {
      *
      * @return
      */
-    public List<Unit> factoryCreatingMultipleUnits()
+    public static List<Unit> factoryCreatingMultipleUnits(String unitType, String unitName, int health, int amount)
     {
-
-        System.out.println("Enter the unit type: ");
-        String unitType = readInput.nextLine();
-        while (!validateString(unitType)) {
-            System.out.println("Please enter a valid input");
-            unitType = readInput.nextLine();
-        }
-
-        System.out.println("Enter the name of the unit: ");
-        String unitName = readInput.nextLine();
-        while (!validateString(unitName)) {
-            System.out.println("Please enter a valid input");
-            unitName = readInput.nextLine();
-        }
-
-        System.out.println("Enter the health of the unit: ");
-        int health = 0;
-        boolean isHealth;
-        do {
-            if (readInput.hasNextInt()) {
-                health = readInput.nextInt();
-                readInput.nextLine();
-                isHealth = true;
-            } else {
-                System.out.println("Please enter a valid number.");
-                isHealth = false;
-                readInput.next();
-            }
-        } while (!isHealth);
-
-        System.out.println("Enter the amount of these units you want: ");
-        int amount = 0;
-        boolean isAmount;
-        do {
-            if (readInput.hasNextInt()) {
-                amount = readInput.nextInt();
-                readInput.nextLine();
-                isAmount = true;
-            } else {
-                System.out.println("Please enter a valid number.");
-                isAmount = false;
-                readInput.next();
-            }
-        } while (!isAmount);
-
+        units = new ArrayList<>();
         switch(unitType)
         {
             case "Infantry Unit":
@@ -151,69 +71,8 @@ public class UnitFactory {
         }
     }
 
-    public void validateInput()
-    {
-        System.out.println("Enter the unit type: ");
-        String unitType = readInput.nextLine();
-        while (!validateString(unitType)) {
-            System.out.println("Please enter a valid input");
-            unitType = readInput.nextLine();
-        }
-
-        System.out.println("Enter the name of the unit: ");
-        String unitName = readInput.nextLine();
-        while (!validateString(unitName)) {
-            System.out.println("Please enter a valid input");
-            unitName = readInput.nextLine();
-        }
-
-        System.out.println("Enter the health of the unit: ");
-        int health = 0;
-        boolean isHealth;
-        do {
-            if (readInput.hasNextInt()) {
-                health = readInput.nextInt();
-                readInput.nextLine();
-                isHealth = true;
-            } else {
-                System.out.println("Please enter a valid number.");
-                isHealth = false;
-                readInput.next();
-            }
-        } while (!isHealth);
-
-    }
-
-
-    /**
-     * Method that validates the String input given by user
-     * @param string takes in String as a parameter
-     * @return returns a boolean, true if the length of the string is more than 0,
-     * or false if it is not.
-     */
-    public boolean validateString(String string)
-    {
-        if(string.length() > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public static void main(String[] args) {
-        UnitFactory unitFactory = new UnitFactory();
-        Unit unit = unitFactory.factoryCreatingUnit();
-        System.out.println(unit);
-
-        /*
-        List<Unit> unitList = unitFactory.factoryCreatingMultipleUnits();
-        for (Unit unit : unitList)
-        {
-            System.out.println(unit);
-        }
-
-
-         */
+    public static List<Unit> getUnits() {
+        return units;
     }
 
 }

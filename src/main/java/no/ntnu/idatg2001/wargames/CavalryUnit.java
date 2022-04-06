@@ -72,4 +72,9 @@ public class CavalryUnit extends Unit {
     {
         return RESIST_BONUS;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", unit type=Cavalry Unit}";
+    }
 }
