@@ -11,9 +11,15 @@
          <children>
             <AnchorPane prefHeight="328.0" prefWidth="582.0">
                <children>
-                  <Label layoutX="142.0" layoutY="46.0" text="Army 1" />
-                  <Label layoutX="428.0" layoutY="46.0" text="Army 2" />
-                  <Label layoutX="286.0" layoutY="46.0" text="Vs." />
+                  <Label layoutX="117.0" layoutY="42.0" text="Army 1">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+                  <Label layoutX="417.0" layoutY="42.0" text="Army 2">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+                  <Label layoutX="280.0" layoutY="46.0" text="Vs." />
                   <Label layoutX="16.0" layoutY="104.0" text="Write name of the army:">
                      <font>
                         <Font size="10.0" />
@@ -36,20 +42,20 @@
                   </Label>
                   <Button layoutX="143.0" layoutY="148.0" mnemonicParsing="false" onAction="#onAddUnitButtonClick" prefHeight="26.0" prefWidth="115.0" text="+" />
                   <Button layoutX="447.0" layoutY="146.0" mnemonicParsing="false" onAction="#onAddUnitButtonClick" prefHeight="26.0" prefWidth="112.0" text="+" />
-                  <Button layoutX="74.0" layoutY="217.0" mnemonicParsing="false" onAction="#onViewArmyDetailsButton" prefHeight="23.0" prefWidth="175.0" text="View army details">
+                  <Button layoutX="55.0" layoutY="217.0" mnemonicParsing="false" onAction="#onViewArmyDetailsButton" prefHeight="23.0" prefWidth="175.0" text="View army details">
                      <font>
                         <Font size="10.0" />
                      </font></Button>
-                  <Button layoutX="358.0" layoutY="217.0" mnemonicParsing="false" onAction="#onViewArmyDetailsButton" prefHeight="23.0" prefWidth="177.0" text="View army details">
+                  <Button layoutX="354.0" layoutY="217.0" mnemonicParsing="false" onAction="#onViewArmyDetailsButton" prefHeight="23.0" prefWidth="177.0" text="View army details">
                      <font>
                         <Font size="10.0" />
                      </font></Button>
-                  <Button layoutX="96.0" layoutY="258.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="94.0" text="Load an army from file">
+                  <Button layoutX="95.0" layoutY="258.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="94.0" text="Load an army from file">
                      <font>
                         <Font size="8.0" />
                      </font>
                   </Button>
-                  <Button layoutX="386.0" layoutY="258.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="95.0" text="Load an army from file">
+                  <Button layoutX="395.0" layoutY="258.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="95.0" text="Load an army from file">
                      <font>
                         <Font size="8.0" />
                      </font>
