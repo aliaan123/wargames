@@ -1,6 +1,8 @@
 package no.ntnu.idatg2001.wargames;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * @author Aliaan
@@ -14,16 +16,28 @@ public class Battle {
     private Army armyOne;
     // Field for army number two
     private Army armyTwo;
+    // terrain of the battlefield
+    private String terrain;
+
 
     /**
      * Constructor of the Battle class
      * @param armyOne takes in an army as parameter.
      * @param armyTwo takes in another army as parameter.
      */
-    public Battle(Army armyOne, Army armyTwo)
+
+    /**
+     * Constructor of the Battle class
+     * @param armyOne takes in an army as a parameter.
+     * @param armyTwo takes in an opponent army as parameter.
+     * @param terrain takes in a String as parameter,
+     *                representing the terrain of the battlefield
+     */
+    public Battle(Army armyOne, Army armyTwo, String terrain)
     {
         this.armyOne = armyOne;
         this.armyTwo = armyTwo;
+        setTerrain(terrain);
     }
 
     /**
@@ -38,7 +52,7 @@ public class Battle {
         do {
             try {
                 //One random unit from armyOne attacks a random unit from armyTwo.
-                armyOne.getRandom().attack(armyTwo.getRandom());
+                armyOne.getRandom().attack(armyTwo.getRandom(), terrain);
             }catch (NullPointerException e) {
                 //checks which of the armies that still has units left after battle, and returns that army.
                 checkIfArmyHasUnits();
@@ -48,7 +62,7 @@ public class Battle {
 
             try {
                 //one random unit from armyTwo attacks a random unit from armyOne.
-                armyTwo.getRandom().attack(armyOne.getRandom());
+                armyTwo.getRandom().attack(armyOne.getRandom(), terrain);
             } catch (NullPointerException e) {
                 checkIfArmyHasUnits();
             }
@@ -97,6 +111,36 @@ public class Battle {
         }
     }
 
+    /**
+     * Method for getting the terrain of the battlefield.
+     * @return returns the terrains
+     */
+    public String getTerrain()
+    {
+        return this.terrain;
+    }
+
+    /**
+     * Method for setting the terrain of the battlefield.
+     * Creates a new arraylist, and adds the terrains to the list.
+     * @param terrain takes a String in as parameter
+     */
+    public void setTerrain(String terrain)
+    {
+        // list of terrains in the battlefield
+        List<String> terrainList = new ArrayList<>();
+        terrainList.add("HILL");
+        terrainList.add("PLAINS");
+        terrainList.add("FOREST");
+
+        for(String terrainType : terrainList)
+        {
+            if(terrainType.equals(terrain))
+            {
+                this.terrain = terrain;
+            }
+        }
+    }
 
     /**
      * Method that overrides the toString method of the Battle class

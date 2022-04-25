@@ -47,12 +47,32 @@ public class RangedUnit extends Unit {
     }
 
     /**
+     * Method for adding an attack bonus to the unit attack damage,
+     * based on the terrain of the battlefield.
+     *
+     * @return returns the bonus in attack damage.
+     */
+    public int terrainAttackBonus(String terrain)
+    {
+        int attackBonus = 0;
+        if(terrain.equals("HILL"))
+        {
+            attackBonus = 5;
+        }
+        else if (terrain.equals("FOREST"))
+        {
+            attackBonus = 3;
+        }
+        return attackBonus;
+    }
+
+    /**
      * Method that overrides the getAttackBonus method of the superclass.
      * @return returns an int value representing the bonus added to the rangedUnits attack power
      */
     @Override
-    public int getAttackBonus() {
-        return ATTACK_BONUS;
+    public int getAttackBonus(String terrain) {
+        return ATTACK_BONUS + terrainAttackBonus(terrain);
     }
 
     /**
@@ -60,7 +80,7 @@ public class RangedUnit extends Unit {
      * @return returns an int value representing the bonus added to the rangedUnits armor
      */
     @Override
-    public int getResistBonus() {
+    public int getResistBonus(String terrain) {
         if(resistBonus == 2)
         {
             return 2;

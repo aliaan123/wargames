@@ -51,25 +51,60 @@ public class InfantryUnit extends Unit {
      * Method that overrides the getAttackBonus method of the superclass.
      * @return returns an int value representing the bonus added to the infantryUnits attack power
      */
-
     @Override
-    public int getAttackBonus()
+    public int getAttackBonus(String terrain)
     {
-        return ATTACK_BONUS;
+        return ATTACK_BONUS + terrainAttackBonus(terrain);
     }
-
 
     /**
      * Method that overrides the getResistBonus method of the superclass.
      * @return returns an int value representing the bonus added to the infantryUnits armor
      */
     @Override
-    public int getResistBonus() {
-        return RESIST_BONUS;
+    public int getResistBonus(String terrain) {
+        return RESIST_BONUS + terrainResistBonus(terrain);
+    }
+
+
+    /**
+     * Method for adding an attack bonus to the unit,
+     * based on the terrain of the battlefield.
+     * @param terrain takes in a String as parameter,
+     *                representing the terrain.
+     * @return returns an attack bonus based on what the terrain is.
+     */
+    public int terrainAttackBonus(String terrain)
+    {
+        int attackBonus = 0;
+        if(terrain.equals("FOREST"))
+        {
+            attackBonus = 5;
+        }
+        return attackBonus;
+    }
+
+
+    /**
+     * Method for adding a resist bonus to the unit,
+     * based on the terrain of the battlefield.
+     * @param terrain takes in a String as a parameter,
+     *                representing the terrain.
+     * @return returns a resist bonus based on what terrain the battle is fought in.
+     */
+    public int terrainResistBonus(String terrain)
+    {
+        int resistBonus = 0;
+        if(terrain.equals("FOREST"))
+        {
+            resistBonus  = 5;
+        }
+        return resistBonus;
     }
 
     @Override
     public String toString() {
         return super.toString() + ", unit type=Infantry Unit}";
     }
+
 }

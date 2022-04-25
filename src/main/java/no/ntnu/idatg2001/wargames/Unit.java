@@ -1,7 +1,5 @@
 package no.ntnu.idatg2001.wargames;
 
-import java.io.Serializable;
-
 /**
  * The unit superclass representing a single unit in an army
  *
@@ -11,7 +9,6 @@ import java.io.Serializable;
 
 public abstract class Unit {
 
-
     // name of the unit
     private String name;
     // health points of the unit. This can not be less than 0
@@ -20,6 +17,7 @@ public abstract class Unit {
     private int attack;
     // armor points of the unit
     private int armor;
+
 
     /**
      * Constructor of the Unit class.
@@ -45,19 +43,21 @@ public abstract class Unit {
     /**
      * Method that allows units to attack each other and reduce their health.
      *
-     * @param opponent an opponents unit that is getting attacked
+     * @param opponent the opponent unit that is getting attacked
+     * @param terrain the terrain of the battlefield
      */
-    public void attack(Unit opponent) {
-        opponent.setHealth(opponent.getHealth() - (this.attack + this.getAttackBonus())
-                + opponent.getArmor() + opponent.getResistBonus());
+    public void attack(Unit opponent, String terrain) {
+        opponent.setHealth(opponent.getHealth() - (this.attack + this.getAttackBonus(terrain))
+                + opponent.getArmor() + opponent.getResistBonus(terrain));
     }
+
 
     /**
      * Abstract method that gives the units bonus attack power.
      *
      * @return an int representing the bonus attack power
      */
-    public abstract int getAttackBonus();
+    public abstract int getAttackBonus(String terrain);
 
 
     /**
@@ -65,7 +65,7 @@ public abstract class Unit {
      *
      * @return an int representing the bonus armor points the unit gets.
      */
-    public abstract int getResistBonus();
+    public abstract int getResistBonus(String terrain);
 
     /**
      * Abstract method that gives information about the units range,
@@ -112,7 +112,7 @@ public abstract class Unit {
     }
 
     /**
-     * Method that sets the health of a unit after an attack
+     * Method that sets the health of a unit after an attack.
      *
      * @param health of unit
      */
@@ -121,7 +121,7 @@ public abstract class Unit {
     }
 
     /**
-     * Method for getting the attack power of the unit
+     * Method for getting the attack power of the unit.
      *
      * @return attack power of unit
      */
@@ -130,7 +130,7 @@ public abstract class Unit {
     }
 
     /**
-     * Method for getting the armor points of the unit
+     * Method for getting the armor points of the unit.
      *
      * @return armor points of unit
      */
@@ -139,6 +139,11 @@ public abstract class Unit {
     }
 
 
+    /**
+     * Method that sets the attack stat of a unit.
+     *
+     * @param attack
+     */
     public void setAttack(int attack) {
         this.attack = attack;
     }

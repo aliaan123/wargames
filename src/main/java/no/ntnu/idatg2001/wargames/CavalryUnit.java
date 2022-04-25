@@ -10,10 +10,10 @@ public class CavalryUnit extends Unit {
 
     // Field for if the unit is melee or not.
     private static final boolean IS_MELEE = true;
-    // Field for the resist bonus of the cavalry unit.
-    private static final int RESIST_BONUS = 1;
     // Field for attack bonus of the cavalry unit.
     private int attackBonus = 6;
+    // Field for the resist bonus of the cavalry unit.
+    private int resistBonus = 2;
 
     /**
      * Constructor of the CavalryUnit class
@@ -54,24 +54,72 @@ public class CavalryUnit extends Unit {
      * @return returns an int value representing the bonus added to the cavalryUnits attack power
      */
     @Override
-    public int getAttackBonus() {
-        if(attackBonus > 2)
-        {
-            attackBonus -= 2;
-        }
-        return attackBonus;
-    }
+    public int getAttackBonus(String terrain) {
 
+        if(attackBonus > 2) {
+                attackBonus -= 2;
+            }
+        return attackBonus + terrainAttackBonus(terrain);
+
+    }
 
     /**
      * Method that overrides the getResistBonus method of the superclass.
      * @return returns an int value representing the bonus added to the cavalryUnits armor
      */
     @Override
-    public int getResistBonus()
+    public int getResistBonus(String terrain)
     {
-        return RESIST_BONUS;
+        return terrainResistBonus(terrain);
+
     }
+
+    /**
+     * Method for adding an attack bonus to the unit,
+     * based on the terrain of the battlefield.
+     * @param terrain takes in a String as a parameter
+     * @return returns an attack bonus based on what the terrain is.
+     */
+    public int terrainAttackBonus(String terrain)
+    {
+        int terrainAttackBonus = 0;
+        if(terrain.equals("PLAINS"))
+        {
+            terrainAttackBonus = 2;
+        }
+        return terrainAttackBonus;
+    }
+
+
+    /**
+     * Method for adding a resist bonus to the unit,
+     * based on the terrain of the battlefield.
+     * If the terrain is a forest, the unit has no resist bonus.
+     * If the terrain is something else, then the bonus is set to 2.
+     * @param terrain takes a String in as a parameter
+     * @return returns the resist bonus based on what the terrain is.
+     */
+    public int terrainResistBonus(String terrain)
+    {
+        if(terrain.equals("FOREST"))
+        {
+            setResistBonus(0);
+        }
+        else
+        {
+            setResistBonus(2);
+        }
+        return resistBonus;
+    }
+
+    /**
+     * Method for setting the resist bonus of cavalry units.
+     * @param resistBonus takes an int in as a parameter
+     */
+    public void setResistBonus(int resistBonus) {
+        this.resistBonus = resistBonus;
+    }
+
 
     @Override
     public String toString() {
