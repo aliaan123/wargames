@@ -32,9 +32,8 @@ class BattleTest {
 
         Army armyTwo = new Army("Army two", armyTwoUnits);
 
-        Battle battle = new Battle(armyOne, armyTwo);
+        Battle battle = new Battle(armyOne, armyTwo, "PLAINS");
         assertEquals(armyOne, battle.simulate());
-
     }
 
     @Test
@@ -60,7 +59,7 @@ class BattleTest {
 
         Army armyTwo = new Army("Army two", armyTwoUnits);
 
-        Battle battle = new Battle(armyOne, armyTwo);
+        Battle battle = new Battle(armyOne, armyTwo, "FOREST");
         assertEquals(armyTwo, battle.simulate());
     }
 
@@ -86,7 +85,7 @@ class BattleTest {
         armyTwo.add(unit5);
         armyTwo.add(unit6);
 
-        Battle battle = new Battle(armyOne, armyTwo);
+        Battle battle = new Battle(armyOne, armyTwo, "FOREST");
         assertEquals(armyOne, battle.simulate());
     }
 

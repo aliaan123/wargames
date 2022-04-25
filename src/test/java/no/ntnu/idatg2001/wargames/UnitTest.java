@@ -26,11 +26,13 @@ class UnitTest {
     @Test
     void testAttackMethod()
     {
+
         int healthBeforeAttack = cavalryUnit.getHealth();
         System.out.println(healthBeforeAttack);
-        infantryUnit.attack(cavalryUnit);
+        infantryUnit.attack(cavalryUnit, "FOREST");
         System.out.println(cavalryUnit.getHealth());
         assertNotEquals(healthBeforeAttack,cavalryUnit.getHealth());
+
     }
 
     @Test
