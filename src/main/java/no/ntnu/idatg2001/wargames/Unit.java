@@ -28,7 +28,7 @@ public abstract class Unit {
      * @param attack The attack power of the unit
      * @param armor  The armor points of the unit
      */
-    public Unit(String name, int health, int attack, int armor) {
+    protected Unit(String name, int health, int attack, int armor) {
         this.name = name;
         if (health < 0) {
             setHealth(000);
@@ -73,7 +73,7 @@ public abstract class Unit {
      *
      * @return returns a boolean, true if melee and false if ranged
      */
-    abstract protected boolean getRangeOfUnit();
+    protected abstract boolean getRangeOfUnit();
 
 
     /**

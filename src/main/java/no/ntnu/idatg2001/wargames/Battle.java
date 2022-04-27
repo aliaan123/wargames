@@ -57,16 +57,17 @@ public class Battle {
                 //checks which of the armies that still has units left after battle, and returns that army.
                 checkIfArmyHasUnits();
             }
-            //removes units from armyTwo that have dead in the battle.
+            //removes units from armyTwo that have died in the battle.
             removeDeadUnitsInArmy(armyTwo);
 
             try {
                 //one random unit from armyTwo attacks a random unit from armyOne.
                 armyTwo.getRandom().attack(armyOne.getRandom(), terrain);
             } catch (NullPointerException e) {
+                //checks which of the armies that still has units left after battle, and returns that army.
                 checkIfArmyHasUnits();
             }
-            //removes units from armyOne that have dead in the battle.
+            //removes units from armyOne that have died in the battle.
             removeDeadUnitsInArmy(armyOne);
 
         }while(armyOne.hasUnits() && armyTwo.hasUnits());

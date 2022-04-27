@@ -1,6 +1,7 @@
 package no.ntnu.idatg2001.wargames;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -20,10 +21,8 @@ public class UnitFactory {
      */
     private UnitFactory()
     {
-        //units = new ArrayList<>();
+
     }
-
-
 
     /**
      * Method in the factory for creating a unit.
@@ -86,7 +85,7 @@ public class UnitFactory {
                 }
                 return units;
             default:
-                return null;
+                return Collections.emptyList();
         }
     }
 

@@ -1,5 +1,6 @@
-GANGWAY
-RangedUnit, ranged, 100
-InfantryUnit, inf, 100
-CavalryUnit, cav, 100
+Warriors
+RangedUnit, ranged, 10
+InfantryUnit, inf, 50
+CavalryUnit, cav, 80
 CommanderUnit, com, 100
+RangedUnit, ranged2, 100

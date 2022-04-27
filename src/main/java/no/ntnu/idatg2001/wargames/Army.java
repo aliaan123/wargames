@@ -148,22 +148,24 @@ public class Army {
 
     /**
      * Method for getting all infantry units in an army
-     * @return returns a list with infantry units.
+     * @return returns a list with all infantry units in an army.
      */
     public List<Unit> getInfantryUnits()
     {
-        return units.stream().filter(unit -> "Infantry Unit".equals(unit.getName())).
+        return units.stream().filter(InfantryUnit.class::isInstance).
                 collect(Collectors.toCollection(ArrayList::new));
+
 
     }
 
     /**
      * Method for getting all cavalry units in an army
-     * @return returns a list with cavalry units.
+     * @return returns a list with all cavalry units in an army.
      */
     public List<Unit> getCavalryUnits()
     {
-        return units.stream().filter(unit -> "Cavalry Unit".equals(unit.getName())).
+
+        return units.stream().filter(CavalryUnit.class::isInstance).
                 collect(Collectors.toCollection(ArrayList::new));
 
     }
@@ -171,24 +173,23 @@ public class Army {
 
     /**
      * Method for getting all ranged units in an army
-     * @return returns a list with ranged units.
+     * @return returns a list with all ranged units in an army.
      */
     public List<Unit> getRangedUnits()
     {
-        return units.stream().filter(unit -> "Ranged Unit".equals(unit.getName())).
+        return units.stream().filter(RangedUnit.class::isInstance).
                 collect(Collectors.toCollection(ArrayList::new));
 
     }
 
     /**
      * Method for getting all commander units in an army
-     * @return returns a list with commander units.
+     * @return returns a list with all the commander units in an army.
      */
     public List<Unit> getCommanderUnits()
     {
-        return units.stream().filter(unit -> "Commander Unit".equals(unit.getName())).
+        return units.stream().filter(CommanderUnit.class::isInstance).
                 collect(Collectors.toCollection(ArrayList::new));
-
     }
 
     /**

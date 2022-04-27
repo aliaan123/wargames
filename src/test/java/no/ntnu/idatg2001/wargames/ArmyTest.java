@@ -17,9 +17,9 @@ class ArmyTest {
     @BeforeEach
     void createUnits()
     {
-        infantryUnit = new InfantryUnit("Infantry Unit", 100);
-        cavalryUnit = new CavalryUnit("Cavalry Unit", 100);
-        rangedUnit = new RangedUnit("Ranged Unit", 100);
+        infantryUnit = new InfantryUnit("Infantr Unit", 100);
+        cavalryUnit = new CavalryUnit("Cavalr Unit", 100);
+        rangedUnit = new RangedUnit("Range Unit", 100);
     }
 
     @Test
@@ -92,16 +92,13 @@ class ArmyTest {
     @Test
     void testGetInfantryUnit()
     {
-
         Army army = new Army("Army");
         army.add(infantryUnit);
         army.add(cavalryUnit);
         army.add(rangedUnit);
 
-
         List<Unit> infantryUnits = new ArrayList<>();
         infantryUnits.add(infantryUnit);
-
 
         assertEquals(infantryUnits, army.getInfantryUnits());
 
@@ -110,7 +107,6 @@ class ArmyTest {
     @Test
     void testGetCavalryUnit()
     {
-
         Army army = new Army("Army");
         army.add(cavalryUnit);
         army.add(infantryUnit);
@@ -119,15 +115,12 @@ class ArmyTest {
         List<Unit> cavalryUnits = new ArrayList<>();
         cavalryUnits.add(cavalryUnit);
 
-
         assertEquals(cavalryUnits, army.getCavalryUnits());
-
     }
 
     @Test
     void testGetRangedUnit()
     {
-
         Army army = new Army("Army");
         army.add(cavalryUnit);
         army.add(infantryUnit);
@@ -136,16 +129,13 @@ class ArmyTest {
         List<Unit> rangedUnits = new ArrayList<>();
         rangedUnits.add(rangedUnit);
 
-
         assertEquals(rangedUnits, army.getRangedUnits());
-
     }
 
 
     @Test
     void testGetCommanderUnit()
     {
-
         Army army = new Army("Army");
         CommanderUnit commanderUnit = new CommanderUnit("Commander Unit", 100);
         army.add(commanderUnit);
@@ -156,9 +146,7 @@ class ArmyTest {
         List<Unit> commanderUnits = new ArrayList<>();
         commanderUnits.add(commanderUnit);
 
-
         assertEquals(commanderUnits, army.getCommanderUnits());
-
     }
 
 
