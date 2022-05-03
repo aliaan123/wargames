@@ -138,7 +138,6 @@ public abstract class Unit {
         return armor;
     }
 
-
     /**
      * Method that sets the attack stat of a unit.
      *
