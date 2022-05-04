@@ -17,7 +17,8 @@ public abstract class Unit {
     private int attack;
     // armor points of the unit
     private int armor;
-
+    // type of the unit
+    private String unitType;
 
     /**
      * Constructor of the Unit class.
@@ -146,6 +147,17 @@ public abstract class Unit {
     public void setAttack(int attack) {
         this.attack = attack;
     }
+
+
+    /**
+     * Method for getting the type of unit,
+     * by splitting up the toString of the class, and returning the Class of the object
+     * @return a String representing the class of the object, which is the type of the unit
+     */
+    public String getUnitType() {
+        return getClass().getSimpleName();
+    }
+
 
     /**
      * Method that overrides the toString method of the Unit class.

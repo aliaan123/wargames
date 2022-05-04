@@ -9,7 +9,7 @@
    <center>
       <VBox alignment="CENTER" fillWidth="false" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="328.0" prefWidth="582.0">
+            <AnchorPane prefHeight="333.0" prefWidth="587.0">
                <children>
                   <Label layoutX="117.0" layoutY="42.0" text="Army 1">
                      <font>
@@ -42,29 +42,31 @@
                   </Label>
                   <Button layoutX="143.0" layoutY="148.0" mnemonicParsing="false" onAction="#onAddUnitButtonClick" prefHeight="26.0" prefWidth="115.0" text="+" />
                   <Button layoutX="447.0" layoutY="146.0" mnemonicParsing="false" onAction="#onAddUnitButtonClick" prefHeight="26.0" prefWidth="112.0" text="+" />
-                  <Button layoutX="55.0" layoutY="217.0" mnemonicParsing="false" onAction="#onViewArmyDetailsButton" prefHeight="23.0" prefWidth="175.0" text="View army details">
+                  <Button fx:id="onEditArmyButtonClick" layoutX="26.0" layoutY="205.0" mnemonicParsing="false" onAction="#onEditArmyButtonClick" prefHeight="23.0" prefWidth="220.0" text="Edit army">
                      <font>
                         <Font size="10.0" />
                      </font></Button>
-                  <Button layoutX="354.0" layoutY="217.0" mnemonicParsing="false" onAction="#onViewArmyDetailsButton" prefHeight="23.0" prefWidth="177.0" text="View army details">
+                  <Button layoutX="331.0" layoutY="205.0" mnemonicParsing="false" onAction="#onEditArmyButtonClick" prefHeight="23.0" prefWidth="224.0" text="Edit army">
                      <font>
                         <Font size="10.0" />
                      </font></Button>
-                  <Button layoutX="95.0" layoutY="258.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="94.0" text="Load an army from file">
-                     <font>
-                        <Font size="8.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="395.0" layoutY="258.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="95.0" text="Load an army from file">
-                     <font>
-                        <Font size="8.0" />
-                     </font>
-                  </Button>
                   <TextField layoutX="143.0" layoutY="98.0" prefHeight="26.0" prefWidth="119.0" />
                   <TextField layoutX="443.0" layoutY="98.0" prefHeight="26.0" prefWidth="119.0" />
                   <Separator layoutX="288.0" layoutY="71.0" orientation="VERTICAL" prefHeight="238.0" prefWidth="6.0" />
-                  <Separator layoutX="-4.0" layoutY="310.0" prefHeight="7.0" prefWidth="296.0" />
-                  <Separator layoutX="294.0" layoutY="311.0" prefHeight="5.0" prefWidth="288.0" />
+                  <Separator layoutX="-5.0" layoutY="309.0" prefHeight="7.0" prefWidth="296.0" />
+                  <Separator layoutX="288.0" layoutY="310.0" prefHeight="5.0" prefWidth="288.0" />
+                  <Label layoutX="52.0" layoutY="268.0" text="Total units in army:">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="179.0" layoutY="263.0" prefHeight="26.0" prefWidth="48.0" />
+                  <Label layoutX="362.0" layoutY="268.0" text="Total units in army:">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="479.0" layoutY="263.0" prefHeight="26.0" prefWidth="48.0" />
                </children>
             </AnchorPane>
          </children>
@@ -82,11 +84,11 @@
       </HBox>
    </top>
    <bottom>
-      <HBox alignment="CENTER" prefHeight="46.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="85.0" prefWidth="678.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="CENTER" prefHeight="51.0" prefWidth="196.0">
+            <VBox alignment="CENTER" prefHeight="88.0" prefWidth="268.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="196.0" text="Continue">
+                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="268.0" text="Continue">
                      <VBox.margin>
                         <Insets bottom="15.0" />
                      </VBox.margin>

@@ -1,11 +1,16 @@
 package no.ntnu.idatg2001.userinterface;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import java.io.IOException;
+import java.util.Optional;
 
 
 /**
@@ -31,6 +36,11 @@ public class WarGamesApplication extends Application {
         {
             e.printStackTrace();
         }
+
+        primaryStage.setOnCloseRequest(e -> {
+            e.consume();
+            exitApplicationWindow();
+        });
     }
 
 
@@ -50,21 +60,58 @@ public class WarGamesApplication extends Application {
         primaryStage.setTitle("Main menu");
     }
 
-    public static void goToAddUnits() throws IOException{
-        FXMLLoader loader = new FXMLLoader(WarGamesApplication.class.getClassLoader().getResource("AddUnit.fxml"));
+    public static void goToArmyDetails() throws IOException{
+        FXMLLoader loader = new FXMLLoader(WarGamesApplication.class.getClassLoader().getResource("ArmyDetails.fxml"));
         Parent root = loader.load();
         primaryStage.getScene().setRoot(root);
         primaryStage.setTitle("Add units to army");
     }
 
 
-    public static void goToArmyDetails() throws IOException{
-        FXMLLoader loader = new FXMLLoader(WarGamesApplication.class.getClassLoader().getResource("ArmyDetails.fxml"));
+    public static void goToArmyEditor() throws IOException{
+        FXMLLoader loader = new FXMLLoader(WarGamesApplication.class.getClassLoader().getResource("ArmyEditor.fxml"));
         Parent root = loader.load();
         primaryStage.getScene().setRoot(root);
         primaryStage.setTitle("Details about army");
     }
 
+
+
+    public static void exitApplicationWindow() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog");
+        alert.setHeaderText("Exit Application?");
+        alert.setContentText("Are you sure you want to exit this application?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent()) {
+            if (result.get() == ButtonType.OK) {
+                Platform.exit();
+            } else {
+
+            }
+        }
+    }
+
+
+    @FXML
+    /**
+     * Method to show an error popupmenu.
+     * @param e, The string of the error message.
+     */
+    public static void errorPopUpWindow(String e) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("There was an error");
+        alert.setContentText("Error: " + e);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent()) {
+            if (result.get() == ButtonType.OK) {
+
+            } else {
+
+            }
+        }
+    }
 
 
 

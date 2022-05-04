@@ -23,4 +23,6 @@ public class MainMenuController implements Initializable {
     public void onContinueButtonClick(ActionEvent event) throws IOException {
         WarGamesApplication.goToArmyRegistration();
     }
+
+
 }

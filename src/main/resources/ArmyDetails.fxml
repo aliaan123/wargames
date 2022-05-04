@@ -5,53 +5,61 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="581.0" prefWidth="706.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.userinterface.ArmyDetailsController">
+<BorderPane xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.userinterface.ArmyDetailsController">
    <center>
       <VBox alignment="CENTER" fillWidth="false" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="449.0" prefWidth="706.0">
+            <AnchorPane prefHeight="334.0" prefWidth="600.0">
                <children>
-                  <TableView fx:id="armyTableView" layoutX="80.0" layoutY="23.0" prefHeight="197.0" prefWidth="546.0">
-                    <columns>
-                        <TableColumn fx:id="unitTypeColumn" prefWidth="149.39998626708984" text="Unit Type " />
-                      <TableColumn fx:id="unitNameColumn" prefWidth="137.79998779296875" text="Name" />
-                      <TableColumn fx:id="unitHealthColumn" prefWidth="84.5999755859375" text="Health" />
-                        <TableColumn fx:id="unitAttackColumn" prefWidth="87.39999389648438" text="Attack" />
-                        <TableColumn fx:id="unitArmorColumn" prefWidth="87.0" text="Armor" />
-                    </columns>
-                  </TableView>
-                  <TableView fx:id="unitTableView" layoutX="525.0" layoutY="344.0" prefHeight="82.0" prefWidth="150.0">
-                    <columns>
-                      <TableColumn fx:id="unitTypeColumn2" prefWidth="75.0" text="Unit Type" />
-                      <TableColumn fx:id="numberOfUnitsColumn" prefWidth="131.2" text="Number of units" />
-                    </columns>
-                  </TableView>
-                  <Label layoutX="196.0" layoutY="239.0" prefHeight="18.0" prefWidth="127.0" text="Choose unit type:" />
-                  <ChoiceBox fx:id="unitTypeChoiceBox" layoutX="341.0" layoutY="235.0" prefHeight="26.0" prefWidth="149.0" />
-                  <Label layoutX="196.0" layoutY="277.0" prefHeight="18.0" prefWidth="127.0" text="name of unit:" />
-                  <TextField fx:id="nameOfUnitTextField" layoutX="341.0" layoutY="273.0" />
-                  <Button fx:id="addUnitToArmyButtonClick" layoutX="196.0" layoutY="324.0" mnemonicParsing="false" onAction="#addUnitToArmy" prefHeight="39.0" prefWidth="294.0" text="Add unit to army" />
-                  <Button fx:id="deleteUnitFromArmyButton" layoutX="285.0" layoutY="394.0" mnemonicParsing="false" onAction="#onDeleteButtonClick" prefHeight="32.0" prefWidth="136.0" text="Delete unit from army" />
+                  <Label layoutX="119.0" layoutY="117.0" prefHeight="18.0" prefWidth="185.0" text="Number of infantry units in army:" />
+                  <Label layoutX="119.0" layoutY="79.0" prefHeight="18.0" prefWidth="166.0" text="Total number of units in army:" />
+                  <TextField fx:id="numberOfCavalryUnitsText" editable="false" layoutX="379.0" layoutY="161.0" prefHeight="26.0" prefWidth="56.0" />
+                  <TextField fx:id="totalNumberOfUnitsInArmyText" editable="false" layoutX="379.0" layoutY="75.0" prefHeight="26.0" prefWidth="56.0" />
+                  <Separator layoutX="109.0" layoutY="43.0" prefHeight="0.0" prefWidth="376.0" />
+                  <Separator layoutX="106.0" layoutY="45.0" orientation="VERTICAL" prefHeight="260.0" prefWidth="1.0" />
+                  <Separator layoutX="480.0" layoutY="42.0" orientation="VERTICAL" prefHeight="267.0" prefWidth="6.0" />
+                  <Separator layoutX="108.0" layoutY="307.0" prefHeight="3.0" prefWidth="375.0" />
+                  <TextField fx:id="numberOfInfantryUnitsText" editable="false" layoutX="377.0" layoutY="113.0" prefHeight="26.0" prefWidth="56.0" />
+                  <TextField fx:id="numberOfRangedUnitsText" editable="false" layoutX="378.0" layoutY="211.0" prefHeight="26.0" prefWidth="58.0" />
+                  <TextField fx:id="numberOfCommanderUnitsText" editable="false" layoutX="380.0" layoutY="254.0" prefHeight="26.0" prefWidth="56.0" />
+                  <Label layoutX="122.0" layoutY="166.0" prefHeight="18.0" prefWidth="214.0" text="Number of cavalry units in army:" />
+                  <Label layoutX="122.0" layoutY="215.0" text="Number of ranged units in army:" />
+                  <Label layoutX="122.0" layoutY="258.0" text="Number of commander units in army:" />
                </children>
             </AnchorPane>
          </children>
       </VBox>
    </center>
    <bottom>
-      <Button mnemonicParsing="false" onAction="#onBackToArmyRegistrationButton" prefHeight="36.0" prefWidth="323.0" text="&lt; Back to Army Registration" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets bottom="15.0" />
-         </BorderPane.margin></Button>
+      <HBox alignment="CENTER" prefHeight="84.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" prefHeight="84.0" prefWidth="325.0">
+               <children>
+                  <Button fx:id="onViewArmyDetailsButton" alignment="CENTER" mnemonicParsing="false" onAction="#onViewArmyDetailsButton" prefHeight="37.0" prefWidth="315.0" text="View army details">
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#onGoBackButtonClick" prefHeight="21.0" prefWidth="71.0" text="&lt; Go back">
+                     <font>
+                        <Font size="9.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </children></HBox>
    </bottom>
    <top>
-      <HBox alignment="CENTER" prefHeight="51.0" prefWidth="706.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="335.0" text="Army Details">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
+      <Label alignment="CENTER" text="Army details" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets top="10.0" />
+         </BorderPane.margin>
+      </Label>
    </top>
 </BorderPane>
