@@ -5,77 +5,53 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.userinterface.ArmyRegistrationController">
+<BorderPane prefHeight="565.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.userinterface.ArmyRegistrationController">
    <center>
-      <VBox alignment="CENTER" fillWidth="false" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" fillWidth="false" prefHeight="364.0" prefWidth="678.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="333.0" prefWidth="587.0">
+            <AnchorPane prefHeight="375.0" prefWidth="601.0">
                <children>
-                  <Label layoutX="117.0" layoutY="42.0" text="Army 1">
+                  <Label layoutX="117.0" layoutY="52.0" text="Army 1">
                      <font>
                         <Font size="16.0" />
                      </font></Label>
-                  <Label layoutX="417.0" layoutY="42.0" text="Army 2">
+                  <Label layoutX="417.0" layoutY="52.0" text="Army 2">
                      <font>
                         <Font size="16.0" />
                      </font></Label>
-                  <Label layoutX="280.0" layoutY="46.0" text="Vs." />
-                  <Label layoutX="16.0" layoutY="104.0" text="Write name of the army:">
+                  <Label layoutX="286.0" layoutY="78.0" text="Vs." />
+                  <Label layoutX="14.0" layoutY="156.0" text="Write name of the army:">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </Label>
-                  <Label layoutX="308.0" layoutY="104.0" text="Write name of the army:">
+                  <Label layoutX="317.0" layoutY="156.0" text="Write name of the army:">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </Label>
-                  <Label layoutX="16.0" layoutY="156.0" text="Add unit to army:">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="308.0" layoutY="153.0" text="Add unit to army:">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="143.0" layoutY="148.0" mnemonicParsing="false" onAction="#onAddUnitButtonClick" prefHeight="26.0" prefWidth="115.0" text="+" />
-                  <Button layoutX="447.0" layoutY="146.0" mnemonicParsing="false" onAction="#onAddUnitButtonClick" prefHeight="26.0" prefWidth="112.0" text="+" />
-                  <Button fx:id="onEditArmyButtonClick" layoutX="26.0" layoutY="205.0" mnemonicParsing="false" onAction="#onEditArmyButtonClick" prefHeight="23.0" prefWidth="220.0" text="Edit army">
+                  <Button fx:id="onEditArmyButtonClick" layoutX="33.0" layoutY="223.0" mnemonicParsing="false" onAction="#onEditArmyButtonClick" prefHeight="23.0" prefWidth="220.0" text="Edit army">
                      <font>
                         <Font size="10.0" />
                      </font></Button>
-                  <Button layoutX="331.0" layoutY="205.0" mnemonicParsing="false" onAction="#onEditArmyButtonClick" prefHeight="23.0" prefWidth="224.0" text="Edit army">
+                  <Button layoutX="331.0" layoutY="223.0" mnemonicParsing="false" onAction="#onEditArmyButtonClick" prefHeight="23.0" prefWidth="224.0" text="Edit army">
                      <font>
                         <Font size="10.0" />
                      </font></Button>
-                  <TextField layoutX="143.0" layoutY="98.0" prefHeight="26.0" prefWidth="119.0" />
-                  <TextField layoutX="443.0" layoutY="98.0" prefHeight="26.0" prefWidth="119.0" />
-                  <Separator layoutX="288.0" layoutY="71.0" orientation="VERTICAL" prefHeight="238.0" prefWidth="6.0" />
+                  <TextField fx:id="nameTextField1" layoutX="143.0" layoutY="151.0" prefHeight="26.0" prefWidth="119.0" />
+                  <TextField fx:id="nameTextField2" layoutX="443.0" layoutY="151.0" prefHeight="26.0" prefWidth="119.0" />
+                  <Separator layoutX="288.0" layoutY="142.0" orientation="VERTICAL" prefHeight="167.0" prefWidth="6.0" />
                   <Separator layoutX="-5.0" layoutY="309.0" prefHeight="7.0" prefWidth="296.0" />
                   <Separator layoutX="288.0" layoutY="310.0" prefHeight="5.0" prefWidth="288.0" />
-                  <Label layoutX="52.0" layoutY="268.0" text="Total units in army:">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Label>
-                  <TextField editable="false" layoutX="179.0" layoutY="263.0" prefHeight="26.0" prefWidth="48.0" />
-                  <Label layoutX="362.0" layoutY="268.0" text="Total units in army:">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Label>
-                  <TextField editable="false" layoutX="479.0" layoutY="263.0" prefHeight="26.0" prefWidth="48.0" />
                </children>
             </AnchorPane>
          </children>
       </VBox>
    </center>
    <top>
-      <HBox alignment="CENTER" prefHeight="42.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="70.0" prefWidth="678.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" text="Register Armies">
+            <Label alignment="CENTER" prefHeight="62.0" prefWidth="134.0" text="Register Armies">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

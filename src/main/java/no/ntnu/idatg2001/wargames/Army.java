@@ -13,8 +13,6 @@ import java.util.stream.Collectors;
  */
 public class Army {
 
-
-    private static volatile Army instance;
     // Field for the name of the army
     private String name;
     // Field for the list of units
@@ -45,22 +43,6 @@ public class Army {
         this.units = units;
         randomNumber = new Random();
     }
-
-
-    /**
-     * Static method to access instance of Tournament.
-     * @return instance of Tournament.
-     */
-    public static Army getInstance(String name) {
-        if (instance == null) {
-            synchronized (Army.class) {
-                instance = new Army(name);
-            }
-        }
-        return instance;
-    }
-
-
 
     /**
      *

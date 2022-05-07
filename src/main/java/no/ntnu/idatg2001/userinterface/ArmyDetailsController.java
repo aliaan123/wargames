@@ -3,10 +3,8 @@ package no.ntnu.idatg2001.userinterface;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import no.ntnu.idatg2001.wargames.Army;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,31 +28,33 @@ public class ArmyDetailsController implements Initializable {
     @FXML
     private TextField numberOfCommanderUnitsText;
 
+    @FXML
+    private TextField armyNameTextField;
 
+    @FXML
+    public void displayArmyName(String armyName)
+    {
+        armyNameTextField.setText(armyName);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        setContentInTextFields("ha");
     }
 
-    public void setContentInTextFields(String name)
+    public void setContentInTextFields(Army army)
     {
-        totalNumberOfUnitsInArmyText.setText(String.valueOf(Army.getInstance(name).unitsSize()));
-        numberOfInfantryUnitsText.setText(String.valueOf(Army.getInstance(name).getInfantryUnits().size()));
-        numberOfCavalryUnitsText.setText(String.valueOf(Army.getInstance(name).getCavalryUnits().size()));
-        numberOfRangedUnitsText.setText(String.valueOf(Army.getInstance(name).getRangedUnits().size()));
-        numberOfCommanderUnitsText.setText(String.valueOf(Army.getInstance(name).getCommanderUnits().size()));
-    }
-
-
-    @FXML
-    public void onGoBackButtonClick(ActionEvent event) throws IOException {
-        WarGamesApplication.goToArmyRegistration();
+        totalNumberOfUnitsInArmyText.setText(String.valueOf(army.getAllUnits().size()));
+        numberOfInfantryUnitsText.setText(String.valueOf(army.getInfantryUnits().size()));
+        numberOfCavalryUnitsText.setText(String.valueOf(army.getCavalryUnits().size()));
+        numberOfRangedUnitsText.setText(String.valueOf(army.getRangedUnits().size()));
+        numberOfCommanderUnitsText.setText(String.valueOf(army.getCommanderUnits().size()));
     }
 
     @FXML
-    public void onViewArmyDetailsButton(ActionEvent event) throws IOException {
-        WarGamesApplication.goToArmyDetails();
+    public void onEditArmyButtonClick(ActionEvent event) throws IOException
+    {
+        WarGamesApplication.goToArmyEditor();
     }
+
 }

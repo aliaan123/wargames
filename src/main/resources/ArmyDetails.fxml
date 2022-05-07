@@ -5,26 +5,28 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.userinterface.ArmyDetailsController">
+<BorderPane prefHeight="568.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.userinterface.ArmyDetailsController">
    <center>
       <VBox alignment="CENTER" fillWidth="false" BorderPane.alignment="CENTER">
          <children>
             <AnchorPane prefHeight="334.0" prefWidth="600.0">
                <children>
-                  <Label layoutX="119.0" layoutY="117.0" prefHeight="18.0" prefWidth="185.0" text="Number of infantry units in army:" />
-                  <Label layoutX="119.0" layoutY="79.0" prefHeight="18.0" prefWidth="166.0" text="Total number of units in army:" />
-                  <TextField fx:id="numberOfCavalryUnitsText" editable="false" layoutX="379.0" layoutY="161.0" prefHeight="26.0" prefWidth="56.0" />
-                  <TextField fx:id="totalNumberOfUnitsInArmyText" editable="false" layoutX="379.0" layoutY="75.0" prefHeight="26.0" prefWidth="56.0" />
-                  <Separator layoutX="109.0" layoutY="43.0" prefHeight="0.0" prefWidth="376.0" />
-                  <Separator layoutX="106.0" layoutY="45.0" orientation="VERTICAL" prefHeight="260.0" prefWidth="1.0" />
-                  <Separator layoutX="480.0" layoutY="42.0" orientation="VERTICAL" prefHeight="267.0" prefWidth="6.0" />
-                  <Separator layoutX="108.0" layoutY="307.0" prefHeight="3.0" prefWidth="375.0" />
-                  <TextField fx:id="numberOfInfantryUnitsText" editable="false" layoutX="377.0" layoutY="113.0" prefHeight="26.0" prefWidth="56.0" />
-                  <TextField fx:id="numberOfRangedUnitsText" editable="false" layoutX="378.0" layoutY="211.0" prefHeight="26.0" prefWidth="58.0" />
-                  <TextField fx:id="numberOfCommanderUnitsText" editable="false" layoutX="380.0" layoutY="254.0" prefHeight="26.0" prefWidth="56.0" />
-                  <Label layoutX="122.0" layoutY="166.0" prefHeight="18.0" prefWidth="214.0" text="Number of cavalry units in army:" />
-                  <Label layoutX="122.0" layoutY="215.0" text="Number of ranged units in army:" />
-                  <Label layoutX="122.0" layoutY="258.0" text="Number of commander units in army:" />
+                  <Label layoutX="129.0" layoutY="116.0" prefHeight="18.0" prefWidth="185.0" text="Number of infantry units in army:" />
+                  <Label layoutX="130.0" layoutY="78.0" prefHeight="18.0" prefWidth="166.0" text="Total number of units in army:" />
+                  <TextField fx:id="numberOfCavalryUnitsText" editable="false" layoutX="392.0" layoutY="153.0" prefHeight="26.0" prefWidth="90.0" />
+                  <TextField fx:id="totalNumberOfUnitsInArmyText" editable="false" layoutX="392.0" layoutY="74.0" prefHeight="26.0" prefWidth="90.0" />
+                  <Separator layoutX="108.0" layoutY="19.0" prefHeight="6.0" prefWidth="403.0" />
+                  <Separator layoutX="106.0" layoutY="23.0" orientation="VERTICAL" prefHeight="282.0" prefWidth="6.0" />
+                  <Separator layoutX="506.0" layoutY="22.0" orientation="VERTICAL" prefHeight="289.0" prefWidth="5.0" />
+                  <Separator layoutX="108.0" layoutY="307.0" prefHeight="3.0" prefWidth="401.0" />
+                  <TextField fx:id="numberOfInfantryUnitsText" editable="false" layoutX="393.0" layoutY="112.0" prefHeight="26.0" prefWidth="89.0" />
+                  <TextField fx:id="numberOfRangedUnitsText" editable="false" layoutX="392.0" layoutY="196.0" prefHeight="26.0" prefWidth="91.0" />
+                  <TextField fx:id="numberOfCommanderUnitsText" editable="false" layoutX="392.0" layoutY="244.0" prefHeight="26.0" prefWidth="90.0" />
+                  <Label layoutX="125.0" layoutY="157.0" prefHeight="18.0" prefWidth="214.0" text="Number of cavalry units in army:" />
+                  <Label layoutX="125.0" layoutY="201.0" text="Number of ranged units in army:" />
+                  <Label layoutX="124.0" layoutY="249.0" text="Number of commander units in army:" />
+                  <Label layoutX="130.0" layoutY="36.0" prefHeight="18.0" prefWidth="94.0" text="Army's name:" />
+                  <TextField fx:id="armyNameTextField" editable="false" layoutX="333.0" layoutY="32.0" prefHeight="26.0" prefWidth="150.0" />
                </children>
             </AnchorPane>
          </children>
@@ -35,17 +37,9 @@
          <children>
             <VBox alignment="CENTER" prefHeight="84.0" prefWidth="325.0">
                <children>
-                  <Button fx:id="onViewArmyDetailsButton" alignment="CENTER" mnemonicParsing="false" onAction="#onViewArmyDetailsButton" prefHeight="37.0" prefWidth="315.0" text="View army details">
+                  <Button fx:id="onEditArmyButtonClick" alignment="CENTER" mnemonicParsing="false" onAction="#onEditArmyButtonClick" prefHeight="37.0" prefWidth="315.0" text="Edit Army">
                      <VBox.margin>
                         <Insets bottom="20.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#onGoBackButtonClick" prefHeight="21.0" prefWidth="71.0" text="&lt; Go back">
-                     <font>
-                        <Font size="9.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="10.0" />
                      </VBox.margin>
                   </Button>
                </children>

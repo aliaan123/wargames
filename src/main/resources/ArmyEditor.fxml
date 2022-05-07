@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="597.0" prefWidth="706.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.userinterface.ArmyEditorController">
+<BorderPane prefHeight="576.0" prefWidth="706.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.userinterface.ArmyEditorController">
    <center>
-      <VBox alignment="CENTER" fillWidth="false" prefHeight="503.0" prefWidth="706.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" fillWidth="false" prefHeight="544.0" prefWidth="706.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="447.0" prefWidth="706.0">
+            <TextField fx:id="nameOfArmyTextField" editable="false" prefHeight="26.0" prefWidth="144.0" />
+            <AnchorPane prefHeight="448.0" prefWidth="706.0">
                <children>
-                  <TableView fx:id="armyTableView" layoutX="80.0" prefHeight="234.0" prefWidth="546.0">
+                  <TableView fx:id="armyTableView" layoutX="84.0" layoutY="14.0" prefHeight="234.0" prefWidth="546.0">
                     <columns>
                         <TableColumn fx:id="unitTypeColumn" prefWidth="149.39998626708984" text="Unit Type " />
                       <TableColumn fx:id="unitNameColumn" prefWidth="137.79998779296875" text="Name" />
@@ -20,28 +20,33 @@
                         <TableColumn fx:id="unitArmorColumn" prefWidth="87.0" text="Armor" />
                     </columns>
                   </TableView>
-                  <Label layoutX="196.0" layoutY="266.0" prefHeight="18.0" prefWidth="127.0" text="Choose unit type:" />
-                  <ChoiceBox fx:id="unitTypeChoiceBox" layoutX="340.0" layoutY="271.0" prefHeight="26.0" prefWidth="149.0" />
-                  <Label layoutX="197.0" layoutY="311.0" prefHeight="18.0" prefWidth="110.0" text="name of unit:" />
-                  <TextField fx:id="nameOfUnitTextField" layoutX="340.0" layoutY="316.0" />
-                  <Button fx:id="addUnitToArmyButtonClick" layoutX="165.0" layoutY="381.0" mnemonicParsing="false" onAction="#addUnitToArmy" prefHeight="34.0" prefWidth="376.0" text="Add unit to army" />
-                  <Button fx:id="deleteUnitFromArmyButton" layoutX="181.0" layoutY="440.0" mnemonicParsing="false" onAction="#onDeleteButtonClick" prefHeight="26.0" prefWidth="178.0" text="Delete unit from army" />
-                  <Button layoutX="534.0" layoutY="241.0" mnemonicParsing="false" onAction="#onLoadArmyFromFileButtonClick" prefHeight="19.0" prefWidth="92.0" text="Load army from file">
+                  <Label layoutX="187.0" layoutY="263.0" prefHeight="18.0" prefWidth="127.0" text="Choose unit type:" />
+                  <ChoiceBox fx:id="unitTypeChoiceBox" layoutX="353.0" layoutY="259.0" prefHeight="26.0" prefWidth="149.0" />
+                  <Label layoutX="187.0" layoutY="303.0" prefHeight="18.0" prefWidth="110.0" text="name of unit:" />
+                  <TextField fx:id="nameOfUnitTextField" layoutX="353.0" layoutY="308.0" />
+                  <Button fx:id="addUnitToArmyButtonClick" layoutX="211.0" layoutY="350.0" mnemonicParsing="false" onAction="#addUnitToArmy" prefHeight="29.0" prefWidth="292.0" text="Add unit to army">
+                     <font>
+                        <Font size="13.0" />
+                     </font></Button>
+                  <Button fx:id="deleteUnitFromArmyButton" layoutX="357.0" layoutY="399.0" mnemonicParsing="false" onAction="#onDeleteButtonClick" prefHeight="23.0" prefWidth="141.0" text="Delete unit from army">
+                     <font>
+                        <Font size="10.0" />
+                     </font></Button>
+                  <Button layoutX="534.0" layoutY="262.0" mnemonicParsing="false" onAction="#onLoadArmyFromFileButtonClick" prefHeight="19.0" prefWidth="92.0" text="Load army from file">
                      <font>
                         <Font size="9.0" />
                      </font></Button>
-                  <Button layoutX="395.0" layoutY="440.0" mnemonicParsing="false" onAction="#OnViewArmyDetailsButtonClick" text="View army details" />
+                  <Button layoutX="211.0" layoutY="398.0" mnemonicParsing="false" onAction="#OnViewArmyDetailsButtonClick" prefHeight="26.0" prefWidth="132.0" text="View army details" />
                </children>
             </AnchorPane>
+            <Button mnemonicParsing="false" onAction="#onBackToArmyRegistrationButton" prefHeight="34.0" prefWidth="289.0" text="Continue">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
          </children>
       </VBox>
    </center>
-   <bottom>
-      <Button mnemonicParsing="false" onAction="#onBackToArmyRegistrationButton" prefHeight="36.0" prefWidth="323.0" text="&lt; Back to Army Registration" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets bottom="15.0" />
-         </BorderPane.margin></Button>
-   </bottom>
    <top>
       <HBox alignment="CENTER" prefHeight="30.0" prefWidth="706.0" BorderPane.alignment="CENTER">
          <children>

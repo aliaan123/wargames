@@ -4,9 +4,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import no.ntnu.idatg2001.wargames.*;
 
 import javax.swing.*;
@@ -19,8 +24,14 @@ import java.util.ResourceBundle;
 public class ArmyEditorController implements Initializable {
 
 
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
+
+    private Army army;
     private Army unitList;
+    private Army unitList2;
     private ObservableList<Unit> unitObservableList;
 
     private String[] unitTypes = {"Infantry Unit", "Ranged Unit", "Cavalry Unit", "Commander Unit"};
@@ -50,17 +61,8 @@ public class ArmyEditorController implements Initializable {
     private TextField nameOfUnitTextField;
 
     @FXML
-    private TableColumn<Unit, Integer> numberOfUnitsColumn;
+    private TextField nameOfArmyTextField;
 
-
-    public void onBackToArmyRegistrationButton(ActionEvent event) throws IOException {
-        WarGamesApplication.goToArmyRegistration();
-    }
-
-    public void OnViewArmyDetailsButtonClick(ActionEvent event) throws IOException
-    {
-        WarGamesApplication.goToArmyDetails();
-    }
 
 
     @Override
@@ -68,13 +70,11 @@ public class ArmyEditorController implements Initializable {
         unitTypeChoiceBox.getItems().addAll(unitTypes);
         unitTypeChoiceBox.setOnAction(this::getUnitType);
 
-
         unitObservableList = FXCollections.observableList(new ArrayList<>());
-        unitList = new Army("Heio", unitObservableList);
 
-        //unitList = new Army("Heio");
-        //unitList.add(new InfantryUnit("Infantry Unit", 1));
-        //unitList.add(new RangedUnit("Ranged Unit", 13));
+        unitList = new Army(nameOfArmyTextField.getText(), unitObservableList);
+        //unitList2 = new Army(nameOfArmyTextField.getText(), unitObservableList);
+
         //unitObservableList = FXCollections.observableList(unitList.getAllUnits());
         armyTableView.setItems(unitObservableList);
         unitTypeColumn.setCellValueFactory(new PropertyValueFactory<>("unitType"));
@@ -85,13 +85,41 @@ public class ArmyEditorController implements Initializable {
 
     }
 
+
+    public void onBackToArmyRegistrationButton(ActionEvent event) throws IOException {
+        WarGamesApplication.goToArmyRegistration();
+    }
+
+
+
+    public void OnViewArmyDetailsButtonClick(ActionEvent event) throws IOException
+    {
+        String armyName = nameOfArmyTextField.getText();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ArmyDetails.fxml"));
+        root = loader.load();
+
+        ArmyDetailsController armyDetailsController = loader.getController();
+        armyDetailsController.displayArmyName(armyName);
+        armyDetailsController.setContentInTextFields(unitList);
+
+        //WarGamesApplication.goToArmyEditor();
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+
+    public void displayArmyName(String armyName)
+    {
+        nameOfArmyTextField.setText(armyName);
+    }
+
     private String getUnitType(ActionEvent event) {
         String unitType = unitTypeChoiceBox.getValue();
         return unitType;
-    }
-
-    public Army getUnitList() {
-        return unitList;
     }
 
     public void addUnitToArmy()
