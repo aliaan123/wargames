@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="639.0" prefWidth="706.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.userinterface.ArmyEditorController">
+<BorderPane prefHeight="597.0" prefWidth="706.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.userinterface.ArmyEditorController">
    <center>
-      <VBox alignment="CENTER" fillWidth="false" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" fillWidth="false" prefHeight="503.0" prefWidth="706.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="482.0" prefWidth="706.0">
+            <AnchorPane prefHeight="447.0" prefWidth="706.0">
                <children>
                   <TableView fx:id="armyTableView" layoutX="80.0" prefHeight="234.0" prefWidth="546.0">
                     <columns>
@@ -43,7 +43,7 @@
          </BorderPane.margin></Button>
    </bottom>
    <top>
-      <HBox alignment="CENTER" prefHeight="51.0" prefWidth="706.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="30.0" prefWidth="706.0" BorderPane.alignment="CENTER">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="335.0" text="Edit your army">
                <font>

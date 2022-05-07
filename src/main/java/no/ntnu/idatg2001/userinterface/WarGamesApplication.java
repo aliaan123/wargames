@@ -26,7 +26,7 @@ public class WarGamesApplication extends Application {
         try {
             //FXMLLoader fxmlLoader = new FXMLLoader(WarGamesApplication.class.getResource("MainMenu.fxml"));
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("MainMenu.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 700, 500);
+            Scene scene = new Scene(fxmlLoader.load(), 700, 600);
             primaryStage.setTitle("Main Menu");
             primaryStage.setScene(scene);
             primaryStage.show();
