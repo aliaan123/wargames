@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import no.ntnu.idatg2001.wargames.Army;
@@ -42,21 +43,33 @@ public class ArmyRegistrationController implements Initializable {
 
     public void onEditArmyButtonClick(ActionEvent event) throws IOException {
 
-        String armyName = nameTextField1.getText();
+        if(!nameTextField1.getText().isEmpty()) {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ArmyEditor.fxml"));
-        root = loader.load();
+            String armyName = nameTextField1.getText();
 
-        ArmyEditorController armyEditorController = loader.getController();
-        armyEditorController.displayArmyName(armyName);
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ArmyEditor.fxml"));
+            root = loader.load();
 
-        //WarGamesApplication.goToArmyEditor();
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+            ArmyEditorController armyEditorController = loader.getController();
+            armyEditorController.displayArmyName(armyName);
+
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error alert");
+            alert.setHeaderText("Empty text fields!");
+            alert.setContentText("Please fill in the text fields by choosing a name for your army.");
+            alert.showAndWait();
+        }
+    }
 
 
+    public void onStartBattleSimulationButtonClick(ActionEvent event) throws IOException{
+        WarGamesApplication.goToBattleSimulation();
     }
 
 }

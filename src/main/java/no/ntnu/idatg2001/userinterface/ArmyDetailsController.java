@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import no.ntnu.idatg2001.wargames.Army;
 
 import java.io.IOException;
@@ -51,10 +52,5 @@ public class ArmyDetailsController implements Initializable {
         numberOfCommanderUnitsText.setText(String.valueOf(army.getCommanderUnits().size()));
     }
 
-    @FXML
-    public void onEditArmyButtonClick(ActionEvent event) throws IOException
-    {
-        WarGamesApplication.goToArmyEditor();
-    }
 
 }

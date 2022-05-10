@@ -77,6 +77,16 @@ public class WarGamesApplication extends Application {
 
 
 
+    public static void goToBattleSimulation() throws IOException{
+        FXMLLoader loader = new FXMLLoader(WarGamesApplication.class.getClassLoader().getResource("BattleSimulation.fxml"));
+        Parent root = loader.load();
+        primaryStage.getScene().setRoot(root);
+        primaryStage.setTitle("Simulation of battle between armies");
+    }
+
+
+
+
     public static void exitApplicationWindow() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");

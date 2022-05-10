@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="568.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.userinterface.ArmyDetailsController">
+<BorderPane prefHeight="460.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.userinterface.ArmyDetailsController">
    <center>
-      <VBox alignment="CENTER" fillWidth="false" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" fillWidth="false" prefHeight="423.0" prefWidth="706.0" BorderPane.alignment="CENTER">
          <children>
             <AnchorPane prefHeight="334.0" prefWidth="600.0">
                <children>
@@ -33,18 +33,7 @@
       </VBox>
    </center>
    <bottom>
-      <HBox alignment="CENTER" prefHeight="84.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-         <children>
-            <VBox alignment="CENTER" prefHeight="84.0" prefWidth="325.0">
-               <children>
-                  <Button fx:id="onEditArmyButtonClick" alignment="CENTER" mnemonicParsing="false" onAction="#onEditArmyButtonClick" prefHeight="37.0" prefWidth="315.0" text="Edit Army">
-                     <VBox.margin>
-                        <Insets bottom="20.0" />
-                     </VBox.margin>
-                  </Button>
-               </children>
-            </VBox>
-         </children></HBox>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="706.0" BorderPane.alignment="CENTER" />
    </bottom>
    <top>
       <Label alignment="CENTER" text="Army details" BorderPane.alignment="CENTER">

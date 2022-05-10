@@ -64,7 +64,7 @@
          <children>
             <VBox alignment="CENTER" prefHeight="88.0" prefWidth="268.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="268.0" text="Continue">
+                  <Button mnemonicParsing="false" onAction="#onStartBattleSimulationButtonClick" prefHeight="27.0" prefWidth="268.0" text="Start battle simulation">
                      <VBox.margin>
                         <Insets bottom="15.0" />
                      </VBox.margin>

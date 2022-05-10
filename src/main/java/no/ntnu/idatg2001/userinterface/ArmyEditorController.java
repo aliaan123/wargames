@@ -11,10 +11,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import no.ntnu.idatg2001.wargames.*;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
@@ -63,6 +63,9 @@ public class ArmyEditorController implements Initializable {
     @FXML
     private TextField nameOfArmyTextField;
 
+    @FXML
+    private Button viewArmyDetailsButton;
+
 
 
     @Override
@@ -96,6 +99,7 @@ public class ArmyEditorController implements Initializable {
     {
         String armyName = nameOfArmyTextField.getText();
 
+        stage = new Stage(); // To make ArmyDetails a Pop-up window
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ArmyDetails.fxml"));
         root = loader.load();
 
@@ -103,11 +107,19 @@ public class ArmyEditorController implements Initializable {
         armyDetailsController.displayArmyName(armyName);
         armyDetailsController.setContentInTextFields(unitList);
 
-        //WarGamesApplication.goToArmyEditor();
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        stage.setScene(new Scene(root)); // To make ArmyDetails a Pop-up window
+        stage.initModality(Modality.APPLICATION_MODAL); // To make ArmyDetails a Pop-up window
+        stage.initOwner(viewArmyDetailsButton.getScene().getWindow()); // To make ArmyDetails a Pop-up window
+        stage.showAndWait(); // To make ArmyDetails a Pop-up window
+
+        //ArmyDetailsController armyDetailsController = loader.getController();
+        //armyDetailsController.displayArmyName(armyName);
+        //armyDetailsController.setContentInTextFields(unitList);
+
+        //stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        //scene = new Scene(root);
+        //stage.setScene(scene);
+        //stage.show();
 
     }
 
