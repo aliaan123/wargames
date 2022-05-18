@@ -1,0 +1,9 @@
+Bandits
+RangedUnit, nate, 100
+InfantryUnit, bob, 50
+InfantryUnit, Gman, 50
+CavalryUnit, cav, 80
+CavalryUnit, yoobie, 80
+CommanderUnit, commando, 100
+CommanderUnit, Oj, 100
+RangedUnit, ranged2, 100

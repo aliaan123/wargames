@@ -102,8 +102,6 @@ public class WarGamesApplication extends Application {
         }
     }
 
-
-    @FXML
     /**
      * Method to show an error popupmenu.
      * @param e, The string of the error message.

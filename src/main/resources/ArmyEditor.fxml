@@ -42,7 +42,7 @@
                   <Separator layoutX="516.0" layoutY="249.0" orientation="VERTICAL" prefHeight="161.0" prefWidth="5.0" />
                </children>
             </AnchorPane>
-            <Button mnemonicParsing="false" onAction="#onBackToArmyRegistrationButton" prefHeight="34.0" prefWidth="289.0" text="Continue">
+            <Button mnemonicParsing="false" onAction="#onContinueButtonClick" prefHeight="34.0" prefWidth="289.0" text="Continue">
                <font>
                   <Font size="15.0" />
                </font>
@@ -55,7 +55,7 @@
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="335.0" text="Edit your army">
                <font>
-                  <Font size="22.0" />
+                  <Font name="System Bold" size="22.0" />
                </font>
             </Label>
          </children>

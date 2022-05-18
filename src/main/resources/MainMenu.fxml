@@ -22,9 +22,9 @@
    <top>
       <HBox alignment="CENTER" prefHeight="45.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="43.0" prefWidth="278.0" text="Welcome to the WarGames Application">
+            <Label prefHeight="43.0" prefWidth="355.0" text="Welcome to the WarGames Application">
                <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
          </children>

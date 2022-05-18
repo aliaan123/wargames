@@ -2,12 +2,62 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.userinterface.BattleSimulationController">
+<AnchorPane prefHeight="599.0" prefWidth="874.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.userinterface.BattleSimulationController">
    <children>
-      <Button layoutX="248.0" layoutY="352.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="104.0" text="start simulation" />
-      <ChoiceBox fx:id="terrainChoiceBox" layoutX="218.0" layoutY="301.0" prefWidth="150.0" />
-      <Label layoutX="140.0" layoutY="46.0" text="Army 1" />
-      <Label layoutX="418.0" layoutY="45.0" prefHeight="18.0" prefWidth="53.0" text="Army 2" />
+      <Button layoutX="293.0" layoutY="484.0" mnemonicParsing="false" onAction="#onStartSimulationButtonClick" prefHeight="38.0" prefWidth="311.0" text="start simulation">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <ChoiceBox fx:id="terrainChoiceBox" layoutX="460.0" layoutY="436.0" prefHeight="26.0" prefWidth="114.0" />
+      <Label layoutX="130.0" layoutY="73.0" text="Army 1:" />
+      <Label layoutX="534.0" layoutY="73.0" prefHeight="18.0" prefWidth="53.0" text="Army 2:" />
+      <TableView fx:id="army1TableView" layoutX="36.0" layoutY="113.0" prefHeight="200.0" prefWidth="379.0">
+        <columns>
+          <TableColumn fx:id="army1UnitTypeColumn" prefWidth="75.0" text="Unit Type" />
+          <TableColumn fx:id="army1UnitNameColumn" prefWidth="75.0" text="Name" />
+            <TableColumn fx:id="army1UnitHealthColumn" prefWidth="75.0" text="Health" />
+            <TableColumn fx:id="army1UnitAttackColumn" prefWidth="75.0" text="Attack" />
+            <TableColumn fx:id="army1UnitArmorColumn" prefWidth="75.0" text="Armor" />
+        </columns>
+      </TableView>
+      <TableView fx:id="army2TableView" layoutX="465.0" layoutY="113.0" prefHeight="200.0" prefWidth="379.0">
+        <columns>
+            <TableColumn fx:id="army2UnitTypeColumn" prefWidth="75.0" text="Unit Type" />
+          <TableColumn fx:id="army2UnitNameColumn" prefWidth="75.0" text="Name" />
+          <TableColumn fx:id="army2UnitHealthColumn" prefWidth="75.0" text="Health" />
+            <TableColumn fx:id="army2UnitAttackColumn" prefWidth="75.0" text="Attack" />
+            <TableColumn fx:id="army2UnitArmorColumn" prefWidth="75.0" text="Armor" />
+        </columns>
+      </TableView>
+      <Label layoutX="274.0" layoutY="440.0" prefHeight="18.0" prefWidth="162.0" text="Choose terrain for the battle:" />
+      <TextField fx:id="army1NameTextField" editable="false" layoutX="200.0" layoutY="69.0" />
+      <TextField fx:id="army2NameTextField" editable="false" layoutX="604.0" layoutY="69.0" prefHeight="18.0" prefWidth="150.0" />
+      <Label layoutX="85.0" layoutY="333.0" prefHeight="18.0" prefWidth="171.0" text="Total number of units in army:" />
+      <TextField fx:id="numberOfUnitsInArmy1TextField" editable="false" layoutX="257.0" layoutY="329.0" prefHeight="26.0" prefWidth="70.0" />
+      <Button fx:id="onResetArmiesButtonClick" layoutX="483.0" layoutY="545.0" mnemonicParsing="false" onAction="#onResetArmiesButtonClick" prefHeight="26.0" prefWidth="114.0" text="Reset Armies" />
+      <Label layoutX="464.0" layoutY="333.0" prefHeight="18.0" prefWidth="171.0" text="Total number of units in army:" />
+      <TextField fx:id="numberOfUnitsInArmy2TextField" editable="false" layoutX="628.0" layoutY="329.0" prefHeight="26.0" prefWidth="70.0" />
+      <Button fx:id="onLoadArmy1ButtonClick" layoutX="746.0" layoutY="355.0" mnemonicParsing="false" onAction="#onLoadArmy1ButtonClick" text="Load army 1">
+         <font>
+            <Font size="10.0" />
+         </font></Button>
+      <Button layoutX="746.0" layoutY="397.0" mnemonicParsing="false" onAction="#onLoadArmy2ButtonClick" text="Load army 2">
+         <font>
+            <Font size="10.0" />
+         </font></Button>
+      <Button layoutX="746.0" layoutY="436.0" mnemonicParsing="false" onAction="#onLoadArmy3ButtonClick" text="Load army 3">
+         <font>
+            <Font size="10.0" />
+         </font></Button>
+      <Label layoutX="723.0" layoutY="333.0" prefHeight="18.0" prefWidth="128.0" text="Load opponent army:" />
+      <Separator layoutX="706.0" layoutY="320.0" orientation="VERTICAL" prefHeight="149.0" prefWidth="10.0" />
+      <Button layoutX="290.0" layoutY="545.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="171.0" text="View battle results" />
+      <Label layoutX="376.0" layoutY="3.0" text="Battle Simulation">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

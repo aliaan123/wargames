@@ -1,13 +1,10 @@
 package no.ntnu.idatg2001.userinterface;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import no.ntnu.idatg2001.wargames.Army;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -32,15 +29,16 @@ public class ArmyDetailsController implements Initializable {
     @FXML
     private TextField armyNameTextField;
 
-    @FXML
-    public void displayArmyName(String armyName)
-    {
-        armyNameTextField.setText(armyName);
-    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+    }
+
+    public void displayArmyName(String armyName)
+    {
+        armyNameTextField.setText(armyName);
     }
 
     public void setContentInTextFields(Army army)

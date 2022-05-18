@@ -1,7 +1,6 @@
 package no.ntnu.idatg2001.wargames;
 
-import java.io.IOException;
-import java.nio.file.Path;
+import java.io.Serializable;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -11,7 +10,7 @@ import java.util.stream.Collectors;
  *
  * Army class is a collection of units that can attack other units in a war.
  */
-public class Army {
+public class Army implements Serializable {
 
     // Field for the name of the army
     private String name;

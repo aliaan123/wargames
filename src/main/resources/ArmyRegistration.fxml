@@ -5,53 +5,40 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="565.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.userinterface.ArmyRegistrationController">
+<BorderPane prefHeight="546.0" prefWidth="808.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.userinterface.ArmyRegistrationController">
    <center>
       <VBox alignment="CENTER" fillWidth="false" prefHeight="364.0" prefWidth="678.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="375.0" prefWidth="601.0">
+            <AnchorPane prefHeight="414.0" prefWidth="696.0">
                <children>
-                  <Label layoutX="117.0" layoutY="52.0" text="Army 1">
-                     <font>
-                        <Font size="16.0" />
-                     </font></Label>
-                  <Label layoutX="417.0" layoutY="52.0" text="Army 2">
-                     <font>
-                        <Font size="16.0" />
-                     </font></Label>
-                  <Label layoutX="286.0" layoutY="78.0" text="Vs." />
-                  <Label layoutX="14.0" layoutY="156.0" text="Write name of the army:">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="317.0" layoutY="156.0" text="Write name of the army:">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="onEditArmyButtonClick" layoutX="33.0" layoutY="223.0" mnemonicParsing="false" onAction="#onEditArmyButtonClick" prefHeight="23.0" prefWidth="220.0" text="Edit army">
-                     <font>
-                        <Font size="10.0" />
-                     </font></Button>
-                  <Button layoutX="331.0" layoutY="223.0" mnemonicParsing="false" onAction="#onEditArmyButtonClick" prefHeight="23.0" prefWidth="224.0" text="Edit army">
-                     <font>
-                        <Font size="10.0" />
-                     </font></Button>
-                  <TextField fx:id="nameTextField1" layoutX="143.0" layoutY="151.0" prefHeight="26.0" prefWidth="119.0" />
-                  <TextField fx:id="nameTextField2" layoutX="443.0" layoutY="151.0" prefHeight="26.0" prefWidth="119.0" />
-                  <Separator layoutX="288.0" layoutY="142.0" orientation="VERTICAL" prefHeight="167.0" prefWidth="6.0" />
-                  <Separator layoutX="-5.0" layoutY="309.0" prefHeight="7.0" prefWidth="296.0" />
-                  <Separator layoutX="288.0" layoutY="310.0" prefHeight="5.0" prefWidth="288.0" />
+                  <Label layoutX="189.0" layoutY="35.0" text="Write name of the army:" />
+                  <Button fx:id="onEditArmy1ButtonClick" layoutX="201.0" layoutY="137.0" mnemonicParsing="false" onAction="#onEditArmy1ButtonClick" prefHeight="33.0" prefWidth="293.0" text="Edit army" />
+                  <TextField fx:id="nameTextField1" layoutX="383.0" layoutY="30.0" prefHeight="26.0" prefWidth="119.0" />
+                  <Separator layoutX="53.0" layoutY="404.0" prefHeight="4.0" prefWidth="286.0" />
+                  <Separator layoutX="351.0" layoutY="401.0" prefHeight="9.0" prefWidth="286.0" />
+                  <Label layoutX="196.0" layoutY="86.0" prefHeight="18.0" prefWidth="113.0" text="Total units in army:" />
+                  <TextField fx:id="totalUnitsInArmy1TextField" editable="false" layoutX="429.0" layoutY="82.0" prefHeight="26.0" prefWidth="65.0" />
+                  <TableView fx:id="army1TableView" layoutX="138.0" layoutY="188.0" prefHeight="206.0" prefWidth="420.0">
+                    <columns>
+                      <TableColumn fx:id="unitTypeColumn" prefWidth="108.19998168945312" text="Unit type" />
+                      <TableColumn fx:id="unitNameColumn" prefWidth="100.20001220703125" text="Name" />
+                        <TableColumn fx:id="unitHealthColumn" prefWidth="72.20001220703125" text="Health" />
+                        <TableColumn fx:id="unitAttackColumn" prefWidth="63.4000244140625" text="Attack" />
+                        <TableColumn fx:id="unitArmorColumn" prefWidth="70.99996948242188" text="Armor" />
+                    </columns>
+                  </TableView>
+                  <Separator layoutX="169.0" layoutY="5.0" orientation="VERTICAL" prefHeight="179.0" prefWidth="7.0" />
+                  <Separator layoutX="521.0" layoutY="6.0" orientation="VERTICAL" prefHeight="180.0" prefWidth="4.0" />
+                  <Separator layoutX="169.0" layoutY="3.0" prefHeight="3.0" prefWidth="354.0" />
                </children>
             </AnchorPane>
          </children>
       </VBox>
    </center>
    <top>
-      <HBox alignment="CENTER" prefHeight="70.0" prefWidth="678.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="55.0" prefWidth="797.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" prefHeight="62.0" prefWidth="134.0" text="Register Armies">
+            <Label alignment="CENTER" prefHeight="62.0" prefWidth="199.0" text="Register your army">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -69,7 +56,7 @@
                         <Insets bottom="15.0" />
                      </VBox.margin>
                      <font>
-                        <Font size="17.0" />
+                        <Font size="16.0" />
                      </font>
                   </Button>
                   <Button mnemonicParsing="false" onAction="#onGoBackButtonClick" prefHeight="8.0" prefWidth="66.0" text="&lt; Go back">

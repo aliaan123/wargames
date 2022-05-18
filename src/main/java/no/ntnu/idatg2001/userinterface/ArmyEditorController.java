@@ -28,11 +28,7 @@ public class ArmyEditorController implements Initializable {
     private Scene scene;
     private Parent root;
 
-
-    private Army army;
-    private Army unitList;
-    private Army unitList2;
-    private ObservableList<Unit> unitObservableList;
+    private Army army1;
 
     private String[] unitTypes = {"Infantry Unit", "Ranged Unit", "Cavalry Unit", "Commander Unit"};
 
@@ -66,6 +62,9 @@ public class ArmyEditorController implements Initializable {
     @FXML
     private Button viewArmyDetailsButton;
 
+    private Scene sceneFromAR;
+
+    private Scene tableViewScene;
 
 
     @Override
@@ -73,28 +72,60 @@ public class ArmyEditorController implements Initializable {
         unitTypeChoiceBox.getItems().addAll(unitTypes);
         unitTypeChoiceBox.setOnAction(this::getUnitType);
 
-        unitObservableList = FXCollections.observableList(new ArrayList<>());
+        ObservableList<Unit> unitObservableList = FXCollections.observableList(new ArrayList<>());
+        armyTableView.setItems(unitObservableList);
 
-        unitList = new Army(nameOfArmyTextField.getText(), unitObservableList);
-        //unitList2 = new Army(nameOfArmyTextField.getText(), unitObservableList);
+        army1 = new Army(nameOfArmyTextField.getText(), unitObservableList);
 
         //unitObservableList = FXCollections.observableList(unitList.getAllUnits());
-        armyTableView.setItems(unitObservableList);
         unitTypeColumn.setCellValueFactory(new PropertyValueFactory<>("unitType"));
         unitNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         unitHealthColumn.setCellValueFactory(new PropertyValueFactory<>("health"));
         unitAttackColumn.setCellValueFactory(new PropertyValueFactory<>("attack"));
         unitArmorColumn.setCellValueFactory(new PropertyValueFactory<>("armor"));
 
+
     }
 
+    public void onContinueButtonClick(ActionEvent event) throws IOException {
 
-    public void onBackToArmyRegistrationButton(ActionEvent event) throws IOException {
-        WarGamesApplication.goToArmyRegistration();
+        String armyName = nameOfArmyTextField.getText();
+
+        //FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ArmyRegistration.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getClassLoader().getResource("ArmyRegistration.fxml"));
+        Parent tableViewParent = loader.load();
+
+        tableViewScene = new Scene(tableViewParent);
+
+        //root = loader.load();
+
+        ArmyRegistrationController armyRegistrationController = loader.getController();
+        armyRegistrationController.displayArmyName(armyName);
+        armyRegistrationController.initArmyData(army1);
+        armyRegistrationController.displayTotalNumbersOfUnitsInArmy(army1);
+        armyRegistrationController.setScene1(tableViewScene);
+
+        /*
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+         */
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
+
+        //WarGamesApplication.goToArmyRegistration();
+
     }
 
+    public Scene getTableViewScene()
+    {
+        return tableViewScene;
+    }
 
-
+    @FXML
     public void OnViewArmyDetailsButtonClick(ActionEvent event) throws IOException
     {
         String armyName = nameOfArmyTextField.getText();
@@ -105,7 +136,7 @@ public class ArmyEditorController implements Initializable {
 
         ArmyDetailsController armyDetailsController = loader.getController();
         armyDetailsController.displayArmyName(armyName);
-        armyDetailsController.setContentInTextFields(unitList);
+        armyDetailsController.setContentInTextFields(army1);
 
         stage.setScene(new Scene(root)); // To make ArmyDetails a Pop-up window
         stage.initModality(Modality.APPLICATION_MODAL); // To make ArmyDetails a Pop-up window
@@ -127,6 +158,7 @@ public class ArmyEditorController implements Initializable {
     public void displayArmyName(String armyName)
     {
         nameOfArmyTextField.setText(armyName);
+        army1.setName(armyName);
     }
 
     private String getUnitType(ActionEvent event) {
@@ -134,10 +166,12 @@ public class ArmyEditorController implements Initializable {
         return unitType;
     }
 
+    @FXML
     public void addUnitToArmy()
     {
         if(!nameOfUnitTextField.getText().isEmpty() && !unitTypeChoiceBox.getValue().isEmpty()) {
-            armyTableView.getItems().add(UnitFactory.factoryCreatingUnit(unitTypeChoiceBox.getValue(), nameOfUnitTextField.getText(), 100));
+            //armyTableView.getItems().add(UnitFactory.factoryCreatingUnit(unitTypeChoiceBox.getValue(), nameOfUnitTextField.getText(), 100));
+            army1.add(UnitFactory.factoryCreatingUnit(unitTypeChoiceBox.getValue(), nameOfUnitTextField.getText(), 100));
             nameOfUnitTextField.clear();
             //unitTypeChoiceBox.setValue(null);
         }
@@ -152,12 +186,13 @@ public class ArmyEditorController implements Initializable {
     }
 
 
+    @FXML
     public void onDeleteButtonClick()
     {
         if(!armyTableView.getSelectionModel().isEmpty())
         {
             Unit unit = armyTableView.getSelectionModel().getSelectedItem();
-            unitList.remove(unit);
+            army1.remove(unit);
         }
         else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -170,6 +205,7 @@ public class ArmyEditorController implements Initializable {
     }
 
 
+    @FXML
     public void onLoadArmyFromFileButtonClick()
     {
         try {
@@ -194,7 +230,10 @@ public class ArmyEditorController implements Initializable {
 
 
 
-
+    public void storeScene(Scene sceneToBeStored)
+    {
+        this.sceneFromAR = sceneToBeStored;
+    }
 
 
 
