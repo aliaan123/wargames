@@ -4,12 +4,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import no.ntnu.idatg2001.wargames.Army;
 import no.ntnu.idatg2001.wargames.ArmyFileHandler;
@@ -19,13 +20,18 @@ import no.ntnu.idatg2001.wargames.Unit;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class BattleSimulationController implements Initializable {
 
 
-    private String[] terrains = {"HILLS", "FOREST", "PLAINS"};
+    private final String[] terrains = {"HILLS", "FOREST", "PLAINS"};
+
+    private Army army1;
+
+    private Army opponentArmyFromFile;
+
+    private Army winnerOfBattle;
 
     @FXML
     private TextField army1NameTextField;
@@ -73,11 +79,8 @@ public class BattleSimulationController implements Initializable {
     @FXML
     private TableColumn<Unit, Integer> army2UnitArmorColumn;
 
-    private Army unitList1;
-    private Army opponentArmyFromFile;
-
-    private ObservableList<Unit> unitObservableList1;
-    private ObservableList<Unit> unitObservableList2;
+    @FXML
+    private Button viewBattleResultsButton;
 
     @FXML
     private TextField numberOfUnitsInArmy1TextField;
@@ -91,26 +94,30 @@ public class BattleSimulationController implements Initializable {
     }
 
     @FXML
-    public void onStartSimulationButtonClick()
-    {
-        if(terrainChoiceBox.getValue() != null) {
-            Battle battle = new Battle(unitList1, opponentArmyFromFile, terrainChoiceBox.getValue());
-            Army winner = battle.simulate();
-            battleOutcomeAlert();
+    public void onStartSimulationButtonClick() {
 
-            System.out.println("Winner of the battle:" + winner.getName());
-            System.out.println(unitList1.getAllUnits().size());
-            System.out.println(opponentArmyFromFile.getAllUnits().size());
+        if (terrainChoiceBox.getValue() != null) {
+            try {
+                Battle battle = new Battle(army1, opponentArmyFromFile, terrainChoiceBox.getValue());
+                winnerOfBattle = battle.simulate();
+                battleOutcomeAlert();
 
-            //army1TableView.refresh();
-            //army2TableView.refresh();
+                System.out.println("Winner of the battle:" + winnerOfBattle.getName());
+                System.out.println(army1.getAllUnits().size());
+                System.out.println(opponentArmyFromFile.getAllUnits().size());
+            }
+            catch (NullPointerException e)
+            {
+                noOpponentArmyLoadedAlert();
+            }
         }
-        else
-        {
+        else{
             emptyChoiceBoxAlert();
         }
-
+            //army1TableView.refresh();
+            //army2TableView.refresh();
     }
+
 
     public void displayArmy1Name(String armyName)
     {
@@ -126,18 +133,43 @@ public class BattleSimulationController implements Initializable {
 
     public void displayTotalNumbersOfUnitsInArmy(Army army)
     {
-        try {
-            numberOfUnitsInArmy1TextField.setText(String.valueOf(army.getAllUnits().size()));
-        }
-        catch (Exception e)
-        {
-
-        }
+        numberOfUnitsInArmy1TextField.setText(String.valueOf(army.getAllUnits().size()));
     }
 
     @FXML
-    public void onResetArmiesButtonClick(ActionEvent event) throws IOException {
+    public void onViewBattleResultsButtonClick(ActionEvent event) throws IOException {
 
+        if(opponentArmyFromFile != null) {
+            try {
+                Stage stage = new Stage(); // To make ArmyDetails a Pop-up window
+                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("BattleOutcome.fxml"));
+                Parent root = loader.load();
+
+                BattleOutcomeController battleOutcomeController = loader.getController();
+                battleOutcomeController.initArmy1Data(army1);
+                battleOutcomeController.initOpponentArmyData(opponentArmyFromFile);
+                battleOutcomeController.setWinningArmyTextField(winnerOfBattle);
+
+                stage.setScene(new Scene(root)); // To make ArmyDetails a Pop-up window
+                stage.initModality(Modality.APPLICATION_MODAL); // To make ArmyDetails a Pop-up window
+                stage.initOwner(viewBattleResultsButton.getScene().getWindow()); // To make ArmyDetails a Pop-up window
+                stage.showAndWait(); // To make ArmyDetails a Pop-up window
+            }
+            catch (NullPointerException e)
+            {
+                e.getMessage();
+            }
+        }
+        else
+        {
+            noOpponentArmyLoadedAlert();
+        }
+
+    }
+
+
+    @FXML
+    public void onResetArmiesButtonClick(ActionEvent event) throws IOException {
         /*
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getClassLoader().getResource("ArmyRegistration.fxml"));
@@ -146,20 +178,16 @@ public class BattleSimulationController implements Initializable {
 
         ArmyRegistrationController armyRegistrationController = loader.getController();
 
-
-
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(tableViewScene);
         window.show();
-
          */
-
     }
 
-    public void setUnitList1(Army unitList1) throws IOException {
-        this.unitList1 = unitList1;
+    public void initArmy1(Army army) throws IOException {
+        this.army1 = army;
 
-        ObservableList<Unit> unitObservableList = FXCollections.observableList(unitList1.getAllUnits());
+        ObservableList<Unit> unitObservableList = FXCollections.observableList(army1.getAllUnits());
         army1TableView.setItems(unitObservableList);
 
         army1UnitTypeColumn.setCellValueFactory(new PropertyValueFactory<>("unitType"));
@@ -167,11 +195,8 @@ public class BattleSimulationController implements Initializable {
         army1UnitHealthColumn.setCellValueFactory(new PropertyValueFactory<>("health"));
         army1UnitAttackColumn.setCellValueFactory(new PropertyValueFactory<>("attack"));
         army1UnitArmorColumn.setCellValueFactory(new PropertyValueFactory<>("armor"));
-        //saveArmy(unitList1);
+
     }
-
-
-
 
     public void initOpponentArmyFromFile(Army opponentArmy) {
         this.opponentArmyFromFile = opponentArmy;
@@ -231,6 +256,13 @@ public class BattleSimulationController implements Initializable {
         }
     }
 
+    public void loadArmyFromFile(String path) throws IOException, ClassNotFoundException
+    {
+        opponentArmyFromFile = ArmyFileHandler.readCSV(Path.of(path));
+        army2TableView.getItems().addAll(opponentArmyFromFile.getAllUnits());
+        initOpponentArmyFromFile(opponentArmyFromFile);
+    }
+
     public void loadArmyAlert(Path path)
     {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -238,13 +270,6 @@ public class BattleSimulationController implements Initializable {
         alert.setHeaderText("Loading army from file");
         alert.setContentText("This army from loaded from: " + path);
         alert.showAndWait();
-    }
-
-    public void loadArmyFromFile(String path) throws IOException, ClassNotFoundException
-    {
-        opponentArmyFromFile = ArmyFileHandler.readCSV(Path.of(path));
-        army2TableView.getItems().addAll(opponentArmyFromFile.getAllUnits());
-        initOpponentArmyFromFile(opponentArmyFromFile);
     }
 
     public void emptyChoiceBoxAlert()
@@ -265,24 +290,19 @@ public class BattleSimulationController implements Initializable {
         alert.show();
     }
 
+    public void noOpponentArmyLoadedAlert()
+    {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error when starting the simulation!");
+        alert.setHeaderText("Please load an opponent army before continuing.");
+        alert.setContentText("You must load an opponent army before starting the simulation by choosing one of the three loads on the right.");
+        alert.showAndWait();
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         terrainChoiceBox.getItems().addAll(terrains);
         terrainChoiceBox.setOnAction(this::getTerrainChoice);
-
-        //unitObservableList1 = FXCollections.observableList(unitList1.getAllUnits());
-
-        unitObservableList1 = FXCollections.observableList(new ArrayList<>());
-        unitObservableList2 = FXCollections.observableList(new ArrayList<>());
-
-        // Vi oppretter nye armier her, så hva skjer med de vi sender over fra army registration??
-        //unitList1 = new Army(army1NameTextField.getText(), unitObservableList1);
-        //setUnitList1(new Army(army1NameTextField.getText(), unitObservableList1));
-        //unitList2 = new Army(army2NameTextField.getText(), unitObservableList2);
-
-        army1TableView.setItems(unitObservableList1);
-        army2TableView.setItems(unitObservableList2);
-
     }
 }

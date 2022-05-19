@@ -53,7 +53,7 @@
          </font></Button>
       <Label layoutX="723.0" layoutY="333.0" prefHeight="18.0" prefWidth="128.0" text="Load opponent army:" />
       <Separator layoutX="706.0" layoutY="320.0" orientation="VERTICAL" prefHeight="149.0" prefWidth="10.0" />
-      <Button layoutX="290.0" layoutY="545.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="171.0" text="View battle results" />
+      <Button fx:id="viewBattleResultsButton" layoutX="290.0" layoutY="545.0" mnemonicParsing="false" onAction="#onViewBattleResultsButtonClick" prefHeight="26.0" prefWidth="171.0" text="View battle results" />
       <Label layoutX="376.0" layoutY="3.0" text="Battle Simulation">
          <font>
             <Font name="System Bold" size="15.0" />

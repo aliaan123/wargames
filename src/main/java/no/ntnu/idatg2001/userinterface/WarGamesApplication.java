@@ -84,9 +84,6 @@ public class WarGamesApplication extends Application {
         primaryStage.setTitle("Simulation of battle between armies");
     }
 
-
-
-
     public static void exitApplicationWindow() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");

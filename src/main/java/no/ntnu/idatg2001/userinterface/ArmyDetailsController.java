@@ -29,8 +29,6 @@ public class ArmyDetailsController implements Initializable {
     @FXML
     private TextField armyNameTextField;
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

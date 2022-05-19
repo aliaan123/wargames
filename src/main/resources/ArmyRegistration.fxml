@@ -12,7 +12,7 @@
             <AnchorPane prefHeight="414.0" prefWidth="696.0">
                <children>
                   <Label layoutX="189.0" layoutY="35.0" text="Write name of the army:" />
-                  <Button fx:id="onEditArmy1ButtonClick" layoutX="201.0" layoutY="137.0" mnemonicParsing="false" onAction="#onEditArmy1ButtonClick" prefHeight="33.0" prefWidth="293.0" text="Edit army" />
+                  <Button fx:id="onCreateAnArmyButtonClick" layoutX="201.0" layoutY="137.0" mnemonicParsing="false" onAction="#onCreateAnArmyButtonClick" prefHeight="33.0" prefWidth="293.0" text="Create an army" />
                   <TextField fx:id="nameTextField1" layoutX="383.0" layoutY="30.0" prefHeight="26.0" prefWidth="119.0" />
                   <Separator layoutX="53.0" layoutY="404.0" prefHeight="4.0" prefWidth="286.0" />
                   <Separator layoutX="351.0" layoutY="401.0" prefHeight="9.0" prefWidth="286.0" />
@@ -51,17 +51,12 @@
          <children>
             <VBox alignment="CENTER" prefHeight="88.0" prefWidth="268.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#onStartBattleSimulationButtonClick" prefHeight="27.0" prefWidth="268.0" text="Start battle simulation">
+                  <Button mnemonicParsing="false" onAction="#onContinueToBattleSimulationButtonClick" prefHeight="27.0" prefWidth="268.0" text="Continue to the battle simulation">
                      <VBox.margin>
                         <Insets bottom="15.0" />
                      </VBox.margin>
                      <font>
                         <Font size="16.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#onGoBackButtonClick" prefHeight="8.0" prefWidth="66.0" text="&lt; Go back">
-                     <font>
-                        <Font size="9.0" />
                      </font>
                   </Button>
                </children>

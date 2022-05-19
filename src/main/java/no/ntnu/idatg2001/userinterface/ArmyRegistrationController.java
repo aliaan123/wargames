@@ -24,11 +24,7 @@ import java.util.ResourceBundle;
 
 public class ArmyRegistrationController implements Initializable {
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
-    private Army army1;
+    private Army army;
 
     @FXML
     private TextField nameTextField1;
@@ -54,97 +50,66 @@ public class ArmyRegistrationController implements Initializable {
     @FXML
     private TableColumn<Unit, Integer> unitArmorColumn;
 
-    private Scene sceneToBeStored;
-
-    private Scene tableViewScene;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 
     @FXML
-    public void onGoBackButtonClick(ActionEvent event) throws IOException {
-        WarGamesApplication.goToMainMenu();
-    }
-
-    @FXML
-    public void onEditArmy1ButtonClick(ActionEvent event) throws IOException {
+    public void onCreateAnArmyButtonClick(ActionEvent event) throws IOException {
 
         if(!nameTextField1.getText().isEmpty()) {
 
             String armyName = nameTextField1.getText();
-            //FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ArmyEditor.fxml"));
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getClassLoader().getResource("ArmyEditor.fxml"));
             Parent tableViewParent = loader.load();
-            tableViewScene = new Scene(tableViewParent);
-            //root = loader.load();
+            Scene tableViewScene = new Scene(tableViewParent);
+
             ArmyEditorController armyEditorController = loader.getController();
             armyEditorController.displayArmyName(armyName);
-            //armyEditorController.storeScene(tableViewScene);
+
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-
-            if(army1 == null) {
+            if(army == null) {
                 window.setScene(tableViewScene);
-            }
-            else {
+            } else {
                 //window.setScene(armyEditorController.getTableViewScene());
             }
             window.show();
-            /*
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-            */
         }
         else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error alert");
-            alert.setHeaderText("Empty text fields!");
-            alert.setContentText("Please fill in the text fields by choosing a name for your army.");
-            alert.showAndWait();
+            emptyNameTextFieldAlert();
         }
-    }
-
-    public void setScene1(Scene sceneSentOver)
-    {
-        this.sceneToBeStored = sceneSentOver;
     }
 
     @FXML
-    public void onStartBattleSimulationButtonClick(ActionEvent event) throws IOException{
-        //&& !nameTextField2.getText().isEmpty() && totalNumberOfUnit > 1
+    public void onContinueToBattleSimulationButtonClick(ActionEvent event) throws IOException{
         if(!nameTextField1.getText().isEmpty()) {
+            if(army != null) {
+                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("BattleSimulation.fxml"));
+                Parent root = loader.load();
+                BattleSimulationController battleSimulationController = loader.getController();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("BattleSimulation.fxml"));
-            root = loader.load();
-            BattleSimulationController battleSimulationController = loader.getController();
+                battleSimulationController.displayArmy1Name(nameTextField1.getText());
+                battleSimulationController.displayTotalNumbersOfUnitsInArmy(army);
+                battleSimulationController.initArmy1(army);
 
-            battleSimulationController.displayArmy1Name(nameTextField1.getText());
-            battleSimulationController.displayTotalNumbersOfUnitsInArmy(army1);
-            battleSimulationController.setUnitList1(army1);
-
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        }
-        else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error alert");
-            alert.setHeaderText("Empty text fields!");
-            alert.setContentText("Please fill in the text fields by choosing a name for your army.");
-            alert.showAndWait();
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } else {
+                armyIsNullAlert();
+            }
+        } else {
+           emptyNameTextFieldAlert();
         }
     }
 
-    public void initArmyData(Army army1) {
-        this.army1 = army1;
+    public void initArmyData(Army army) {
+        this.army = army;
 
-        ObservableList<Unit> unitObservableList = FXCollections.observableList(army1.getAllUnits());
+        ObservableList<Unit> unitObservableList = FXCollections.observableList(army.getAllUnits());
         army1TableView.setItems(unitObservableList);
         unitTypeColumn.setCellValueFactory(new PropertyValueFactory<>("unitType"));
         unitNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -161,12 +126,24 @@ public class ArmyRegistrationController implements Initializable {
 
     public void displayTotalNumbersOfUnitsInArmy(Army army)
     {
-        try {
-            totalUnitsInArmy1TextField.setText(String.valueOf(army.getAllUnits().size()));
-        }
-        catch (Exception e) {
+        totalUnitsInArmy1TextField.setText(String.valueOf(army.getAllUnits().size()));
+    }
 
-        }
+    public void armyIsNullAlert()
+    {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error alert!");
+        alert.setHeaderText("Please create an army before continuing to the battle simulation.");
+        alert.setContentText("Click on the 'create army' button to create an army.");
+        alert.showAndWait();
+    }
+    public void emptyNameTextFieldAlert()
+    {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error alert");
+        alert.setHeaderText("Empty text fields!");
+        alert.setContentText("Please fill in the text fields by choosing a name for your army.");
+        alert.showAndWait();
     }
 
 }

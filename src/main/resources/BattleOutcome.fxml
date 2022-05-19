@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="528.0" prefWidth="851.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.userinterface.BattleOutcomeController">
+   <children>
+      <TableView fx:id="army1TableView" layoutX="27.0" layoutY="97.0" prefHeight="248.0" prefWidth="383.0">
+        <columns>
+          <TableColumn fx:id="army1UnitTypeColumn" prefWidth="75.0" text="Unit Type" />
+          <TableColumn fx:id="army1NameColumn" prefWidth="75.0" text="Name" />
+            <TableColumn fx:id="army1HealthColumn" prefWidth="75.0" text="Health" />
+            <TableColumn fx:id="army1AttackColumn" prefWidth="75.0" text="Attack" />
+            <TableColumn fx:id="army1ArmorColumn" prefWidth="75.0" text="Armor" />
+        </columns>
+      </TableView>
+      <TableView fx:id="army2TableView" layoutX="456.0" layoutY="97.0" prefHeight="248.0" prefWidth="377.0">
+        <columns>
+          <TableColumn fx:id="army2UnitTypeColumn" prefWidth="75.0" text="Unit Type" />
+          <TableColumn fx:id="army2NameColumn" prefWidth="75.0" text="Name" />
+            <TableColumn fx:id="army2HealthColumn" prefWidth="75.0" text="Health" />
+            <TableColumn fx:id="army2AttackColumn" prefWidth="75.0" text="Attack" />
+            <TableColumn fx:id="army2ArmorColumn" prefWidth="75.0" text="Armor" />
+        </columns>
+      </TableView>
+      <TextField fx:id="army1NameTextField" editable="false" layoutX="167.0" layoutY="57.0" prefHeight="26.0" prefWidth="150.0" />
+      <TextField fx:id="army2NameTextField" editable="false" layoutX="587.0" layoutY="57.0" prefHeight="26.0" prefWidth="149.0" />
+      <Label layoutX="103.0" layoutY="61.0" prefHeight="18.0" prefWidth="66.0" text="Army 1:" />
+      <Label layoutX="528.0" layoutY="61.0" prefHeight="18.0" prefWidth="66.0" text="Army 2:" />
+      <Label layoutX="73.0" layoutY="365.0" prefHeight="18.0" prefWidth="126.0" text="Units left after battle:" />
+      <Label layoutX="502.0" layoutY="369.0" prefHeight="18.0" prefWidth="120.0" text="Units left after battle:" />
+      <TextField fx:id="unitsOfArmy1LeftTextField" editable="false" layoutX="219.0" layoutY="361.0" prefHeight="26.0" prefWidth="90.0" />
+      <TextField fx:id="unitsOfArmy2LeftTextField" editable="false" layoutX="645.0" layoutY="365.0" prefHeight="26.0" prefWidth="105.0" />
+      <TextField fx:id="winnerOfBattleTextField" editable="false" layoutX="325.0" layoutY="454.0" prefHeight="26.0" prefWidth="188.0" />
+      <Label layoutX="355.0" layoutY="424.0" text="Winner of the battle:">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="332.0" layoutY="8.0" text="Outcome of the battle">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -23,14 +23,9 @@ import java.util.ResourceBundle;
 
 public class ArmyEditorController implements Initializable {
 
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
     private Army army1;
 
-    private String[] unitTypes = {"Infantry Unit", "Ranged Unit", "Cavalry Unit", "Commander Unit"};
+    private final String[] unitTypes = {"Infantry Unit", "Ranged Unit", "Cavalry Unit", "Commander Unit"};
 
     @FXML
     private TableView<Unit> armyTableView;
@@ -62,10 +57,6 @@ public class ArmyEditorController implements Initializable {
     @FXML
     private Button viewArmyDetailsButton;
 
-    private Scene sceneFromAR;
-
-    private Scene tableViewScene;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -90,22 +81,17 @@ public class ArmyEditorController implements Initializable {
     public void onContinueButtonClick(ActionEvent event) throws IOException {
 
         String armyName = nameOfArmyTextField.getText();
-
         //FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ArmyRegistration.fxml"));
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getClassLoader().getResource("ArmyRegistration.fxml"));
         Parent tableViewParent = loader.load();
 
-        tableViewScene = new Scene(tableViewParent);
-
+        Scene tableViewScene = new Scene(tableViewParent);
         //root = loader.load();
-
         ArmyRegistrationController armyRegistrationController = loader.getController();
         armyRegistrationController.displayArmyName(armyName);
         armyRegistrationController.initArmyData(army1);
         armyRegistrationController.displayTotalNumbersOfUnitsInArmy(army1);
-        armyRegistrationController.setScene1(tableViewScene);
-
         /*
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -116,13 +102,6 @@ public class ArmyEditorController implements Initializable {
         window.setScene(tableViewScene);
         window.show();
 
-        //WarGamesApplication.goToArmyRegistration();
-
-    }
-
-    public Scene getTableViewScene()
-    {
-        return tableViewScene;
     }
 
     @FXML
@@ -130,9 +109,9 @@ public class ArmyEditorController implements Initializable {
     {
         String armyName = nameOfArmyTextField.getText();
 
-        stage = new Stage(); // To make ArmyDetails a Pop-up window
+        Stage stage = new Stage(); // To make ArmyDetails a Pop-up window
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ArmyDetails.fxml"));
-        root = loader.load();
+        Parent root = loader.load();
 
         ArmyDetailsController armyDetailsController = loader.getController();
         armyDetailsController.displayArmyName(armyName);
@@ -154,7 +133,6 @@ public class ArmyEditorController implements Initializable {
 
     }
 
-
     public void displayArmyName(String armyName)
     {
         nameOfArmyTextField.setText(armyName);
@@ -162,8 +140,7 @@ public class ArmyEditorController implements Initializable {
     }
 
     private String getUnitType(ActionEvent event) {
-        String unitType = unitTypeChoiceBox.getValue();
-        return unitType;
+        return unitTypeChoiceBox.getValue();
     }
 
     @FXML
@@ -173,7 +150,6 @@ public class ArmyEditorController implements Initializable {
             //armyTableView.getItems().add(UnitFactory.factoryCreatingUnit(unitTypeChoiceBox.getValue(), nameOfUnitTextField.getText(), 100));
             army1.add(UnitFactory.factoryCreatingUnit(unitTypeChoiceBox.getValue(), nameOfUnitTextField.getText(), 100));
             nameOfUnitTextField.clear();
-            //unitTypeChoiceBox.setValue(null);
         }
         else
         {
@@ -184,7 +160,6 @@ public class ArmyEditorController implements Initializable {
             alert.showAndWait();
         }
     }
-
 
     @FXML
     public void onDeleteButtonClick()
@@ -210,17 +185,13 @@ public class ArmyEditorController implements Initializable {
     {
         try {
             loadArmyFromFile("src/main/resources/SavedArmy/units.csv");
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information!");
-            alert.setHeaderText("Loading army from file");
-            alert.setContentText("This army from loaded from: src/main/resources/SavedArmy/units.csv");
-            alert.showAndWait();
+            Path path = Path.of("src/main/resources/SavedArmy/units.csv");
+            loadArmyAlert(path);
 
         } catch (IOException | ClassNotFoundException e) {
             WarGamesApplication.errorPopUpWindow(String.valueOf(e.getCause()));
         }
     }
-
 
     public void loadArmyFromFile(String path) throws IOException, ClassNotFoundException
     {
@@ -229,13 +200,13 @@ public class ArmyEditorController implements Initializable {
     }
 
 
-
-    public void storeScene(Scene sceneToBeStored)
+    public void loadArmyAlert(Path path)
     {
-        this.sceneFromAR = sceneToBeStored;
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information!");
+        alert.setHeaderText("Loading army from file");
+        alert.setContentText("This army from loaded from: " + path);
+        alert.showAndWait();
     }
-
-
-
 
 }
