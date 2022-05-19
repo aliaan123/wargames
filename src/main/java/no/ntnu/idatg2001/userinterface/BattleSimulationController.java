@@ -22,15 +22,28 @@ import java.net.URL;
 import java.nio.file.Path;
 import java.util.ResourceBundle;
 
+
+/**
+ * @author Aliaan
+ * @version 0.0.1
+ *
+ * BattleSimulationController is the controller of the BattleSimulation.fxml file.
+ * This is the scene where the simulation between the two armies happen.
+ *
+ */
 public class BattleSimulationController implements Initializable {
 
 
+    //Field for the different terrains in the choice box.
     private final String[] terrains = {"HILLS", "FOREST", "PLAINS"};
 
+    //Field for the army created by the user.
     private Army army1;
 
+    //Field for the opponent army loaded from a file.
     private Army opponentArmyFromFile;
 
+    //Field for the winning army in battle.
     private Army winnerOfBattle;
 
     @FXML
@@ -89,10 +102,21 @@ public class BattleSimulationController implements Initializable {
     private TextField numberOfUnitsInArmy2TextField;
 
 
+    /**
+     * Method for getting the value in the choice box for
+     * choosing a terrain of the battle.
+     * @param event
+     * @return returns the value in the choice box
+     */
     private String getTerrainChoice(ActionEvent event) {
         return terrainChoiceBox.getValue();
     }
 
+    /**
+     * Method behind the 'Start simulation' button.
+     * The battle simulation between the two armies will
+     * start when a terrain is chosen and the button has been pressed.
+     */
     @FXML
     public void onStartSimulationButtonClick() {
 
@@ -101,10 +125,6 @@ public class BattleSimulationController implements Initializable {
                 Battle battle = new Battle(army1, opponentArmyFromFile, terrainChoiceBox.getValue());
                 winnerOfBattle = battle.simulate();
                 battleOutcomeAlert();
-
-                System.out.println("Winner of the battle:" + winnerOfBattle.getName());
-                System.out.println(army1.getAllUnits().size());
-                System.out.println(opponentArmyFromFile.getAllUnits().size());
             }
             catch (NullPointerException e)
             {
@@ -119,26 +139,46 @@ public class BattleSimulationController implements Initializable {
     }
 
 
+    /**
+     * Method for setting the textfield of the army created by the user,
+     * to display the army's name.
+     * @param armyName
+     */
     public void displayArmy1Name(String armyName)
     {
         army1NameTextField.setText(armyName);
     }
 
 
+    /**
+     * Method for setting the textfield of the opponent army,
+     * to display the opponent army's name.
+     * @param armyName
+     */
     public void displayArmy2Name(String armyName)
     {
         army2NameTextField.setText(armyName);
     }
 
-
+    /**
+     * Method for setting textfield that displays the total number of units in the army
+     * created by the user.
+     * @param army
+     */
     public void displayTotalNumbersOfUnitsInArmy(Army army)
     {
         numberOfUnitsInArmy1TextField.setText(String.valueOf(army.getAllUnits().size()));
     }
 
+    /**
+     * Method behind the 'View battle results' button in the BattleSimulation scene.
+     * It will load a pop-up window that displays details about the outcome of the battle
+     * between the two armies after their battle has been fought when pressed.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void onViewBattleResultsButtonClick(ActionEvent event) throws IOException {
-
         if(opponentArmyFromFile != null) {
             try {
                 Stage stage = new Stage(); // To make ArmyDetails a Pop-up window
@@ -153,21 +193,25 @@ public class BattleSimulationController implements Initializable {
                 stage.setScene(new Scene(root)); // To make ArmyDetails a Pop-up window
                 stage.initModality(Modality.APPLICATION_MODAL); // To make ArmyDetails a Pop-up window
                 stage.initOwner(viewBattleResultsButton.getScene().getWindow()); // To make ArmyDetails a Pop-up window
+                stage.setTitle("Results of the battle");
                 stage.showAndWait(); // To make ArmyDetails a Pop-up window
-            }
-            catch (NullPointerException e)
-            {
+            } catch (NullPointerException e) {
                 e.getMessage();
             }
-        }
-        else
-        {
+        } else {
             noOpponentArmyLoadedAlert();
         }
 
     }
 
 
+    /**
+     * Method behind the 'Reset armies' button in the BattleSimulation scene.
+     * When the button is pressed the armies will go back to their original state,
+     * like they were before battling with eachother.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void onResetArmiesButtonClick(ActionEvent event) throws IOException {
         /*
@@ -184,7 +228,12 @@ public class BattleSimulationController implements Initializable {
          */
     }
 
-    public void initArmy1(Army army) throws IOException {
+    /**
+     * Method for setting the army created by the user in the tableview
+     * to display the details of the units in the army.
+     * @param army Takes in the army as a parameter
+     */
+    public void initArmy1(Army army) {
         this.army1 = army;
 
         ObservableList<Unit> unitObservableList = FXCollections.observableList(army1.getAllUnits());
@@ -198,6 +247,11 @@ public class BattleSimulationController implements Initializable {
 
     }
 
+    /**
+     * Method for setting the opponent army in the tableview
+     * to display the details of the units in the army.
+     * @param opponentArmy Takes in the opponent army as a parameter
+     */
     public void initOpponentArmyFromFile(Army opponentArmy) {
         this.opponentArmyFromFile = opponentArmy;
 
@@ -216,6 +270,11 @@ public class BattleSimulationController implements Initializable {
     }
 
 
+
+    /**
+     * Method behind the 'load 1' button in the BattleSimulation scene.
+     * It will load an opponent army from a file when pressed.
+     */
     @FXML
     public void onLoadArmy1ButtonClick()
     {
@@ -229,6 +288,11 @@ public class BattleSimulationController implements Initializable {
         }
     }
 
+
+    /**
+     * Method behind the 'load 2' button in the BattleSimulation scene.
+     * It will load an opponent army from a file when pressed.
+     */
     @FXML
     public void onLoadArmy2ButtonClick()
     {
@@ -243,6 +307,10 @@ public class BattleSimulationController implements Initializable {
     }
 
 
+    /**
+     * Method behind the 'load 3' button in the BattleSimulation scene.
+     * It will load an opponent army from a file when pressed.
+     */
     @FXML
     public void onLoadArmy3ButtonClick()
     {
@@ -256,6 +324,12 @@ public class BattleSimulationController implements Initializable {
         }
     }
 
+    /**
+     * Method for loading an opponent army from a file, and setting the army in the tableview.
+     * @param path Takes a file path as a parameter.
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void loadArmyFromFile(String path) throws IOException, ClassNotFoundException
     {
         opponentArmyFromFile = ArmyFileHandler.readCSV(Path.of(path));
@@ -263,6 +337,12 @@ public class BattleSimulationController implements Initializable {
         initOpponentArmyFromFile(opponentArmyFromFile);
     }
 
+    /**
+     * Dialog box that is displayed when loading an army from a file.
+     * Method for displaying a dialog box, which alerts the user
+     * and gives them information about where the army was loaded from.
+     * @param path
+     */
     public void loadArmyAlert(Path path)
     {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -272,6 +352,14 @@ public class BattleSimulationController implements Initializable {
         alert.showAndWait();
     }
 
+
+    /**
+     * Dialog box that is displayed when trying to continue without choosing a value in the choice box.
+     * Method for displaying a dialog box, which alerts the user
+     * about an error that occurred when trying to start the battle simulation.
+     * The user will be alerted by this dialog box when trying to continue without
+     * choosing a value for in the choice box.
+     */
     public void emptyChoiceBoxAlert()
     {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -281,6 +369,11 @@ public class BattleSimulationController implements Initializable {
         alert.show();
     }
 
+    /**
+     * Dialog box that is displayed when the battle between the two armies is over.
+     * Method for displaying a dialog box, which alerts the user
+     * about information of the outcome of the battle.
+     */
     public void battleOutcomeAlert()
     {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -290,6 +383,11 @@ public class BattleSimulationController implements Initializable {
         alert.show();
     }
 
+    /**
+     * Dialog box that is displayed when trying to continue without loading an opponent army.
+     * Method for displaying a dialog box, which alerts the user
+     * about an error that has occurred when trying to start the battle simulation.
+     */
     public void noOpponentArmyLoadedAlert()
     {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -300,6 +398,12 @@ public class BattleSimulationController implements Initializable {
     }
 
 
+    /**
+     * Initialize method, which initializes the choice box
+     * for choosing the terrain of the battlefield.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         terrainChoiceBox.getItems().addAll(terrains);

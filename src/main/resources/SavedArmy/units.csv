@@ -1,7 +1,7 @@
 Warriors
-RangedUnit, yoobz, 10
-InfantryUnit, lander, 50
-InfantryUnit, Gman, 50
+RangedUnit, yoobz, 100
+InfantryUnit, lander, 70
+InfantryUnit, Gman, 90
 CavalryUnit, cav, 80
 CavalryUnit, yoobie, 80
 CommanderUnit, com, 100

@@ -14,13 +14,23 @@ import java.util.Optional;
 
 
 /**
+ *
+ * @author Aliaan
+ * @version 0.0.1
+ *
  * Class for the graphical user interface.
  * Lets the user interact with the program.
  */
 public class WarGamesApplication extends Application {
 
+    //Field for the primaryStage of the scene
     private static Stage primaryStage;
 
+    /**
+     * Start method that is ran when the application is first started
+     * @param primaryStage
+     * @throws IOException
+     */
     @Override
     public void start(Stage primaryStage) throws IOException {
         try {
@@ -43,7 +53,6 @@ public class WarGamesApplication extends Application {
         });
     }
 
-
     public static void goToMainMenu() throws IOException{
         FXMLLoader loader = new FXMLLoader(WarGamesApplication.class.getClassLoader().getResource("MainMenu.fxml"));
         Parent root = loader.load();
@@ -51,13 +60,11 @@ public class WarGamesApplication extends Application {
         primaryStage.setTitle("Main menu");
     }
 
-
-
     public static void goToArmyRegistration() throws IOException{
         FXMLLoader loader = new FXMLLoader(WarGamesApplication.class.getClassLoader().getResource("ArmyRegistration.fxml"));
         Parent root = loader.load();
         primaryStage.getScene().setRoot(root);
-        primaryStage.setTitle("Main menu");
+        primaryStage.setTitle("Army Registration");
     }
 
     public static void goToArmyDetails() throws IOException{
@@ -84,6 +91,11 @@ public class WarGamesApplication extends Application {
         primaryStage.setTitle("Simulation of battle between armies");
     }
 
+    /**
+     * Method to display a dialog box that pops up,
+     * when trying to exit the application.
+     * It will ask user for confirmation before executing task.
+     */
     public static void exitApplicationWindow() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");
@@ -100,7 +112,8 @@ public class WarGamesApplication extends Application {
     }
 
     /**
-     * Method to show an error popupmenu.
+     * Method to display and dialog box,
+     * that will show that an error has occurred.
      * @param e, The string of the error message.
      */
     public static void errorPopUpWindow(String e) {

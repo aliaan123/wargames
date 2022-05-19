@@ -22,8 +22,17 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
+/**
+ * @author Aliaan
+ * @version 0.0.1
+ *
+ * ArmyRegistrationController is the controller of the ArmyRegistration.fxml file.
+ * Controller of the scene where the armies will be registered.
+ */
 public class ArmyRegistrationController implements Initializable {
 
+    //Field for the army created by the user.
     private Army army;
 
     @FXML
@@ -55,6 +64,14 @@ public class ArmyRegistrationController implements Initializable {
 
     }
 
+    /**
+     * Method behind the 'Create an army' button.
+     * When the button is pressed, the input from this scene
+     * will be transferred to the next one, and the scenes will switch.
+     * The ArmyEditor scene will be loaded.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void onCreateAnArmyButtonClick(ActionEvent event) throws IOException {
 
@@ -70,6 +87,7 @@ public class ArmyRegistrationController implements Initializable {
             armyEditorController.displayArmyName(armyName);
 
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setTitle("Creation of army");
             if(army == null) {
                 window.setScene(tableViewScene);
             } else {
@@ -82,6 +100,14 @@ public class ArmyRegistrationController implements Initializable {
         }
     }
 
+    /**
+     * Method behind the 'Continue to battle simulation' button.
+     * When pressed the input and info from this scene will be
+     * transferred to the next scene, and the scenes will switch to
+     * the BattleSimulation scene.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void onContinueToBattleSimulationButtonClick(ActionEvent event) throws IOException{
         if(!nameTextField1.getText().isEmpty()) {
@@ -96,6 +122,7 @@ public class ArmyRegistrationController implements Initializable {
 
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 Scene scene = new Scene(root);
+                stage.setTitle("Simulation of the battle");
                 stage.setScene(scene);
                 stage.show();
             } else {
@@ -106,6 +133,12 @@ public class ArmyRegistrationController implements Initializable {
         }
     }
 
+
+    /**
+     * Method for setting the user's army in the tableview
+     * and displaying the details of units in the army.
+     * @param army Takes in the user's army as a parameter.
+     */
     public void initArmyData(Army army) {
         this.army = army;
 
@@ -119,16 +152,33 @@ public class ArmyRegistrationController implements Initializable {
 
     }
 
+    /**
+     * Method for setting the text field that
+     * displays the name of the army created by the user.
+     * @param armyName Takes in a String, the name of the army, as a parameter.
+     */
     public void displayArmyName(String armyName)
     {
         nameTextField1.setText(armyName);
     }
 
+    /**
+     * Method for setting the text field
+     * that displays the total units in the army
+     * created by the user.
+     * @param army Takes in an army as a parameter.
+     */
     public void displayTotalNumbersOfUnitsInArmy(Army army)
     {
         totalUnitsInArmy1TextField.setText(String.valueOf(army.getAllUnits().size()));
     }
 
+    /**
+     * Dialog box that is displayed when trying to continue without creating an army.
+     * Method for displaying a dialog box, which alerts the user
+     * about an error that has occurred when trying to continue without
+     * first creating an army by clicking on 'create army'.
+     */
     public void armyIsNullAlert()
     {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -137,6 +187,14 @@ public class ArmyRegistrationController implements Initializable {
         alert.setContentText("Click on the 'create army' button to create an army.");
         alert.showAndWait();
     }
+
+
+    /**
+     * Dialog box that is displayed when trying to continue
+     * without filling the textfield for the name of the army.
+     * Alerts the user about an error that occurred because of
+     * empty text fields.
+     */
     public void emptyNameTextFieldAlert()
     {
         Alert alert = new Alert(Alert.AlertType.ERROR);

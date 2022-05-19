@@ -24,7 +24,7 @@
                   <ChoiceBox fx:id="unitTypeChoiceBox" layoutX="353.0" layoutY="259.0" prefHeight="26.0" prefWidth="149.0" />
                   <Label layoutX="187.0" layoutY="303.0" prefHeight="18.0" prefWidth="110.0" text="name of unit:" />
                   <TextField fx:id="nameOfUnitTextField" layoutX="353.0" layoutY="308.0" />
-                  <Button fx:id="addUnitToArmyButtonClick" layoutX="207.0" layoutY="358.0" mnemonicParsing="false" onAction="#addUnitToArmy" prefHeight="29.0" prefWidth="292.0" text="Add unit to army">
+                  <Button fx:id="onAddUnitToArmyButtonClicked" layoutX="207.0" layoutY="358.0" mnemonicParsing="false" onAction="#onAddUnitToArmyButtonClicked" prefHeight="29.0" prefWidth="292.0" text="Add unit to army">
                      <font>
                         <Font size="13.0" />
                      </font></Button>

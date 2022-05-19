@@ -21,43 +21,69 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+
+/**
+ *
+ * @author Aliaan
+ * @version 0.0.1
+ *
+ * ArmyEditorController is the controller class for the ArmyEditor.fxml file,
+ * and is the controller for the scene where the army is being created.
+ */
 public class ArmyEditorController implements Initializable {
 
+    //Field for the army that is being created in the scene
     private Army army1;
 
+    //Field for the different unit types within an army
     private final String[] unitTypes = {"Infantry Unit", "Ranged Unit", "Cavalry Unit", "Commander Unit"};
 
+    //Field for the tableview in the ArmyEditor scene.
     @FXML
     private TableView<Unit> armyTableView;
 
+    //Field for the unit type column in the tableview.
     @FXML
     private TableColumn<Unit, String> unitTypeColumn;
 
+    //Field for the name column in the tableview.
     @FXML
     private TableColumn<Unit, String> unitNameColumn;
 
+    //Field for the health column in the tableview.
     @FXML
     private TableColumn<Unit, Integer> unitHealthColumn;
 
+    //Field for the attack column in the tableview.
     @FXML
     private TableColumn<Unit, Integer> unitAttackColumn;
 
+    //Field for the armor column in the tableview.
     @FXML
     private TableColumn<Unit, Integer> unitArmorColumn;
 
+    //Field for the choice box for choosing a unit type.
     @FXML
     private ChoiceBox<String> unitTypeChoiceBox;
 
+    //Field for the textfield where you write in a units name.
     @FXML
     private TextField nameOfUnitTextField;
 
+    //Field for the textfield displaying the army's name
     @FXML
     private TextField nameOfArmyTextField;
 
+    //Field for the viewArmyDetails button
     @FXML
     private Button viewArmyDetailsButton;
 
 
+    /**
+     * Initializer of the ArmyEditor scene
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         unitTypeChoiceBox.getItems().addAll(unitTypes);
@@ -75,9 +101,17 @@ public class ArmyEditorController implements Initializable {
         unitAttackColumn.setCellValueFactory(new PropertyValueFactory<>("attack"));
         unitArmorColumn.setCellValueFactory(new PropertyValueFactory<>("armor"));
 
-
     }
 
+
+    /**
+     * Method behind the 'Continue' button in the ArmyEditor scene.
+     * When the button is pressed, the input given by the user will be transferred
+     * to the next scene (ArmyRegistration) and the scenes will change.
+     * @param event
+     * @throws IOException
+     */
+    @FXML
     public void onContinueButtonClick(ActionEvent event) throws IOException {
 
         String armyName = nameOfArmyTextField.getText();
@@ -99,11 +133,19 @@ public class ArmyEditorController implements Initializable {
         stage.show();
          */
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setTitle("Registration of an army");
         window.setScene(tableViewScene);
         window.show();
 
     }
 
+
+    /**
+     * Method behind the 'View army details' button in the ArmyEditor scene.
+     * When the button is pressed, a pop-up window with details about the army will be displayed.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void OnViewArmyDetailsButtonClick(ActionEvent event) throws IOException
     {
@@ -120,31 +162,37 @@ public class ArmyEditorController implements Initializable {
         stage.setScene(new Scene(root)); // To make ArmyDetails a Pop-up window
         stage.initModality(Modality.APPLICATION_MODAL); // To make ArmyDetails a Pop-up window
         stage.initOwner(viewArmyDetailsButton.getScene().getWindow()); // To make ArmyDetails a Pop-up window
+        stage.setTitle("Details about army");
         stage.showAndWait(); // To make ArmyDetails a Pop-up window
-
-        //ArmyDetailsController armyDetailsController = loader.getController();
-        //armyDetailsController.displayArmyName(armyName);
-        //armyDetailsController.setContentInTextFields(unitList);
-
-        //stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        //scene = new Scene(root);
-        //stage.setScene(scene);
-        //stage.show();
-
     }
 
+    /**
+     * Method for setting the name of the army that has been created.
+     * @param armyName takes in a String, the name of the army, as a parameter
+     */
     public void displayArmyName(String armyName)
     {
         nameOfArmyTextField.setText(armyName);
         army1.setName(armyName);
     }
 
+    /**
+     * Method for getting the value in the choice box for choosing the unit's type.
+     * @param event
+     * @return returns the chosen value in the choicebox
+     */
     private String getUnitType(ActionEvent event) {
         return unitTypeChoiceBox.getValue();
     }
 
+    /**
+     * Method behind the 'Add unit to army' button in the scene.
+     * Meant to be clicked when the textfield for the unit's name is filled
+     * and unit type has been chosen in the choice box.
+     * It will then add a unit to the army with the given details.
+     */
     @FXML
-    public void addUnitToArmy()
+    public void onAddUnitToArmyButtonClicked()
     {
         if(!nameOfUnitTextField.getText().isEmpty() && !unitTypeChoiceBox.getValue().isEmpty()) {
             //armyTableView.getItems().add(UnitFactory.factoryCreatingUnit(unitTypeChoiceBox.getValue(), nameOfUnitTextField.getText(), 100));
@@ -161,6 +209,10 @@ public class ArmyEditorController implements Initializable {
         }
     }
 
+    /**
+     * Method for deleting a unit from the army when the unit in the tableview
+     * is selected and the delete button in the scene is clicked.
+     */
     @FXML
     public void onDeleteButtonClick()
     {
@@ -180,6 +232,10 @@ public class ArmyEditorController implements Initializable {
     }
 
 
+    /**
+     * Method for loading an army from a file when the 'load army' button
+     * is clicked.
+     */
     @FXML
     public void onLoadArmyFromFileButtonClick()
     {
@@ -193,6 +249,12 @@ public class ArmyEditorController implements Initializable {
         }
     }
 
+    /**
+     * Method for loading an army from a file.
+     * @param path Takes in a path of a file as a parameter.
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void loadArmyFromFile(String path) throws IOException, ClassNotFoundException
     {
         Army army = ArmyFileHandler.readCSV(Path.of(path));
@@ -200,6 +262,11 @@ public class ArmyEditorController implements Initializable {
     }
 
 
+    /**
+     * Method creating a dialog box, which alerts the user
+     * about information when loading an army.
+     * @param path Takes in a path of a file as a parameter
+     */
     public void loadArmyAlert(Path path)
     {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
