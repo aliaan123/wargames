@@ -1,4 +1,4 @@
-package no.ntnu.idatg2001.userinterface;
+package no.ntnu.idatg2001.userinterface.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,7 +13,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import no.ntnu.idatg2001.wargames.*;
+import no.ntnu.idatg2001.userinterface.views.DialogBoxes;
+import no.ntnu.idatg2001.model.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -194,20 +195,19 @@ public class ArmyEditorController implements Initializable {
     @FXML
     public void onAddUnitToArmyButtonClicked()
     {
-        if(!nameOfUnitTextField.getText().isEmpty() && !unitTypeChoiceBox.getValue().isEmpty()) {
-            //armyTableView.getItems().add(UnitFactory.factoryCreatingUnit(unitTypeChoiceBox.getValue(), nameOfUnitTextField.getText(), 100));
-            army1.add(UnitFactory.factoryCreatingUnit(unitTypeChoiceBox.getValue(), nameOfUnitTextField.getText(), 100));
-            nameOfUnitTextField.clear();
+        try {
+            if (!nameOfUnitTextField.getText().isEmpty() && !unitTypeChoiceBox.getValue().isEmpty()) {
+                army1.add(UnitFactory.factoryCreatingUnit(unitTypeChoiceBox.getValue(), nameOfUnitTextField.getText(), 100));
+                nameOfUnitTextField.clear();
+            } else {
+                DialogBoxes.emptyNameTextFieldAlert();
+            }
         }
-        else
-        {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error alert");
-            alert.setHeaderText("Empty text fields!");
-            alert.setContentText("Please fill in the text fields and choose a unit type.");
-            alert.showAndWait();
+        catch (NullPointerException e) {
+            DialogBoxes.emptyChoiceBoxAlert();
         }
     }
+
 
     /**
      * Method for deleting a unit from the army when the unit in the tableview
@@ -242,10 +242,10 @@ public class ArmyEditorController implements Initializable {
         try {
             loadArmyFromFile("src/main/resources/SavedArmy/units.csv");
             Path path = Path.of("src/main/resources/SavedArmy/units.csv");
-            loadArmyAlert(path);
+            DialogBoxes.loadArmyAlert(path);
 
         } catch (IOException | ClassNotFoundException e) {
-            WarGamesApplication.errorPopUpWindow(String.valueOf(e.getCause()));
+            DialogBoxes.errorPopUpWindow(String.valueOf(e.getCause()));
         }
     }
 
@@ -261,19 +261,5 @@ public class ArmyEditorController implements Initializable {
         armyTableView.getItems().addAll(army.getAllUnits());
     }
 
-
-    /**
-     * Method creating a dialog box, which alerts the user
-     * about information when loading an army.
-     * @param path Takes in a path of a file as a parameter
-     */
-    public void loadArmyAlert(Path path)
-    {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information!");
-        alert.setHeaderText("Loading army from file");
-        alert.setContentText("This army from loaded from: " + path);
-        alert.showAndWait();
-    }
 
 }

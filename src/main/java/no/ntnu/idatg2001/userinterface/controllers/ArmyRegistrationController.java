@@ -1,4 +1,4 @@
-package no.ntnu.idatg2001.userinterface;
+package no.ntnu.idatg2001.userinterface.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,14 +9,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import no.ntnu.idatg2001.wargames.Army;
-import no.ntnu.idatg2001.wargames.Unit;
+import no.ntnu.idatg2001.userinterface.views.DialogBoxes;
+import no.ntnu.idatg2001.model.Army;
+import no.ntnu.idatg2001.model.Unit;
 
 import java.io.IOException;
 import java.net.URL;
@@ -96,7 +96,7 @@ public class ArmyRegistrationController implements Initializable {
             window.show();
         }
         else {
-            emptyNameTextFieldAlert();
+            DialogBoxes.emptyNameTextFieldAlert();
         }
     }
 
@@ -126,10 +126,10 @@ public class ArmyRegistrationController implements Initializable {
                 stage.setScene(scene);
                 stage.show();
             } else {
-                armyIsNullAlert();
+                DialogBoxes.armyIsNullAlert();
             }
         } else {
-           emptyNameTextFieldAlert();
+           DialogBoxes.emptyNameTextFieldAlert();
         }
     }
 
@@ -173,35 +173,6 @@ public class ArmyRegistrationController implements Initializable {
         totalUnitsInArmy1TextField.setText(String.valueOf(army.getAllUnits().size()));
     }
 
-    /**
-     * Dialog box that is displayed when trying to continue without creating an army.
-     * Method for displaying a dialog box, which alerts the user
-     * about an error that has occurred when trying to continue without
-     * first creating an army by clicking on 'create army'.
-     */
-    public void armyIsNullAlert()
-    {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error alert!");
-        alert.setHeaderText("Please create an army before continuing to the battle simulation.");
-        alert.setContentText("Click on the 'create army' button to create an army.");
-        alert.showAndWait();
-    }
 
-
-    /**
-     * Dialog box that is displayed when trying to continue
-     * without filling the textfield for the name of the army.
-     * Alerts the user about an error that occurred because of
-     * empty text fields.
-     */
-    public void emptyNameTextFieldAlert()
-    {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error alert");
-        alert.setHeaderText("Empty text fields!");
-        alert.setContentText("Please fill in the text fields by choosing a name for your army.");
-        alert.showAndWait();
-    }
 
 }

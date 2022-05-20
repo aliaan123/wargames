@@ -1,4 +1,4 @@
-package no.ntnu.idatg2001.wargames;
+package no.ntnu.idatg2001.model;
 
 /**
  * InfantryUnit class which is a subclass of Unit, a specialized type of unit.

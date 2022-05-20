@@ -1,8 +1,8 @@
-package no.ntnu.idatg2001.userinterface;
+package no.ntnu.idatg2001.userinterface.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import no.ntnu.idatg2001.wargames.Army;
+import no.ntnu.idatg2001.model.Army;
 
 /**
  * @author Aliaan

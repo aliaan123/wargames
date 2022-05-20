@@ -1,4 +1,4 @@
-package no.ntnu.idatg2001.userinterface;
+package no.ntnu.idatg2001.userinterface.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,8 +9,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import no.ntnu.idatg2001.wargames.Army;
-import no.ntnu.idatg2001.wargames.Unit;
+import no.ntnu.idatg2001.model.Army;
+import no.ntnu.idatg2001.model.Unit;
 
 import java.net.URL;
 import java.util.ResourceBundle;

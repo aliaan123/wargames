@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="528.0" prefWidth="851.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.userinterface.BattleOutcomeController">
+<AnchorPane prefHeight="528.0" prefWidth="851.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.userinterface.controllers.BattleOutcomeController">
    <children>
       <TableView fx:id="army1TableView" layoutX="27.0" layoutY="97.0" prefHeight="248.0" prefWidth="383.0">
         <columns>

@@ -1,4 +1,4 @@
-package no.ntnu.idatg2001.wargames;
+package no.ntnu.idatg2001.model;
 
 /**
  * CommanderUnit class which is a subclass of the CavalryUnit, a specialized type of unit.

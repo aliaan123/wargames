@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="599.0" prefWidth="874.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.userinterface.BattleSimulationController">
+<AnchorPane prefHeight="599.0" prefWidth="874.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.userinterface.controllers.BattleSimulationController">
    <children>
       <Button layoutX="293.0" layoutY="484.0" mnemonicParsing="false" onAction="#onStartSimulationButtonClick" prefHeight="38.0" prefWidth="311.0" text="Start simulation">
          <font>

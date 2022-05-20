@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="546.0" prefWidth="808.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.userinterface.ArmyRegistrationController">
+<BorderPane prefHeight="546.0" prefWidth="808.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.userinterface.controllers.ArmyRegistrationController">
    <center>
       <VBox alignment="CENTER" fillWidth="false" prefHeight="364.0" prefWidth="678.0" BorderPane.alignment="CENTER">
          <children>

@@ -1,4 +1,4 @@
-package no.ntnu.idatg2001.userinterface;
+package no.ntnu.idatg2001.userinterface.controllers;
 
 import javafx.fxml.Initializable;
 
@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import no.ntnu.idatg2001.userinterface.views.WarGamesApplication;
 
 /**
  * @author Aliaan

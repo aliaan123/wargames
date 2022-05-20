@@ -1,8 +1,7 @@
-package no.ntnu.idatg2001.userinterface;
+package no.ntnu.idatg2001.userinterface.views;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
@@ -111,25 +110,6 @@ public class WarGamesApplication extends Application {
         }
     }
 
-    /**
-     * Method to display and dialog box,
-     * that will show that an error has occurred.
-     * @param e, The string of the error message.
-     */
-    public static void errorPopUpWindow(String e) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("There was an error");
-        alert.setContentText("Error: " + e);
-
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.isPresent()) {
-            if (result.get() == ButtonType.OK) {
-
-            } else {
-
-            }
-        }
-    }
 
 
 

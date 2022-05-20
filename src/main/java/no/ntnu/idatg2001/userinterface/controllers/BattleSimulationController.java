@@ -1,4 +1,4 @@
-package no.ntnu.idatg2001.userinterface;
+package no.ntnu.idatg2001.userinterface.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,10 +12,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import no.ntnu.idatg2001.wargames.Army;
-import no.ntnu.idatg2001.wargames.ArmyFileHandler;
-import no.ntnu.idatg2001.wargames.Battle;
-import no.ntnu.idatg2001.wargames.Unit;
+import no.ntnu.idatg2001.userinterface.views.DialogBoxes;
+import no.ntnu.idatg2001.model.Army;
+import no.ntnu.idatg2001.model.ArmyFileHandler;
+import no.ntnu.idatg2001.model.Battle;
+import no.ntnu.idatg2001.model.Unit;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -124,15 +126,15 @@ public class BattleSimulationController implements Initializable {
             try {
                 Battle battle = new Battle(army1, opponentArmyFromFile, terrainChoiceBox.getValue());
                 winnerOfBattle = battle.simulate();
-                battleOutcomeAlert();
+                DialogBoxes.battleOutcomeAlert();
             }
             catch (NullPointerException e)
             {
-                noOpponentArmyLoadedAlert();
+                DialogBoxes.noOpponentArmyLoadedAlert();
             }
         }
         else{
-            emptyChoiceBoxAlert();
+            DialogBoxes.emptyChoiceBoxAlert();
         }
             //army1TableView.refresh();
             //army2TableView.refresh();
@@ -181,7 +183,7 @@ public class BattleSimulationController implements Initializable {
     public void onViewBattleResultsButtonClick(ActionEvent event) throws IOException {
         if(opponentArmyFromFile != null) {
             try {
-                Stage stage = new Stage(); // To make ArmyDetails a Pop-up window
+                Stage stage = new Stage();
                 FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("BattleOutcome.fxml"));
                 Parent root = loader.load();
 
@@ -190,16 +192,16 @@ public class BattleSimulationController implements Initializable {
                 battleOutcomeController.initOpponentArmyData(opponentArmyFromFile);
                 battleOutcomeController.setWinningArmyTextField(winnerOfBattle);
 
-                stage.setScene(new Scene(root)); // To make ArmyDetails a Pop-up window
-                stage.initModality(Modality.APPLICATION_MODAL); // To make ArmyDetails a Pop-up window
-                stage.initOwner(viewBattleResultsButton.getScene().getWindow()); // To make ArmyDetails a Pop-up window
+                stage.setScene(new Scene(root));
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.initOwner(viewBattleResultsButton.getScene().getWindow());
                 stage.setTitle("Results of the battle");
-                stage.showAndWait(); // To make ArmyDetails a Pop-up window
+                stage.showAndWait();
             } catch (NullPointerException e) {
-                e.getMessage();
+                DialogBoxes.errorPopUpWindow(String.valueOf(e.getMessage()));
             }
         } else {
-            noOpponentArmyLoadedAlert();
+            DialogBoxes.noOpponentArmyLoadedAlert();
         }
 
     }
@@ -214,9 +216,10 @@ public class BattleSimulationController implements Initializable {
      */
     @FXML
     public void onResetArmiesButtonClick(ActionEvent event) throws IOException {
+
         /*
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getClassLoader().getResource("ArmyRegistration.fxml"));
+        loader.setLocation(getClass().getClassLoader().getResource("BattleSimulation.fxml"));
         Parent tableViewParent = loader.load();
         Scene tableViewScene = new Scene(tableViewParent);
 
@@ -225,7 +228,10 @@ public class BattleSimulationController implements Initializable {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(tableViewScene);
         window.show();
+
          */
+
+
     }
 
     /**
@@ -281,10 +287,10 @@ public class BattleSimulationController implements Initializable {
         try {
             loadArmyFromFile("src/main/resources/SavedArmy/opponentArmy1.csv");
             Path path = Path.of("src/main/resources/SavedArmy/opponentArmy1.csv");
-            loadArmyAlert(path);
+            DialogBoxes.loadArmyAlert(path);
 
         } catch (IOException | ClassNotFoundException e) {
-            WarGamesApplication.errorPopUpWindow(String.valueOf(e.getCause()));
+            DialogBoxes.errorPopUpWindow(String.valueOf(e.getCause()));
         }
     }
 
@@ -299,10 +305,10 @@ public class BattleSimulationController implements Initializable {
         try {
             loadArmyFromFile("src/main/resources/SavedArmy/opponentArmy2.csv");
             Path path = Path.of("src/main/resources/SavedArmy/opponentArmy2.csv");
-            loadArmyAlert(path);
+            DialogBoxes.loadArmyAlert(path);
 
         } catch (IOException | ClassNotFoundException e) {
-            WarGamesApplication.errorPopUpWindow(String.valueOf(e.getCause()));
+            DialogBoxes.errorPopUpWindow(String.valueOf(e.getCause()));
         }
     }
 
@@ -317,10 +323,10 @@ public class BattleSimulationController implements Initializable {
         try {
             loadArmyFromFile("src/main/resources/SavedArmy/opponentArmy3.csv");
             Path path = Path.of("src/main/resources/SavedArmy/opponentArmy3.csv");
-            loadArmyAlert(path);
+            DialogBoxes.loadArmyAlert(path);
 
         } catch (IOException | ClassNotFoundException e) {
-            WarGamesApplication.errorPopUpWindow(String.valueOf(e.getCause()));
+            DialogBoxes.errorPopUpWindow(String.valueOf(e.getCause()));
         }
     }
 
@@ -335,66 +341,6 @@ public class BattleSimulationController implements Initializable {
         opponentArmyFromFile = ArmyFileHandler.readCSV(Path.of(path));
         army2TableView.getItems().addAll(opponentArmyFromFile.getAllUnits());
         initOpponentArmyFromFile(opponentArmyFromFile);
-    }
-
-    /**
-     * Dialog box that is displayed when loading an army from a file.
-     * Method for displaying a dialog box, which alerts the user
-     * and gives them information about where the army was loaded from.
-     * @param path
-     */
-    public void loadArmyAlert(Path path)
-    {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information!");
-        alert.setHeaderText("Loading army from file");
-        alert.setContentText("This army from loaded from: " + path);
-        alert.showAndWait();
-    }
-
-
-    /**
-     * Dialog box that is displayed when trying to continue without choosing a value in the choice box.
-     * Method for displaying a dialog box, which alerts the user
-     * about an error that occurred when trying to start the battle simulation.
-     * The user will be alerted by this dialog box when trying to continue without
-     * choosing a value for in the choice box.
-     */
-    public void emptyChoiceBoxAlert()
-    {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error!");
-        alert.setHeaderText("Choice box is empty!");
-        alert.setContentText("Please choose a terrain for the battlefield before continuing.");
-        alert.show();
-    }
-
-    /**
-     * Dialog box that is displayed when the battle between the two armies is over.
-     * Method for displaying a dialog box, which alerts the user
-     * about information of the outcome of the battle.
-     */
-    public void battleOutcomeAlert()
-    {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information!");
-        alert.setHeaderText("View outcome of the battle");
-        alert.setContentText("The battle is over. Press the 'view battle results' button to view the outcome.");
-        alert.show();
-    }
-
-    /**
-     * Dialog box that is displayed when trying to continue without loading an opponent army.
-     * Method for displaying a dialog box, which alerts the user
-     * about an error that has occurred when trying to start the battle simulation.
-     */
-    public void noOpponentArmyLoadedAlert()
-    {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error when starting the simulation!");
-        alert.setHeaderText("Please load an opponent army before continuing.");
-        alert.setContentText("You must load an opponent army before starting the simulation by choosing one of the three loads on the right.");
-        alert.showAndWait();
     }
 
 

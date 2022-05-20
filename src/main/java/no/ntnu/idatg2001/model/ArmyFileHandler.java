@@ -1,4 +1,4 @@
-package no.ntnu.idatg2001.wargames;
+package no.ntnu.idatg2001.model;
 
 import java.io.*;
 import java.nio.file.Files;
