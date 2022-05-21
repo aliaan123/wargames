@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,11 +16,7 @@ import javafx.stage.Stage;
 import no.ntnu.idatg2001.userinterface.views.DialogBoxes;
 import no.ntnu.idatg2001.model.Army;
 import no.ntnu.idatg2001.model.Unit;
-
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 
 /**
  * @author Aliaan
@@ -30,7 +25,7 @@ import java.util.ResourceBundle;
  * ArmyRegistrationController is the controller of the ArmyRegistration.fxml file.
  * Controller of the scene where the armies will be registered.
  */
-public class ArmyRegistrationController implements Initializable {
+public class ArmyRegistrationController {
 
     //Field for the army created by the user.
     private Army army;
@@ -59,10 +54,7 @@ public class ArmyRegistrationController implements Initializable {
     @FXML
     private TableColumn<Unit, Integer> unitArmorColumn;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
+    private Army initialArmy1;
 
     /**
      * Method behind the 'Create an army' button.
@@ -74,9 +66,7 @@ public class ArmyRegistrationController implements Initializable {
      */
     @FXML
     public void onCreateAnArmyButtonClick(ActionEvent event) throws IOException {
-
-        if(!nameTextField1.getText().isEmpty()) {
-
+        if(!nameTextField1.getText().isEmpty() && nameTextField1.getText().length() < 32) {
             String armyName = nameTextField1.getText();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getClassLoader().getResource("ArmyEditor.fxml"));
@@ -96,7 +86,7 @@ public class ArmyRegistrationController implements Initializable {
             window.show();
         }
         else {
-            DialogBoxes.emptyNameTextFieldAlert();
+            DialogBoxes.invalidNameTextFieldAlert();
         }
     }
 
@@ -116,9 +106,12 @@ public class ArmyRegistrationController implements Initializable {
                 Parent root = loader.load();
                 BattleSimulationController battleSimulationController = loader.getController();
 
+                setCopyArmy();
                 battleSimulationController.displayArmy1Name(nameTextField1.getText());
                 battleSimulationController.displayTotalNumbersOfUnitsInArmy(army);
                 battleSimulationController.initArmy1(army);
+                battleSimulationController.setInitialArmy(getCopyArmy());
+                battleSimulationController.setArmy1(army);
 
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 Scene scene = new Scene(root);
@@ -129,8 +122,18 @@ public class ArmyRegistrationController implements Initializable {
                 DialogBoxes.armyIsNullAlert();
             }
         } else {
-           DialogBoxes.emptyNameTextFieldAlert();
+           DialogBoxes.invalidNameTextFieldAlert();
         }
+    }
+
+    public Army getCopyArmy()
+    {
+        return initialArmy1;
+    }
+
+    public void setCopyArmy()
+    {
+        initialArmy1 = new Army(army);
     }
 
 

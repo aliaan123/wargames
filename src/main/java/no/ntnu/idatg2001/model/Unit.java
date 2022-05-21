@@ -42,6 +42,24 @@ public abstract class Unit {
     }
 
     /**
+     * Copy constructor of Unit
+     */
+    protected Unit(Unit unit)
+    {
+        this.copy(unit);
+        //this.name = unit.name;
+        //this.health = unit.health;
+        //this.attack = unit.attack;
+        //this.armor = unit.armor;
+    }
+
+    /**
+     *
+     * @param unit
+     */
+    public abstract Unit copy(Unit unit);
+
+    /**
      * Method that allows units to attack each other and reduce their health.
      *
      * @param opponent the opponent unit that is getting attacked
@@ -68,30 +86,6 @@ public abstract class Unit {
      */
     public abstract int getResistBonus(String terrain);
 
-    /**
-     * Abstract method that gives information about the units range,
-     * whether it is melee or ranged.
-     *
-     * @return returns a boolean, true if melee and false if ranged
-     */
-    protected abstract boolean getRangeOfUnit();
-
-
-    /**
-     * Method that checks if the opponent is melee or ranged.
-     *
-     * @param opponent Takes in unit opponent as parameter
-     * @return returns a boolean, true if the opponent is melee or false if not.
-     */
-    public boolean checkIfOpponentIsMeleeOrRange(Unit opponent) {
-        if (opponent.getRangeOfUnit()) {
-            System.out.println("Opponent is melee");
-            return true;
-        } else {
-            System.out.println("Opponent is ranged");
-            return false;
-        }
-    }
 
 
     /**
@@ -146,6 +140,15 @@ public abstract class Unit {
      */
     public void setAttack(int attack) {
         this.attack = attack;
+    }
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setArmor(int armor) {
+        this.armor = armor;
     }
 
 

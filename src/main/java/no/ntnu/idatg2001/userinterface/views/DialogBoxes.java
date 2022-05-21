@@ -21,12 +21,12 @@ public class DialogBoxes {
      * Alerts the user about an error that occurred because of
      * empty text fields.
      */
-    public static void emptyNameTextFieldAlert()
+    public static void invalidNameTextFieldAlert()
     {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error alert");
-        alert.setHeaderText("Empty text fields!");
-        alert.setContentText("Please fill in the text fields by choosing a name.");
+        alert.setHeaderText("Invalid input in text fields!");
+        alert.setContentText("Please fill in the text fields by choosing a name with a valid length.");
         alert.showAndWait();
     }
 
@@ -127,6 +127,7 @@ public class DialogBoxes {
         alert.setContentText("You must load an opponent army before starting the simulation by choosing one of the three loads on the right.");
         alert.showAndWait();
     }
+
 
 
 

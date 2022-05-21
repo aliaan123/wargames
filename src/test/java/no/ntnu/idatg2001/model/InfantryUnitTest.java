@@ -49,11 +49,4 @@ class InfantryUnitTest {
     }
 
 
-    @Test
-    void getRangeOfUnit()
-    {
-        assertEquals(true, infantryUnit.getRangeOfUnit());
-    }
-
-
 }

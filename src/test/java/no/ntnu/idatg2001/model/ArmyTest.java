@@ -29,15 +29,12 @@ class ArmyTest {
         armyOne.add(infantryUnit);
         armyOne.add(cavalryUnit);
         assertEquals(2, armyOne.unitsSize());
-        assertEquals(true, armyOne.hasUnits());
+        assertTrue(armyOne.hasUnits());
 
         Army armyTwo = new Army("Army Two");
         armyTwo.add(rangedUnit);
         assertEquals(1, armyTwo.unitsSize());
-        assertEquals(true, armyTwo.hasUnits());
-
-        System.out.println(armyOne.getAllUnits());
-        System.out.println(armyTwo.getAllUnits());
+        assertTrue(armyTwo.hasUnits());
 
     }
 
@@ -84,7 +81,7 @@ class ArmyTest {
         armyOne.add(unit2);
         armyOne.add(unit3);
 
-        assertEquals(true, armyOne.hasUnits());
+        assertTrue(armyOne.hasUnits());
         assertEquals(3, armyOne.getAllUnits().size());
 
     }

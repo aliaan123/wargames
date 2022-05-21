@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
@@ -17,7 +18,7 @@ import no.ntnu.idatg2001.model.Army;
 import no.ntnu.idatg2001.model.ArmyFileHandler;
 import no.ntnu.idatg2001.model.Battle;
 import no.ntnu.idatg2001.model.Unit;
-
+import no.ntnu.idatg2001.userinterface.views.WarGamesApplication;
 
 import java.io.IOException;
 import java.net.URL;
@@ -41,6 +42,9 @@ public class BattleSimulationController implements Initializable {
 
     //Field for the army created by the user.
     private Army army1;
+
+    //
+    private Army initialArmy;
 
     //Field for the opponent army loaded from a file.
     private Army opponentArmyFromFile;
@@ -136,8 +140,7 @@ public class BattleSimulationController implements Initializable {
         else{
             DialogBoxes.emptyChoiceBoxAlert();
         }
-            //army1TableView.refresh();
-            //army2TableView.refresh();
+
     }
 
 
@@ -216,23 +219,51 @@ public class BattleSimulationController implements Initializable {
      */
     @FXML
     public void onResetArmiesButtonClick(ActionEvent event) throws IOException {
-
         /*
+        initArmy1(initialArmy);
+        System.out.println(initialArmy.getAllUnits().size());
+        army1TableView.refresh();
+        opponentArmyFromFile = null;
+        initOpponentArmyFromFile(null);
+        army2TableView.refresh();
+        army2NameTextField.clear();
+        numberOfUnitsInArmy2TextField.clear();
+
+         */
+
+        //Army initialArmy = new Army(army1);
+        initArmy1(initialArmy);
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getClassLoader().getResource("BattleSimulation.fxml"));
         Parent tableViewParent = loader.load();
         Scene tableViewScene = new Scene(tableViewParent);
 
-        ArmyRegistrationController armyRegistrationController = loader.getController();
+        BattleSimulationController battleSimulationController = loader.getController();
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(tableViewScene);
         window.show();
 
-         */
-
-
     }
+
+    public Army getInitialArmy() {
+        return initialArmy;
+    }
+
+    public void setInitialArmy(Army initialArmy) {
+        this.initialArmy = initialArmy;
+    }
+
+
+    public Army getArmy1() {
+        return army1;
+    }
+
+    public void setArmy1(Army army1) {
+        this.army1 = army1;
+    }
+
 
     /**
      * Method for setting the army created by the user in the tableview
@@ -240,9 +271,9 @@ public class BattleSimulationController implements Initializable {
      * @param army Takes in the army as a parameter
      */
     public void initArmy1(Army army) {
-        this.army1 = army;
+        //this.army1 = army;
 
-        ObservableList<Unit> unitObservableList = FXCollections.observableList(army1.getAllUnits());
+        ObservableList<Unit> unitObservableList = FXCollections.observableList(army.getAllUnits());
         army1TableView.setItems(unitObservableList);
 
         army1UnitTypeColumn.setCellValueFactory(new PropertyValueFactory<>("unitType"));
@@ -276,6 +307,14 @@ public class BattleSimulationController implements Initializable {
     }
 
 
+    /**
+     * Method that sends you back to the main menu
+     * @throws IOException
+     */
+    @FXML
+    public void onMainMenuButtonClick() throws IOException {
+        WarGamesApplication.goToMainMenu();
+    }
 
     /**
      * Method behind the 'load 1' button in the BattleSimulation scene.
@@ -289,7 +328,7 @@ public class BattleSimulationController implements Initializable {
             Path path = Path.of("src/main/resources/SavedArmy/opponentArmy1.csv");
             DialogBoxes.loadArmyAlert(path);
 
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
             DialogBoxes.errorPopUpWindow(String.valueOf(e.getCause()));
         }
     }
@@ -307,7 +346,7 @@ public class BattleSimulationController implements Initializable {
             Path path = Path.of("src/main/resources/SavedArmy/opponentArmy2.csv");
             DialogBoxes.loadArmyAlert(path);
 
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
             DialogBoxes.errorPopUpWindow(String.valueOf(e.getCause()));
         }
     }
@@ -325,7 +364,7 @@ public class BattleSimulationController implements Initializable {
             Path path = Path.of("src/main/resources/SavedArmy/opponentArmy3.csv");
             DialogBoxes.loadArmyAlert(path);
 
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
             DialogBoxes.errorPopUpWindow(String.valueOf(e.getCause()));
         }
     }
@@ -334,9 +373,8 @@ public class BattleSimulationController implements Initializable {
      * Method for loading an opponent army from a file, and setting the army in the tableview.
      * @param path Takes a file path as a parameter.
      * @throws IOException
-     * @throws ClassNotFoundException
      */
-    public void loadArmyFromFile(String path) throws IOException, ClassNotFoundException
+    public void loadArmyFromFile(String path) throws IOException
     {
         opponentArmyFromFile = ArmyFileHandler.readCSV(Path.of(path));
         army2TableView.getItems().addAll(opponentArmyFromFile.getAllUnits());
@@ -354,5 +392,8 @@ public class BattleSimulationController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         terrainChoiceBox.getItems().addAll(terrains);
         terrainChoiceBox.setOnAction(this::getTerrainChoice);
+        //setArmy1(army1);
+        //initArmy1(army1);
+
     }
 }

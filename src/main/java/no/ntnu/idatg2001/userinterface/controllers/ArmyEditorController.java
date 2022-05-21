@@ -116,23 +116,18 @@ public class ArmyEditorController implements Initializable {
     public void onContinueButtonClick(ActionEvent event) throws IOException {
 
         String armyName = nameOfArmyTextField.getText();
-        //FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ArmyRegistration.fxml"));
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getClassLoader().getResource("ArmyRegistration.fxml"));
         Parent tableViewParent = loader.load();
 
         Scene tableViewScene = new Scene(tableViewParent);
-        //root = loader.load();
+
         ArmyRegistrationController armyRegistrationController = loader.getController();
         armyRegistrationController.displayArmyName(armyName);
         armyRegistrationController.initArmyData(army1);
         armyRegistrationController.displayTotalNumbersOfUnitsInArmy(army1);
-        /*
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-         */
+
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setTitle("Registration of an army");
         window.setScene(tableViewScene);
@@ -148,11 +143,11 @@ public class ArmyEditorController implements Initializable {
      * @throws IOException
      */
     @FXML
-    public void OnViewArmyDetailsButtonClick(ActionEvent event) throws IOException
+    public void onViewArmyDetailsButtonClick(ActionEvent event) throws IOException
     {
         String armyName = nameOfArmyTextField.getText();
 
-        Stage stage = new Stage(); // To make ArmyDetails a Pop-up window
+        Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ArmyDetails.fxml"));
         Parent root = loader.load();
 
@@ -160,11 +155,11 @@ public class ArmyEditorController implements Initializable {
         armyDetailsController.displayArmyName(armyName);
         armyDetailsController.setContentInTextFields(army1);
 
-        stage.setScene(new Scene(root)); // To make ArmyDetails a Pop-up window
+        stage.setScene(new Scene(root));
         stage.initModality(Modality.APPLICATION_MODAL); // To make ArmyDetails a Pop-up window
-        stage.initOwner(viewArmyDetailsButton.getScene().getWindow()); // To make ArmyDetails a Pop-up window
+        stage.initOwner(viewArmyDetailsButton.getScene().getWindow()); //
         stage.setTitle("Details about army");
-        stage.showAndWait(); // To make ArmyDetails a Pop-up window
+        stage.showAndWait();
     }
 
     /**
@@ -196,11 +191,13 @@ public class ArmyEditorController implements Initializable {
     public void onAddUnitToArmyButtonClicked()
     {
         try {
-            if (!nameOfUnitTextField.getText().isEmpty() && !unitTypeChoiceBox.getValue().isEmpty()) {
+            if (!nameOfUnitTextField.getText().isEmpty() && !unitTypeChoiceBox.getValue().isEmpty()
+                    && nameOfUnitTextField.getText().length() < 32)
+            {
                 army1.add(UnitFactory.factoryCreatingUnit(unitTypeChoiceBox.getValue(), nameOfUnitTextField.getText(), 100));
                 nameOfUnitTextField.clear();
             } else {
-                DialogBoxes.emptyNameTextFieldAlert();
+                DialogBoxes.invalidNameTextFieldAlert();
             }
         }
         catch (NullPointerException e) {
@@ -244,7 +241,7 @@ public class ArmyEditorController implements Initializable {
             Path path = Path.of("src/main/resources/SavedArmy/units.csv");
             DialogBoxes.loadArmyAlert(path);
 
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
             DialogBoxes.errorPopUpWindow(String.valueOf(e.getCause()));
         }
     }
@@ -253,9 +250,8 @@ public class ArmyEditorController implements Initializable {
      * Method for loading an army from a file.
      * @param path Takes in a path of a file as a parameter.
      * @throws IOException
-     * @throws ClassNotFoundException
      */
-    public void loadArmyFromFile(String path) throws IOException, ClassNotFoundException
+    public void loadArmyFromFile(String path) throws IOException
     {
         Army army = ArmyFileHandler.readCSV(Path.of(path));
         armyTableView.getItems().addAll(army.getAllUnits());

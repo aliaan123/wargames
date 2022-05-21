@@ -1,11 +1,6 @@
 package no.ntnu.idatg2001.userinterface.controllers;
 
-import javafx.fxml.Initializable;
-
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import no.ntnu.idatg2001.userinterface.views.WarGamesApplication;
@@ -17,13 +12,7 @@ import no.ntnu.idatg2001.userinterface.views.WarGamesApplication;
  * MainMenuController is the controller class for the MainMenu.fxml file.
  * Represents the main menu scene of the graphical user interface.
  */
-public class MainMenuController implements Initializable {
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
+public class MainMenuController {
 
     /**
      * Method behind the 'Continue' button in the MainMenu scene.

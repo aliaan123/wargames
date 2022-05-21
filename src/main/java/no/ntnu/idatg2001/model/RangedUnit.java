@@ -8,8 +8,6 @@ package no.ntnu.idatg2001.model;
  */
 public class RangedUnit extends Unit {
 
-    // Field for if the unit is melee or not.
-    private static final boolean IS_MELEE = false;
     // Field for the attack bonus of the ranged unit
     private static final int ATTACK_BONUS = 3;
     // Field for the ranged units resist-bonus.
@@ -37,14 +35,6 @@ public class RangedUnit extends Unit {
         super(name, health, 15, 8);
     }
 
-
-    /**
-     * Method that returns information about the range of the unit
-     * @return the field IS_MELEE, which is false because the rangedUnit is ranged
-     */
-    public boolean getRangeOfUnit() {
-        return IS_MELEE;
-    }
 
     /**
      * Method for adding an attack bonus to the unit attack damage,
@@ -90,6 +80,17 @@ public class RangedUnit extends Unit {
             return resistBonus;
             }
         }
+
+
+
+    @Override
+    public Unit copy(Unit unit) {
+        this.setName(unit.getName());
+        this.setHealth(unit.getHealth());
+        this.setAttack(unit.getAttack());
+        this.setArmor(unit.getArmor());
+        return unit;
+    }
 
     @Override
     public String toString() {

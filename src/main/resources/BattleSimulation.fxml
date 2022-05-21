@@ -59,5 +59,10 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
+      <Button layoutX="789.0" layoutY="575.0" mnemonicParsing="false" onAction="#onMainMenuButtonClick" prefHeight="6.0" prefWidth="70.0" text="&lt; Main menu">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

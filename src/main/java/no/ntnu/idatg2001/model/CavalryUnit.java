@@ -8,8 +8,6 @@ package no.ntnu.idatg2001.model;
  */
 public class CavalryUnit extends Unit {
 
-    // Field for if the unit is melee or not.
-    private static final boolean IS_MELEE = true;
     // Field for attack bonus of the cavalry unit.
     private int attackBonus = 6;
     // Field for the resist bonus of the cavalry unit.
@@ -27,7 +25,6 @@ public class CavalryUnit extends Unit {
         super(name, health, attack, armor);
     }
 
-
     /**
      * Simplified constructor used for instantiating objects of this class.
      * It calls the super-classes constructor through the super-method.
@@ -37,16 +34,6 @@ public class CavalryUnit extends Unit {
     public CavalryUnit(String name, int health)
     {
         super(name, health, 20, 12);
-    }
-
-
-    /**
-     * Method that returns information about the range of the unit
-     * @return the field IS_MELEE, which is true because the cavalryUnit is melee
-     */
-    public boolean getRangeOfUnit()
-    {
-        return IS_MELEE;
     }
 
     /**
@@ -118,6 +105,16 @@ public class CavalryUnit extends Unit {
      */
     public void setResistBonus(int resistBonus) {
         this.resistBonus = resistBonus;
+    }
+
+
+    @Override
+    public Unit copy(Unit unit) {
+        this.setName(unit.getName());
+        this.setHealth(unit.getHealth());
+        this.setAttack(unit.getAttack());
+        this.setArmor(unit.getArmor());
+        return unit;
     }
 
 

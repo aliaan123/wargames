@@ -61,12 +61,6 @@ class CavalryUnitTest {
 
     }
 
-    @Test
-    void testGetRangeOfUnit()
-    {
-        assertEquals(true, cavalryUnit.getRangeOfUnit());
-    }
-
 
 }
 

@@ -43,16 +43,11 @@ class RangedUnitTest {
     }
 
     @Test
-    void testAttackBonus()
+    void testTerrainPlainsAttackBonus()
     {
         // Test for ranged units normal attack bonus.
         assertEquals(3, rangedUnit.getAttackBonus("PLAINS"));
     }
 
-    @Test
-    void testGetRangeOfUnit()
-    {
-        assertEquals(false, rangedUnit.getRangeOfUnit());
-    }
 
 }

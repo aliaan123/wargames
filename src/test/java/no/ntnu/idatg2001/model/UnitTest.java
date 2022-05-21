@@ -28,24 +28,9 @@ class UnitTest {
     {
 
         int healthBeforeAttack = cavalryUnit.getHealth();
-        System.out.println(healthBeforeAttack);
         infantryUnit.attack(cavalryUnit, "FOREST");
-        System.out.println(cavalryUnit.getHealth());
         assertNotEquals(healthBeforeAttack,cavalryUnit.getHealth());
 
-    }
-
-    @Test
-    void checkIfMethodCanIdentifyOpponentsAttackRange()
-    {
-        assertEquals(true, infantryUnit.checkIfOpponentIsMeleeOrRange(cavalryUnit));
-
-    }
-
-    @Test
-    void checkIfMethodCanIdentifyOpponentsAttackRangeVsRanged()
-    {
-        assertEquals(false, infantryUnit.checkIfOpponentIsMeleeOrRange(rangedUnit));
     }
 
     @Test

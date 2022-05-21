@@ -44,6 +44,20 @@ public class Army implements Serializable {
     }
 
     /**
+     * Copy constructor of the Army class
+     * @param army Takes in an army object as a parameter and copies it
+     */
+    public Army(Army army)
+    {
+        this.units = new ArrayList<>();
+        for(Unit u : army.getAllUnits())
+        {
+            //Unit unit = u.copy();
+            //this.units.add(unit);
+        }
+    }
+
+    /**
      *
      */
     public void setName(String name) {

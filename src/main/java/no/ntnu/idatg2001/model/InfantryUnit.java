@@ -7,8 +7,6 @@ package no.ntnu.idatg2001.model;
  */
 public class InfantryUnit extends Unit {
 
-    // Field for if the unit is melee or not.
-    private static final boolean IS_MELEE = true;
     // Field for the attack bonus of the infantry unit
     private static final int ATTACK_BONUS = 2;
     // Field for the resist bonus of the infantry unit
@@ -36,15 +34,6 @@ public class InfantryUnit extends Unit {
     public InfantryUnit(String name, int health)
     {
         super(name, health, 15, 10);
-    }
-
-    /**
-     * Method that returns information about the range of the unit
-     * @return the field IS_MELEE, which is true because the infantryUnit is melee
-     */
-    public boolean getRangeOfUnit()
-    {
-        return IS_MELEE;
     }
 
     /**
@@ -100,6 +89,16 @@ public class InfantryUnit extends Unit {
             resistBonus  = 5;
         }
         return resistBonus;
+    }
+
+
+    @Override
+    public Unit copy(Unit unit) {
+        this.setName(unit.getName());
+        this.setHealth(unit.getHealth());
+        this.setAttack(unit.getAttack());
+        this.setArmor(unit.getArmor());
+        return unit;
     }
 
     @Override

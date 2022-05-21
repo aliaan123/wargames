@@ -37,6 +37,33 @@ class BattleTest {
     }
 
     @Test
+    void negativeTestSimulationWhereArmyOneWins()
+    {
+        Unit unit1 = new CavalryUnit("Knights", 120);
+        Unit unit2 = new InfantryUnit("Soldiers", 100);
+        Unit unit3 = new RangedUnit("Archers", 80);
+        List<Unit> armyOneUnits = new ArrayList<>();
+        armyOneUnits.add(unit1);
+        armyOneUnits.add(unit2);
+        armyOneUnits.add(unit3);
+
+        Army armyOne = new Army("Army one", armyOneUnits);
+
+        Unit unit4 = new CavalryUnit("Raiders", 10);
+        Unit unit5 = new InfantryUnit("Goblins", 10);
+        Unit unit6 = new RangedUnit("Spearman", 8);
+        List<Unit> armyTwoUnits = new ArrayList<>();
+        armyTwoUnits.add(unit4);
+        armyTwoUnits.add(unit5);
+        armyTwoUnits.add(unit6);
+
+        Army armyTwo = new Army("Army two", armyTwoUnits);
+
+        Battle battle = new Battle(armyOne, armyTwo, "PLAINS");
+        assertNotEquals(armyTwo, battle.simulate());
+    }
+
+    @Test
     void simulateBattleWhereArmyTwoWins()
     {
         Unit unit1 = new CavalryUnit("Knights", 10);

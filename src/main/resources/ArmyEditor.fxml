@@ -36,7 +36,7 @@
                      <font>
                         <Font size="9.0" />
                      </font></Button>
-                  <Button fx:id="viewArmyDetailsButton" layoutX="211.0" layoutY="420.0" mnemonicParsing="false" onAction="#OnViewArmyDetailsButtonClick" prefHeight="26.0" prefWidth="132.0" text="View army details" />
+                  <Button fx:id="viewArmyDetailsButton" layoutX="211.0" layoutY="420.0" mnemonicParsing="false" onAction="#onViewArmyDetailsButtonClick" prefHeight="26.0" prefWidth="132.0" text="View army details" />
                   <Separator layoutX="165.0" layoutY="248.0" orientation="VERTICAL" prefHeight="163.0" prefWidth="5.0" />
                   <Separator layoutX="168.0" layoutY="408.0" prefHeight="5.0" prefWidth="352.0" />
                   <Separator layoutX="516.0" layoutY="249.0" orientation="VERTICAL" prefHeight="161.0" prefWidth="5.0" />
