@@ -5,3 +5,5 @@ RangedUnit, bron, 100
 InfantryUnit, desmond, 50
 CavalryUnit, tyson, 80
 CommanderUnit, CJ, 100
+InfantryUnit, ali, 50
+CavalryUnit, khan, 80

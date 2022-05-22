@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
@@ -43,11 +42,14 @@ public class BattleSimulationController implements Initializable {
     //Field for the army created by the user.
     private Army army1;
 
-    //
-    private Army initialArmy;
+    //Field for copy of the army that the user created.
+    private Army army1Copy;
 
     //Field for the opponent army loaded from a file.
     private Army opponentArmyFromFile;
+
+    //Field for the copy of the opponent army loaded from a file.
+    private Army opponentArmyCopy;
 
     //Field for the winning army in battle.
     private Army winnerOfBattle;
@@ -118,6 +120,15 @@ public class BattleSimulationController implements Initializable {
         return terrainChoiceBox.getValue();
     }
 
+
+
+    public Army battleBetweenArmies(Army army1, Army army2, String terrain)
+    {
+        Battle battle = new Battle(army1, army2, terrain);
+        winnerOfBattle = battle.simulate();
+        return winnerOfBattle;
+    }
+
     /**
      * Method behind the 'Start simulation' button.
      * The battle simulation between the two armies will
@@ -126,22 +137,23 @@ public class BattleSimulationController implements Initializable {
     @FXML
     public void onStartSimulationButtonClick() {
 
-        if (terrainChoiceBox.getValue() != null) {
+        army1Copy = army1.cloneArmy();
+        if(this.opponentArmyFromFile != null) {
+            opponentArmyCopy = opponentArmyFromFile.cloneArmy();
+        } else {
+            DialogBoxes.noOpponentArmyLoadedAlert();
+        }
             try {
-                Battle battle = new Battle(army1, opponentArmyFromFile, terrainChoiceBox.getValue());
-                winnerOfBattle = battle.simulate();
-                DialogBoxes.battleOutcomeAlert();
-            }
-            catch (NullPointerException e)
-            {
-                DialogBoxes.noOpponentArmyLoadedAlert();
-            }
-        }
-        else{
-            DialogBoxes.emptyChoiceBoxAlert();
-        }
+                if (!terrainChoiceBox.getValue().isEmpty()) {
+                    battleBetweenArmies(army1Copy, opponentArmyCopy, terrainChoiceBox.getValue());
+                    DialogBoxes.battleOutcomeAlert();
+                }
+            } catch (NullPointerException e) {
+                DialogBoxes.emptyChoiceBoxAlert();
 
+            }
     }
+
 
 
     /**
@@ -191,8 +203,8 @@ public class BattleSimulationController implements Initializable {
                 Parent root = loader.load();
 
                 BattleOutcomeController battleOutcomeController = loader.getController();
-                battleOutcomeController.initArmy1Data(army1);
-                battleOutcomeController.initOpponentArmyData(opponentArmyFromFile);
+                battleOutcomeController.initArmy1Data(army1Copy);
+                battleOutcomeController.initOpponentArmyData(opponentArmyCopy);
                 battleOutcomeController.setWinningArmyTextField(winnerOfBattle);
 
                 stage.setScene(new Scene(root));
@@ -219,42 +231,21 @@ public class BattleSimulationController implements Initializable {
      */
     @FXML
     public void onResetArmiesButtonClick(ActionEvent event) throws IOException {
-        /*
-        initArmy1(initialArmy);
-        System.out.println(initialArmy.getAllUnits().size());
-        army1TableView.refresh();
-        opponentArmyFromFile = null;
-        initOpponentArmyFromFile(null);
-        army2TableView.refresh();
-        army2NameTextField.clear();
-        numberOfUnitsInArmy2TextField.clear();
 
-         */
-
-        //Army initialArmy = new Army(army1);
-        initArmy1(initialArmy);
-
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getClassLoader().getResource("BattleSimulation.fxml"));
-        Parent tableViewParent = loader.load();
-        Scene tableViewScene = new Scene(tableViewParent);
-
-        BattleSimulationController battleSimulationController = loader.getController();
-
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(tableViewScene);
-        window.show();
+        //setCopyArmy(copyArmy);
+        initArmy1(army1);
+        initOpponentArmyFromFile(opponentArmyFromFile);
+        //displayTotalNumbersOfUnitsInArmy(army1);
 
     }
 
-    public Army getInitialArmy() {
-        return initialArmy;
+    public Army getCopyArmy() {
+        return army1.cloneArmy();
     }
 
-    public void setInitialArmy(Army initialArmy) {
-        this.initialArmy = initialArmy;
+    public void setCopyArmy(Army armyCopy) {
+        this.army1Copy = armyCopy;
     }
-
 
     public Army getArmy1() {
         return army1;
@@ -271,7 +262,6 @@ public class BattleSimulationController implements Initializable {
      * @param army Takes in the army as a parameter
      */
     public void initArmy1(Army army) {
-        //this.army1 = army;
 
         ObservableList<Unit> unitObservableList = FXCollections.observableList(army.getAllUnits());
         army1TableView.setItems(unitObservableList);
@@ -287,10 +277,9 @@ public class BattleSimulationController implements Initializable {
     /**
      * Method for setting the opponent army in the tableview
      * to display the details of the units in the army.
-     * @param opponentArmy Takes in the opponent army as a parameter
+     * @param opponentArmyFromFile Takes in the opponent army as a parameter
      */
-    public void initOpponentArmyFromFile(Army opponentArmy) {
-        this.opponentArmyFromFile = opponentArmy;
+    public void initOpponentArmyFromFile(Army opponentArmyFromFile) {
 
         ObservableList<Unit> unitObservableList = FXCollections.observableList(opponentArmyFromFile.getAllUnits());
         army2TableView.setItems(unitObservableList);
@@ -369,6 +358,24 @@ public class BattleSimulationController implements Initializable {
         }
     }
 
+
+    /**
+     * Method behind the 'load 4' button in the BattleSimulation scene.
+     * It will load an opponent army from a file when pressed.
+     */
+    @FXML
+    public void onLoadArmy4ButtonClick()
+    {
+        try {
+            loadArmyFromFile("src/main/resources/SavedArmy/opponentArmy4.csv");
+            Path path = Path.of("src/main/resources/SavedArmy/opponentArmy4.csv");
+            DialogBoxes.loadArmyAlert(path);
+
+        } catch (IOException e) {
+            DialogBoxes.errorPopUpWindow(String.valueOf(e.getCause()));
+        }
+    }
+
     /**
      * Method for loading an opponent army from a file, and setting the army in the tableview.
      * @param path Takes a file path as a parameter.
@@ -392,8 +399,5 @@ public class BattleSimulationController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         terrainChoiceBox.getItems().addAll(terrains);
         terrainChoiceBox.setOnAction(this::getTerrainChoice);
-        //setArmy1(army1);
-        //initArmy1(army1);
-
     }
 }

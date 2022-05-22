@@ -43,22 +43,24 @@ public class Army implements Serializable {
         randomNumber = new Random();
     }
 
+
     /**
-     * Copy constructor of the Army class
-     * @param army Takes in an army object as a parameter and copies it
+     * Method user for cloning an army
+     * @return returns a copy of an army
      */
-    public Army(Army army)
+    public Army cloneArmy()
     {
-        this.units = new ArrayList<>();
-        for(Unit u : army.getAllUnits())
+        List<Unit> units = this.units;
+        List<Unit> clonedUnits = new ArrayList<>();
+        for (Unit unit : units)
         {
-            //Unit unit = u.copy();
-            //this.units.add(unit);
+            clonedUnits.add(unit.copy());
         }
+        return new Army(this.getName(), clonedUnits);
     }
 
     /**
-     *
+     * Method used for setting the name of an army
      */
     public void setName(String name) {
         this.name = name;

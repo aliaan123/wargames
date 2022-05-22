@@ -108,13 +108,14 @@ public class CavalryUnit extends Unit {
     }
 
 
+
+    /**
+     * Method that is user for copying another unit
+     * @return returns a copy of a unit
+     */
     @Override
-    public Unit copy(Unit unit) {
-        this.setName(unit.getName());
-        this.setHealth(unit.getHealth());
-        this.setAttack(unit.getAttack());
-        this.setArmor(unit.getArmor());
-        return unit;
+    public Unit copy() {
+        return new CavalryUnit(this.getName(), this.getHealth(), this.getAttack(), this.getArmor());
     }
 
 

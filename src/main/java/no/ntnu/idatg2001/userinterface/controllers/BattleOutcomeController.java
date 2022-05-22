@@ -3,7 +3,6 @@ package no.ntnu.idatg2001.userinterface.controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -11,9 +10,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import no.ntnu.idatg2001.model.Army;
 import no.ntnu.idatg2001.model.Unit;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 /**
  *
@@ -24,7 +20,7 @@ import java.util.ResourceBundle;
  * and it will display details about the outcome of the battle between the two armies.
  *
  */
-public class BattleOutcomeController implements Initializable {
+public class BattleOutcomeController {
 
 
     //Field for the tableview of the army created by the user
@@ -197,9 +193,4 @@ public class BattleOutcomeController implements Initializable {
         winnerOfBattleTextField.setText(army.getName());
     }
 
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
 }

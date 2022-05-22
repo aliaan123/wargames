@@ -54,7 +54,6 @@ public class ArmyRegistrationController {
     @FXML
     private TableColumn<Unit, Integer> unitArmorColumn;
 
-    private Army initialArmy1;
 
     /**
      * Method behind the 'Create an army' button.
@@ -106,12 +105,10 @@ public class ArmyRegistrationController {
                 Parent root = loader.load();
                 BattleSimulationController battleSimulationController = loader.getController();
 
-                setCopyArmy();
                 battleSimulationController.displayArmy1Name(nameTextField1.getText());
                 battleSimulationController.displayTotalNumbersOfUnitsInArmy(army);
-                battleSimulationController.initArmy1(army);
-                battleSimulationController.setInitialArmy(getCopyArmy());
                 battleSimulationController.setArmy1(army);
+                battleSimulationController.initArmy1(army);
 
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 Scene scene = new Scene(root);
@@ -125,17 +122,6 @@ public class ArmyRegistrationController {
            DialogBoxes.invalidNameTextFieldAlert();
         }
     }
-
-    public Army getCopyArmy()
-    {
-        return initialArmy1;
-    }
-
-    public void setCopyArmy()
-    {
-        initialArmy1 = new Army(army);
-    }
-
 
     /**
      * Method for setting the user's army in the tableview

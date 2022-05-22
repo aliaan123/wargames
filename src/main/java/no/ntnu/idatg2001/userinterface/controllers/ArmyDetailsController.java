@@ -55,7 +55,8 @@ public class ArmyDetailsController{
     {
         totalNumberOfUnitsInArmyText.setText(String.valueOf(army.getAllUnits().size()));
         numberOfInfantryUnitsText.setText(String.valueOf(army.getInfantryUnits().size()));
-        numberOfCavalryUnitsText.setText(String.valueOf(army.getCavalryUnits().size()));
+        int numberOfCavalryUnits = army.getCavalryUnits().size() - army.getCommanderUnits().size();
+        numberOfCavalryUnitsText.setText(String.valueOf(numberOfCavalryUnits));
         numberOfRangedUnitsText.setText(String.valueOf(army.getRangedUnits().size()));
         numberOfCommanderUnitsText.setText(String.valueOf(army.getCommanderUnits().size()));
     }

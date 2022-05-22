@@ -42,22 +42,10 @@ public abstract class Unit {
     }
 
     /**
-     * Copy constructor of Unit
+     * Abstract method that is used for coping units.
+     * @return returns a copied unit
      */
-    protected Unit(Unit unit)
-    {
-        this.copy(unit);
-        //this.name = unit.name;
-        //this.health = unit.health;
-        //this.attack = unit.attack;
-        //this.armor = unit.armor;
-    }
-
-    /**
-     *
-     * @param unit
-     */
-    public abstract Unit copy(Unit unit);
+    public abstract Unit copy();
 
     /**
      * Method that allows units to attack each other and reduce their health.
@@ -153,8 +141,7 @@ public abstract class Unit {
 
 
     /**
-     * Method for getting the type of unit,
-     * by splitting up the toString of the class, and returning the Class of the object
+     * Method for getting the units type
      * @return a String representing the class of the object, which is the type of the unit
      */
     public String getUnitType() {

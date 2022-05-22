@@ -31,6 +31,16 @@ public class CommanderUnit extends CavalryUnit{
         super(name, health);
     }
 
+
+    /**
+     * Method that is user for copying another unit
+     * @return returns a copy of a unit
+     */
+    @Override
+    public Unit copy() {
+        return new CommanderUnit(this.getName(), this.getHealth(), this.getAttack(), this.getArmor());
+    }
+
     @Override
     public String toString() {
         return  "Unit{" +
