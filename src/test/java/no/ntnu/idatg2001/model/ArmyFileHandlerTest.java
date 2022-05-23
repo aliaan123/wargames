@@ -15,12 +15,13 @@ class ArmyFileHandlerTest {
     void setUp() {
 
         army = new Army("Warriors");
-        army.add(new RangedUnit("ranged",10));
-        army.add(new InfantryUnit("inf",50));
-        army.add(new CavalryUnit("cav",80));
-        army.add(new CommanderUnit("com",100));
-        army.add(new RangedUnit("ranged2",100));
-
+        army.add(new RangedUnit("yoobz",100));
+        army.add(new InfantryUnit("yoobie",70));
+        army.add(new CavalryUnit("aza",80));
+        army.add(new InfantryUnit("yub",90));
+        army.add(new CommanderUnit("kev",100));
+        army.add(new RangedUnit("tati",100));
+        army.add(new CavalryUnit("david",80));
 
 
     }
@@ -29,9 +30,9 @@ class ArmyFileHandlerTest {
     void testFailReadCSV()
     {
         army.getAllUnits().get(0).setHealth(50);
-        ArmyFileHandler.writeCSV(army, Path.of("units.csv"));
+        ArmyFileHandler.writeCSV(army, Path.of("src/main/resources/SavedArmy/units.csv"));
         army.getAllUnits().get(0).setHealth(100);
-        Army readArmy = ArmyFileHandler.readCSV(Path.of("units.csv"));
+        Army readArmy = ArmyFileHandler.readCSV(Path.of("src/main/resources/SavedArmy/units.csv"));
         assertEquals(army,readArmy);
         assertEquals("Warriors", readArmy.getName());
         for(int i = 0; i<readArmy.getAllUnits().size(); i++)
@@ -51,8 +52,8 @@ class ArmyFileHandlerTest {
     @Test
     void testWriteAndReadCSV()
     {
-        ArmyFileHandler.writeCSV(army, Path.of("units.csv"));
-        Army readArmy = ArmyFileHandler.readCSV(Path.of("units.csv"));
+        ArmyFileHandler.writeCSV(army, Path.of("src/main/resources/SavedArmy/units.csv"));
+        Army readArmy = ArmyFileHandler.readCSV(Path.of("src/main/resources/SavedArmy/units.csv"));
         assertEquals(army,readArmy);
     }
 

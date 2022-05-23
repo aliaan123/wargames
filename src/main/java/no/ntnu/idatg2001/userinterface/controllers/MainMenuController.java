@@ -19,7 +19,7 @@ public class MainMenuController {
      * When the button is pressed the scene will change to the next one,
      * which is the ArmyRegistration scene.
      * @param event
-     * @throws IOException
+     * @throws IOException throws IOException
      */
     @FXML
     public void onContinueButtonClick(ActionEvent event) throws IOException {

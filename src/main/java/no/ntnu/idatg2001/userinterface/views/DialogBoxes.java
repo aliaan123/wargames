@@ -51,7 +51,7 @@ public class DialogBoxes {
      * Dialog box that is displayed when loading an army from a file.
      * Method for displaying a dialog box, which alerts the user
      * and gives them information about where the army was loaded from.
-     * @param path
+     * @param path takes in the path of the file as a parameter
      */
     public static void loadArmyAlert(Path path)
     {

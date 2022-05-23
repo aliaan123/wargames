@@ -27,8 +27,8 @@ public class WarGamesApplication extends Application {
 
     /**
      * Start method that is ran when the application is first started
-     * @param primaryStage
-     * @throws IOException
+     * @param primaryStage takes in the stage of the scene as parameter.
+     * @throws IOException throws IOException
      */
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -52,6 +52,10 @@ public class WarGamesApplication extends Application {
         });
     }
 
+    /**
+     * Method for changing scenes to the main menu.
+     * @throws IOException throws IOException
+     */
     public static void goToMainMenu() throws IOException{
         FXMLLoader loader = new FXMLLoader(WarGamesApplication.class.getClassLoader().getResource("MainMenu.fxml"));
         Parent root = loader.load();
@@ -59,35 +63,15 @@ public class WarGamesApplication extends Application {
         primaryStage.setTitle("Main menu");
     }
 
+    /**
+     * Method for changing scenes to the ArmyRegistration scene.
+     * @throws IOException throws IOException
+     */
     public static void goToArmyRegistration() throws IOException{
         FXMLLoader loader = new FXMLLoader(WarGamesApplication.class.getClassLoader().getResource("ArmyRegistration.fxml"));
         Parent root = loader.load();
         primaryStage.getScene().setRoot(root);
         primaryStage.setTitle("Army Registration");
-    }
-
-    public static void goToArmyDetails() throws IOException{
-        FXMLLoader loader = new FXMLLoader(WarGamesApplication.class.getClassLoader().getResource("ArmyDetails.fxml"));
-        Parent root = loader.load();
-        primaryStage.getScene().setRoot(root);
-        primaryStage.setTitle("Add units to army");
-    }
-
-
-    public static void goToArmyEditor() throws IOException{
-        FXMLLoader loader = new FXMLLoader(WarGamesApplication.class.getClassLoader().getResource("ArmyEditor.fxml"));
-        Parent root = loader.load();
-        primaryStage.getScene().setRoot(root);
-        primaryStage.setTitle("Details about army");
-    }
-
-
-
-    public static void goToBattleSimulation() throws IOException{
-        FXMLLoader loader = new FXMLLoader(WarGamesApplication.class.getClassLoader().getResource("BattleSimulation.fxml"));
-        Parent root = loader.load();
-        primaryStage.getScene().setRoot(root);
-        primaryStage.setTitle("Simulation of battle between armies");
     }
 
     /**
@@ -109,9 +93,6 @@ public class WarGamesApplication extends Application {
             }
         }
     }
-
-
-
 
     /**
      * The stop() method is being called by the JavaFX-platform when the

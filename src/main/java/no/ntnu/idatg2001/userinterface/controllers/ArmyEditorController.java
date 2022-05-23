@@ -82,8 +82,8 @@ public class ArmyEditorController implements Initializable {
 
     /**
      * Initializer of the ArmyEditor scene
-     * @param url
-     * @param resourceBundle
+     * @param url url
+     * @param resourceBundle resourceBundle
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

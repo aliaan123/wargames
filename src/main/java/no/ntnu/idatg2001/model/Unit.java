@@ -58,19 +58,19 @@ public abstract class Unit {
                 + opponent.getArmor() + opponent.getResistBonus(terrain));
     }
 
-
     /**
-     * Abstract method that gives the units bonus attack power.
-     *
-     * @return an int representing the bonus attack power
+     * Abstract method that gives the units bonus attack power based on the terrain.
+     * @param terrain takes in the terrain of the battle as a parameter.
+     * @return returns a bonus in attack damage
      */
     public abstract int getAttackBonus(String terrain);
 
 
+
     /**
-     * Abstract method that gives the units bonus resistance.
-     *
-     * @return an int representing the bonus armor points the unit gets.
+     * Abstract method that gives the units bonus resistance based on the terrain.
+     * @param terrain takes in the terrain of the battle as a parameter
+     * @return returns the bonus resist armor
      */
     public abstract int getResistBonus(String terrain);
 
@@ -123,18 +123,24 @@ public abstract class Unit {
 
     /**
      * Method that sets the attack stat of a unit.
-     *
-     * @param attack
+     * @param attack takes in an int, representing the unit's attack damage, as a parameter.
      */
     public void setAttack(int attack) {
         this.attack = attack;
     }
 
-
+    /**
+     * Method that sets the name of the unit.
+     * @param name takes in a String, the name of the unit, as parameter.
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Method that sets the armor of the unit.
+     * @param armor takes in an int, representing the unit's armor points, as a parameter.
+     */
     public void setArmor(int armor) {
         this.armor = armor;
     }

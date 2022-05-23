@@ -36,10 +36,11 @@ public class RangedUnit extends Unit {
     }
 
 
+
     /**
-     * Method for adding an attack bonus to the unit attack damage,
+     * Method for adding an attack bonus to the unit attack damage
      * based on the terrain of the battlefield.
-     *
+     * @param terrain takes in the terrain of the battle as a parameter.
      * @return returns the bonus in attack damage.
      */
     public int terrainAttackBonus(String terrain)

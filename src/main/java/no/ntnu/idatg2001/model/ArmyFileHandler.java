@@ -84,6 +84,11 @@ public class ArmyFileHandler implements Serializable {
     }
 
 
+    /**
+     * Method for serializing army
+     * @param army takes in army object as parameter
+     * @param path takes in path of file as parameter
+     */
     public static void writeSerialized(Army army, Path path) {
         try (ObjectOutputStream outputStream = new ObjectOutputStream(Files.newOutputStream(path)))
         {
@@ -94,6 +99,11 @@ public class ArmyFileHandler implements Serializable {
     }
 
 
+    /**
+     * Method for reading serialized army
+     * @param path takes in path of as parameter
+     * @return returns army
+     */
     public static Army readSerialized(Path path) {
         Army army = new Army("d");
         try (ObjectInputStream objectInputStream = new ObjectInputStream(Files.newInputStream(path))) {
@@ -104,11 +114,6 @@ public class ArmyFileHandler implements Serializable {
         return army;
     }
 
-    private static void clearFile(String path) {
-        try (BufferedWriter writer = Files.newBufferedWriter(Path.of(path))) {
-            writer.write("");
-        } catch (IOException ignored) {}
-    }
 
 }
 

@@ -1,8 +1,8 @@
 Warriors
 RangedUnit, yoobz, 100
-InfantryUnit, lander, 70
-InfantryUnit, Gman, 90
-CavalryUnit, cav, 80
-CavalryUnit, yoobie, 80
-CommanderUnit, com, 100
-RangedUnit, ranged2, 100
+InfantryUnit, yoobie, 70
+CavalryUnit, aza, 80
+InfantryUnit, yub, 90
+CommanderUnit, kev, 100
+RangedUnit, tati, 100
+CavalryUnit, david, 80

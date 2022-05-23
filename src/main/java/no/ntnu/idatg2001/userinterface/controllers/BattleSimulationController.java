@@ -121,7 +121,13 @@ public class BattleSimulationController implements Initializable {
     }
 
 
-
+    /**
+     * Method for starting a battle between two armies.
+     * @param army1 takes in army created by user as a parameter.
+     * @param army2 takes in opponent army as a parameter.
+     * @param terrain takes in terrain of the battlefield as a parameter.
+     * @return returns the winner of the battle
+     */
     public Army battleBetweenArmies(Army army1, Army army2, String terrain)
     {
         Battle battle = new Battle(army1, army2, terrain);
@@ -159,7 +165,7 @@ public class BattleSimulationController implements Initializable {
     /**
      * Method for setting the textfield of the army created by the user,
      * to display the army's name.
-     * @param armyName
+     * @param armyName takes in String, representing army's name, as parameter
      */
     public void displayArmy1Name(String armyName)
     {
@@ -170,7 +176,7 @@ public class BattleSimulationController implements Initializable {
     /**
      * Method for setting the textfield of the opponent army,
      * to display the opponent army's name.
-     * @param armyName
+     * @param armyName takes in String, representing army's name as parameter
      */
     public void displayArmy2Name(String armyName)
     {
@@ -180,7 +186,7 @@ public class BattleSimulationController implements Initializable {
     /**
      * Method for setting textfield that displays the total number of units in the army
      * created by the user.
-     * @param army
+     * @param army takes in army object as parameter
      */
     public void displayTotalNumbersOfUnitsInArmy(Army army)
     {
@@ -192,7 +198,7 @@ public class BattleSimulationController implements Initializable {
      * It will load a pop-up window that displays details about the outcome of the battle
      * between the two armies after their battle has been fought when pressed.
      * @param event
-     * @throws IOException
+     * @throws IOException throws IOException
      */
     @FXML
     public void onViewBattleResultsButtonClick(ActionEvent event) throws IOException {
@@ -227,30 +233,17 @@ public class BattleSimulationController implements Initializable {
      * When the button is pressed the armies will go back to their original state,
      * like they were before battling with eachother.
      * @param event
-     * @throws IOException
      */
     @FXML
-    public void onResetArmiesButtonClick(ActionEvent event) throws IOException {
-
-        //setCopyArmy(copyArmy);
+    public void onResetArmiesButtonClick(ActionEvent event) {
         initArmy1(army1);
         initOpponentArmyFromFile(opponentArmyFromFile);
-        //displayTotalNumbersOfUnitsInArmy(army1);
-
     }
 
-    public Army getCopyArmy() {
-        return army1.cloneArmy();
-    }
-
-    public void setCopyArmy(Army armyCopy) {
-        this.army1Copy = armyCopy;
-    }
-
-    public Army getArmy1() {
-        return army1;
-    }
-
+    /**
+     * set-method for setting army.
+     * @param army1 Takes in army object as parameter
+     */
     public void setArmy1(Army army1) {
         this.army1 = army1;
     }
@@ -298,7 +291,7 @@ public class BattleSimulationController implements Initializable {
 
     /**
      * Method that sends you back to the main menu
-     * @throws IOException
+     * @throws IOException throws IOException
      */
     @FXML
     public void onMainMenuButtonClick() throws IOException {
@@ -379,7 +372,7 @@ public class BattleSimulationController implements Initializable {
     /**
      * Method for loading an opponent army from a file, and setting the army in the tableview.
      * @param path Takes a file path as a parameter.
-     * @throws IOException
+     * @throws IOException throws IOException
      */
     public void loadArmyFromFile(String path) throws IOException
     {
@@ -392,8 +385,8 @@ public class BattleSimulationController implements Initializable {
     /**
      * Initialize method, which initializes the choice box
      * for choosing the terrain of the battlefield.
-     * @param url
-     * @param resourceBundle
+     * @param url url
+     * @param resourceBundle resourceBundle
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

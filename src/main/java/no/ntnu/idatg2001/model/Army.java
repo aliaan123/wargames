@@ -61,6 +61,7 @@ public class Army implements Serializable {
 
     /**
      * Method used for setting the name of an army
+     * @param name name of the army
      */
     public void setName(String name) {
         this.name = name;
@@ -68,7 +69,7 @@ public class Army implements Serializable {
 
     /**
      * Method for getting the name of the army.
-     * @return
+     * @return returns name of the army
      */
     public String getName() {
         return name;

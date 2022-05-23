@@ -61,7 +61,7 @@ public class ArmyRegistrationController {
      * will be transferred to the next one, and the scenes will switch.
      * The ArmyEditor scene will be loaded.
      * @param event
-     * @throws IOException
+     * @throws IOException throws IOException
      */
     @FXML
     public void onCreateAnArmyButtonClick(ActionEvent event) throws IOException {
@@ -95,7 +95,7 @@ public class ArmyRegistrationController {
      * transferred to the next scene, and the scenes will switch to
      * the BattleSimulation scene.
      * @param event
-     * @throws IOException
+     * @throws IOException throws IOException
      */
     @FXML
     public void onContinueToBattleSimulationButtonClick(ActionEvent event) throws IOException{

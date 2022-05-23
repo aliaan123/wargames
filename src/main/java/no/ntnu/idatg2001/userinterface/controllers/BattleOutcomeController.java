@@ -186,7 +186,7 @@ public class BattleOutcomeController {
     /**
      * Method for setting the winning army's name in the textfield
      * displaying the winner of the battle between the armies.
-     * @param army
+     * @param army takes in army object as parameter
      */
     public void setWinningArmyTextField(Army army)
     {
