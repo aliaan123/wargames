@@ -95,7 +95,6 @@ public class ArmyEditorController implements Initializable {
 
         army1 = new Army(nameOfArmyTextField.getText(), unitObservableList);
 
-        //unitObservableList = FXCollections.observableList(unitList.getAllUnits());
         unitTypeColumn.setCellValueFactory(new PropertyValueFactory<>("unitType"));
         unitNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         unitHealthColumn.setCellValueFactory(new PropertyValueFactory<>("health"));

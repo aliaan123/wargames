@@ -141,7 +141,7 @@ public class BattleSimulationController implements Initializable {
      * start when a terrain is chosen and the button has been pressed.
      */
     @FXML
-    public void onStartSimulationButtonClick() {
+    public void onRunSimulationButtonClick() {
 
         army1Copy = army1.cloneArmy();
         if(this.opponentArmyFromFile != null) {
@@ -235,9 +235,20 @@ public class BattleSimulationController implements Initializable {
      * @param event
      */
     @FXML
-    public void onResetArmiesButtonClick(ActionEvent event) {
+    public void onInfoButtonClick(ActionEvent event) {
+
+
         initArmy1(army1);
         initOpponentArmyFromFile(opponentArmyFromFile);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information!");
+        alert.setHeaderText("Information about how to run a new simulation.");
+        alert.setContentText("You can run the simulation as many times as you want as long as there are two armies in the tableviews. " +
+                "If you wish to battle another army," +
+                "then just click on another load file button and run the simulation again.");
+        alert.showAndWait();
+
     }
 
     /**

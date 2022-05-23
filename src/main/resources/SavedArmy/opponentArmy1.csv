@@ -1,7 +1,7 @@
 Bandits
 RangedUnit, nate, 100
-InfantryUnit, bob, 50
-InfantryUnit, Gman, 50
+InfantryUnit, bob, 100
+InfantryUnit, Gman, 90
 CavalryUnit, cav, 80
 CavalryUnit, yoobie, 80
 CommanderUnit, commando, 100

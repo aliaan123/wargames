@@ -80,7 +80,7 @@ public class ArmyRegistrationController {
             if(army == null) {
                 window.setScene(tableViewScene);
             } else {
-                //window.setScene(armyEditorController.getTableViewScene());
+
             }
             window.show();
         }

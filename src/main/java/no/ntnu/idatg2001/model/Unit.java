@@ -17,8 +17,6 @@ public abstract class Unit {
     private int attack;
     // armor points of the unit
     private int armor;
-    // type of the unit
-    private String unitType;
 
     /**
      * Constructor of the Unit class.
