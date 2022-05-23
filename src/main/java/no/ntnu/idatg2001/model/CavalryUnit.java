@@ -1,10 +1,8 @@
 package no.ntnu.idatg2001.model;
 
-
 /**
- * CavalryUnit class which is a subclass of Unit, a specialized type of unit.
  * @author Aliaan
- * @version 0.0.1
+ * CavalryUnit class which is a subclass of Unit, a specialized type of unit.
  */
 public class CavalryUnit extends Unit {
 
@@ -118,7 +116,10 @@ public class CavalryUnit extends Unit {
         return new CavalryUnit(this.getName(), this.getHealth(), this.getAttack(), this.getArmor());
     }
 
-
+    /**
+     * toString method of the Cavalry unit class
+     * @return returns a String with all the units details
+     */
     @Override
     public String toString() {
         return super.toString() + ", unit type=Cavalry Unit}";

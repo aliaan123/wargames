@@ -12,9 +12,7 @@ import no.ntnu.idatg2001.model.Army;
 import no.ntnu.idatg2001.model.Unit;
 
 /**
- *
  * @author Aliaan
- * @version 0.0.1
  *
  * BattleOutcomeController is the controller class of the BattleOutcome.fxml file,
  * and it will display details about the outcome of the battle between the two armies.

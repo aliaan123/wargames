@@ -1,10 +1,10 @@
 package no.ntnu.idatg2001.model;
 
 /**
- * The unit superclass representing a single unit in an army
  *
  * @author Aliaan
- * @version 0.0.1
+ * The unit superclass,
+ * represents a single unit in an army
  */
 
 public abstract class Unit {

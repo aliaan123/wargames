@@ -20,7 +20,6 @@ import java.io.IOException;
 
 /**
  * @author Aliaan
- * @version 0.0.1
  *
  * ArmyRegistrationController is the controller of the ArmyRegistration.fxml file.
  * Controller of the scene where the armies will be registered.

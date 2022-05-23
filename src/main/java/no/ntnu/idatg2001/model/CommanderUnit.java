@@ -1,9 +1,8 @@
 package no.ntnu.idatg2001.model;
 
 /**
- * CommanderUnit class which is a subclass of the CavalryUnit, a specialized type of unit.
  * @author Aliaan
- * @version 0.0.1
+ * CommanderUnit class which is a subclass of the CavalryUnit, a specialized type of unit.
  */
 public class CommanderUnit extends CavalryUnit{
 

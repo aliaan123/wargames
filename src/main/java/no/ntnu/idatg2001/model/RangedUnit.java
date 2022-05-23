@@ -2,9 +2,8 @@ package no.ntnu.idatg2001.model;
 
 
 /**
- * RangedUnit class which is a subclass of Unit, a specialized type of unit.
  * @author Aliaan
- * @version 0.0.1
+ * RangedUnit class which is a subclass of Unit, a specialized type of unit.
  */
 public class RangedUnit extends Unit {
 

@@ -27,8 +27,6 @@ import java.util.ResourceBundle;
 
 /**
  * @author Aliaan
- * @version 0.0.1
- *
  * BattleSimulationController is the controller of the BattleSimulation.fxml file.
  * This is the scene where the simulation between the two armies happen.
  *
@@ -229,26 +227,15 @@ public class BattleSimulationController implements Initializable {
 
 
     /**
-     * Method behind the 'Reset armies' button in the BattleSimulation scene.
-     * When the button is pressed the armies will go back to their original state,
-     * like they were before battling with eachother.
+     * Method behind the info button in the BattleSimulation scene.
+     * Displays information about how to restart the simulation.
      * @param event
      */
     @FXML
     public void onInfoButtonClick(ActionEvent event) {
-
-
         initArmy1(army1);
         initOpponentArmyFromFile(opponentArmyFromFile);
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information!");
-        alert.setHeaderText("Information about how to run a new simulation.");
-        alert.setContentText("You can run the simulation as many times as you want as long as there are two armies in the tableviews. " +
-                "If you wish to battle another army," +
-                "then just click on another load file button and run the simulation again.");
-        alert.showAndWait();
-
+        DialogBoxes.resetArmiesInfo();
     }
 
     /**

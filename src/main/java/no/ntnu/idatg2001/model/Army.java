@@ -6,8 +6,6 @@ import java.util.stream.Collectors;
 
 /**
  * @author Aliaan
- * @version 0.0.1
- *
  * Army class is a collection of units that can attack other units in a war.
  */
 public class Army implements Serializable {

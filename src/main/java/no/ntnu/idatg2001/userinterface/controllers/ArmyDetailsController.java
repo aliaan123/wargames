@@ -6,7 +6,6 @@ import no.ntnu.idatg2001.model.Army;
 
 /**
  * @author Aliaan
- * @version 0.0.1
  *
  * ArmyDetailsController is the controller class for the ArmyDetails.fxml file,
  * and is made for showing details of an army.

@@ -7,8 +7,6 @@ import no.ntnu.idatg2001.userinterface.views.WarGamesApplication;
 
 /**
  * @author Aliaan
- * @version 0.0.1
- *
  * MainMenuController is the controller class for the MainMenu.fxml file.
  * Represents the main menu scene of the graphical user interface.
  */

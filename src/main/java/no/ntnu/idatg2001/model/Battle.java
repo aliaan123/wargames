@@ -6,10 +6,7 @@ import java.util.List;
 
 /**
  * @author Aliaan
- * @version 0.0.1
- *
- * Class that simulates the battle between armies.
- * TO DO Det er kanskje bedre om battle class er en singleton-klasse
+ * Battle class, class that sets and simulates the battle between armies.
  */
 public class Battle {
 

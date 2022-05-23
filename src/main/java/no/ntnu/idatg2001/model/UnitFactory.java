@@ -6,7 +6,6 @@ import java.util.List;
 
 /**
  * @author Aliaan
- *
  * Class representing a unit factory.
  * Uses the factory design pattern.
  */

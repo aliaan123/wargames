@@ -1,9 +1,8 @@
 package no.ntnu.idatg2001.model;
 
 /**
- * InfantryUnit class which is a subclass of Unit, a specialized type of unit.
  * @author Aliaan
- * @version 0.0.1
+ * InfantryUnit class which is a subclass of Unit, a specialized type of unit.
  */
 public class InfantryUnit extends Unit {
 

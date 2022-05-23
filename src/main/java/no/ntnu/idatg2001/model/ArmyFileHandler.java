@@ -6,7 +6,6 @@ import java.nio.file.Path;
 
 /**
  * @author Aliaan
- *
  * Class for handling a file where we can store an army.
  */
 public class ArmyFileHandler implements Serializable {

@@ -9,7 +9,6 @@ import java.util.Optional;
 
 /**
  * @author Aliaan
- *
  * Class holding all the dialog-box methods in the application
  */
 public class DialogBoxes {
@@ -113,6 +112,19 @@ public class DialogBoxes {
     }
 
 
+    /**
+     * Dialog box for displaying information about how to reset armies.
+     */
+    public static void resetArmiesInfo()
+    {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information!");
+        alert.setHeaderText("Information about how to run a new simulation.");
+        alert.setContentText("You can run the simulation as many times as you want as long as there are two armies in the tableviews. " +
+                "If you wish to battle another army," +
+                "then just click on another load file button and run the simulation again.");
+        alert.showAndWait();
+    }
 
     /**
      * Dialog box that is displayed when trying to continue without loading an opponent army.

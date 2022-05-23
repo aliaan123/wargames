@@ -24,9 +24,7 @@ import java.util.ResourceBundle;
 
 
 /**
- *
  * @author Aliaan
- * @version 0.0.1
  *
  * ArmyEditorController is the controller class for the ArmyEditor.fxml file,
  * and is the controller for the scene where the army is being created.
