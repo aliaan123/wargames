@@ -1,4 +1,4 @@
-module JavaFX.Events {
+module no.ntnu.idatg2001 {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.graphics;
