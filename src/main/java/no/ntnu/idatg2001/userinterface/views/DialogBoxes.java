@@ -122,7 +122,9 @@ public class DialogBoxes {
         alert.setHeaderText("Information about how to run a new simulation.");
         alert.setContentText("You can run the simulation as many times as you want as long as there are two armies in the tableviews. " +
                 "If you wish to battle another army," +
-                "then just click on another load file button and run the simulation again.");
+                " then just click on another load file button and run the simulation again." +
+                " Try to keep the terrain of the battlefield the same when rerunning the simulation" +
+                ",  as the application will sometimes freeze up when the terrain is changed too often.");
         alert.showAndWait();
     }
 

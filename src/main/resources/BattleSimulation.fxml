@@ -68,7 +68,7 @@
             <Font size="10.0" />
          </font>
       </Button>
-      <Button layoutX="727.0" layoutY="575.0" mnemonicParsing="false" onAction="#onInfoButtonClick" prefHeight="18.0" prefWidth="54.0" text="Info">
+      <Button layoutX="719.0" layoutY="575.0" mnemonicParsing="false" onAction="#onInfoButtonClick" prefHeight="18.0" prefWidth="54.0" text="Info">
          <font>
             <Font size="9.0" />
          </font>
