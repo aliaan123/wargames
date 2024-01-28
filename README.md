@@ -16,29 +16,29 @@ Battle Simulation: Engage in simulated battles between user-designed armies and 
 3. Requirements Specification
 
 3.1 Use-Case Diagram
-![image](https://github.com/aliaan123/wargames/assets/59202755/b31df4de-03e7-4bc5-9d57-072c11f9916b)
+![image](https://github.com/aliaan123/wargames/assets/59202755/82187f26-44cf-47c9-a130-a799835e50e4)
 
 4. Design
 The design of Wargames follows principles and patterns to create a user-friendly and efficient application.
 
 4.1 Balsamiq Wireframes
 4.1.1 Main Menu
-![image](https://github.com/aliaan123/wargames/assets/59202755/cb28a6a2-7a3d-413f-afbc-bcbcdd0cf8d2)
+![image](https://github.com/aliaan123/wargames/assets/59202755/8f0b9b5b-4c9e-4ccc-99f4-240b34dacd63)
 
 4.1.2 Army Registration
-![image](https://github.com/aliaan123/wargames/assets/59202755/2dcab38d-4405-47bb-ab67-d12d15e261ab)
+![image](https://github.com/aliaan123/wargames/assets/59202755/db1bc786-f079-4c27-8b2b-4ef196421545)
 
 4.1.3 Unit Registration
-![image](https://github.com/aliaan123/wargames/assets/59202755/58f2eb86-0390-4efc-a1eb-8a28e10e0d0f)
+![image](https://github.com/aliaan123/wargames/assets/59202755/4a51b9d8-b098-4b45-9bd9-8c5d71c61062)
 
 4.1.4 Army Details
-![image](https://github.com/aliaan123/wargames/assets/59202755/47d8b235-7f7a-4e28-b35b-6c345dcd6ebc)
+![image](https://github.com/aliaan123/wargames/assets/59202755/b6ed0c6a-c9c7-40d8-a5a2-129cd3da0891)
 
 4.1.5 Load Army from File
-![image](https://github.com/aliaan123/wargames/assets/59202755/2b8eafe8-b591-4e62-b416-b88ba1cc254c)
+![image](https://github.com/aliaan123/wargames/assets/59202755/39903d7c-216b-44b8-a33e-f935547dcc7a)
 
 4.1.6 Battle Simulation
-![image](https://github.com/aliaan123/wargames/assets/59202755/b8869dbe-4123-4731-b84a-43ae843c18fb)
+![image](https://github.com/aliaan123/wargames/assets/59202755/2dd08fee-1ac3-4f7f-87b9-4a9e219b6b52)
 
 4.2 Design Principles and Patterns
 The design adheres to Don Norman's principles of visibility and feedback, ensuring an intuitive and informative user experience. The application uses design patterns such as the factory pattern and the Model-View-Controller (MVC) pattern for efficient code organization.
@@ -47,8 +47,10 @@ The design adheres to Don Norman's principles of visibility and feedback, ensuri
 Two class diagrams illustrate dependencies, fields, and methods in the project.
 
 4.3.1 Class Diagram 1
+![image](https://github.com/aliaan123/wargames/assets/59202755/234dea3e-f802-4eee-88ee-4513792f5e9f)
 
 4.3.2 Class Diagram 2
+![image](https://github.com/aliaan123/wargames/assets/59202755/66ac1ac8-be6e-4563-9ef0-2790a1ed78f0)
 
 5. Implementation
 The project structure follows the Model-View-Controller (MVC) design pattern for a tidy and organized codebase.
@@ -56,11 +58,8 @@ The project structure follows the Model-View-Controller (MVC) design pattern for
 5.1 Model-View-Controller Design Pattern
 The project structure provides a clear implementation of the MVC design pattern.
 
-
 6. Process
 Work on the project was carried out consistently and systematically throughout the semester. Implementation of new knowledge occurred continuously after lectures.
-
-6.1 Commits
 
 7. Reflection
 The project has been educational, applying knowledge from the entire semester. Reflection includes challenges in interpreting project requirements and a local technical issue when attempting to run the application.
