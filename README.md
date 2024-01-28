@@ -1,6 +1,5 @@
 # wargames
 
-Project Readme: Wargames
 Overview
 Welcome to Wargames, a simulation program developed by Aliaan Nadeem Azam as part of the IDATG2001 course at NTNU Gjøvik. Wargames allows users to engage in simulated battles between custom-designed armies. This readme provides comprehensive information about the project, including its purpose, features, design, and how to run the application.
 
